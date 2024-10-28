@@ -167,8 +167,8 @@
             rotate = 0;
             format = "{icon} {percent}%";
             format-icons = ["" "" "" "" "" "" "" "" ""];
-            on-scroll-up = "brightnessctl set 1%+";
-            on-scroll-down = "brightnessctl set 1%-";
+            on-scroll-up = " swayosd-client --brightness raise";
+            on-scroll-down = " swayosd-client --brightness lower";
             min-length = 6;
           };
 
