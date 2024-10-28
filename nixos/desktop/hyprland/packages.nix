@@ -1,9 +1,9 @@
 {pkgs, ...}: {
   programs.kitty = {
     enable = true;
-    font.name = "JetBrainsMono Nerd Font";
+    #font.name = "JetBrainsMono Nerd Font";
     #themeFile = "tokyo_night_night";
-    themeFile = "Catppuccin-Mocha";
+    #themeFile = "Catppuccin-Mocha";
     settings = {
       font_size = 11.5;
       confirm_os_window_close = 0;
