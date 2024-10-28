@@ -26,9 +26,17 @@
     polarity = "dark";
     autoEnable = true;
     
+    fonts = {
+      sizes = {
+        desktop = 8;
+        applications = 10;
+      };
 
-    fonts.sizes.desktop = 8;
-    fonts.sizes.applications = 8;
+      monospace = {
+        name = "JetBrainsMono Nerd Font";
+        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+      };
+    };
   };
 
   # Bootloader.
