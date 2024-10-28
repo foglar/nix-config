@@ -22,6 +22,8 @@
   programming.enable = true;
   games.enable = true;
 
+  stylix.targets.dunst.enable = true;
+
   programs.bash = {
     enable = true;
     enableCompletion = true;
