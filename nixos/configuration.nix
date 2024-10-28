@@ -13,6 +13,7 @@
 
     home-manager = {
       extraSpecialArgs = {inherit inputs; };
+      backupFileExtension = "backup";
       users = {
         foglar = import ./home.nix;
       };
