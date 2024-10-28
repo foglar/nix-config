@@ -30,6 +30,8 @@
       sizes = {
         desktop = 8;
         applications = 11;
+        popups = 11;
+        terminal = 12;
       };
 
       monospace = {
