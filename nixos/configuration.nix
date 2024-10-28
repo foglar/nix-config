@@ -23,8 +23,12 @@
     enable = true;
     image = ./aurora_borealis.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+    polarity = "dark";
+    autoEnable = true;
+    
 
     fonts.sizes.desktop = 8;
+    fonts.sizes.applications = 8;
   };
 
   # Bootloader.
