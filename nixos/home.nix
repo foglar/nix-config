@@ -22,6 +22,8 @@
   programming.enable = true;
   games.enable = true;
 
+  services.dunst.enable = true;
+  
   stylix.targets.bat.enable = true;
   stylix.targets.btop.enable = true;
   stylix.targets.dunst.enable = true;

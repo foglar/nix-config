@@ -15,6 +15,11 @@
 
     programs.vscode = {
       enable = true;
+
+      userSettings = {
+          "editor.fontSize" = 16;
+      };
+
       extensions = with pkgs.vscode-extensions; [
         ms-azuretools.vscode-docker
 
