@@ -22,7 +22,16 @@
   programming.enable = true;
   games.enable = true;
 
+  stylix.targets.bat.enable = true;
+  stylix.targets.btop.enable = true;
   stylix.targets.dunst.enable = true;
+  stylix.targets.fzf.enable = true;
+  stylix.targets.neovim.enable = true;
+  stylix.targets.tmux.enable = true;
+  stylix.targets.waybar.enableCenterBackColors = true;
+  stylix.targets.waybar.enableLeftBackColors = true;
+  stylix.targets.waybar.enableRightBackColors = true;
+
 
   programs.bash = {
     enable = true;
