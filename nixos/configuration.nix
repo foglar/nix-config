@@ -29,7 +29,7 @@
     fonts = {
       sizes = {
         desktop = 8;
-        applications = 10;
+        applications = 12;
       };
 
       monospace = {
