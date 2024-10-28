@@ -1,7 +1,7 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   programs.kitty = {
     enable = true;
-    #font.name = "JetBrainsMono Nerd Font";
+    font.name = lib.mkDefault "JetBrainsMono Nerd Font";
     #themeFile = "tokyo_night_night";
     #themeFile = "Catppuccin-Mocha";
     settings = {

@@ -15,7 +15,7 @@
         mainBar = {
           layer = "top";
           position = "top";
-          height = 36;
+          height = 31;
           exclusive = true;
           passthrough = false;
           gtk-layer-shell = true;
