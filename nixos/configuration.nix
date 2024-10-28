@@ -18,6 +18,9 @@
       };
     };
 
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+  stylix.image = /home/foglar/Programming/Git/wallpapers/Decay-Green/wallpapers/aurora_borealis.png;
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
