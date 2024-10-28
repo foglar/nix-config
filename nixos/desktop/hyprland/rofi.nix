@@ -13,7 +13,7 @@
       cycle = true;
       location = "center";
       pass = {};
-      font = "JetBrainsMono NF 14";
+      font = lib.mkDefault "JetBrainsMono NF 14";
       theme = let
         inherit (config.lib.formats.rasi) mkLiteral;
       in {
