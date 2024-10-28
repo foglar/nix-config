@@ -28,9 +28,9 @@
   stylix.targets.fzf.enable = true;
   stylix.targets.neovim.enable = true;
   stylix.targets.tmux.enable = true;
-  stylix.targets.waybar.enableCenterBackColors = true;
-  stylix.targets.waybar.enableLeftBackColors = true;
-  stylix.targets.waybar.enableRightBackColors = true;
+  stylix.targets.waybar.enableCenterBackColors = false;
+  stylix.targets.waybar.enableLeftBackColors = false;
+  stylix.targets.waybar.enableRightBackColors = false;
 
 
   programs.bash = {
