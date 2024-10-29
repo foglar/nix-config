@@ -28,6 +28,7 @@
     polarity = "dark";
     autoEnable = true;
 
+    # Set the cursor theme.
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
