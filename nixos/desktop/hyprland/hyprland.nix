@@ -93,12 +93,11 @@
         ];
 
         exec-once = [
-          "hyprpm reload -n"
           "discord --start-minimized"
           "ferdium --minimized"
           "kdeconnect-indicator"
           "swww-daemon --format xrgb"
-          "swww img /home/foglar/Programming/Git/wallpapers/Decay-Green/wallpapers/aurora_borealis.png"
+          "swww ../../aurora_borealis.png"
           "hypridle"
           "waybar"
           "swayosd-server"
