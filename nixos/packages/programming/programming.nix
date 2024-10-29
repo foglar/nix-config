@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./code.nix
+    ./git.nix
   ];
 
   options = {
@@ -14,20 +15,13 @@
   };
 
   config = lib.mkIf config.programming.enable {
-    programs.git = {
-      enable = true;
-      userName = "foglar";
-      userEmail = "kohout.fi.2023@skola.ssps.cz";
-    };
 
-    vscode.enable = true;
+    vscode.enable = lib.mkDefault true;
+    git.enable = lib.mkDefault true;
 
     home.packages = with pkgs; [
-      git
       neovim
-      gitkraken
       arduino-ide
-      github-cli
       go
       dotnet-sdk_8
       jq

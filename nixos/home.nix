@@ -14,27 +14,13 @@
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   imports = [
-    ./packages.nix
-    ./desktops.nix
+    ./packages/packages.nix
+    ./desktop/desktops.nix
   ];
 
   hyprland.enable = true;
   programming.enable = true;
   games.enable = true;
-
-  services.dunst.enable = true;
-
-  stylix.targets = {
-    bat.enable = true;
-    btop.enable = true;
-    dunst.enable = true;
-    fzf.enable = true;
-    neovim.enable = true;
-    tmux.enable = true;
-    waybar.enableCenterBackColors = false;
-    waybar.enableLeftBackColors = false;
-    waybar.enableRightBackColors = false;
-  };
 
   programs.bash = {
     enable = true;
@@ -63,19 +49,6 @@
 
     bashrcExtra = ''
       pfetch'';
-  };
-
-  programs.oh-my-posh = {
-    enable = true;
-    enableBashIntegration = true;
-    #settings = '''';
-    #useTheme = "catppuccin_mocha";
-    useTheme = "kali";
-  };
-
-  programs.zoxide = {
-    enable = true;
-    enableBashIntegration = true;
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

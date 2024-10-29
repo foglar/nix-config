@@ -12,6 +12,7 @@
     home.packages = with pkgs; [
       vitetris
       steam
+      wine
 
       (writeShellScriptBin "nvidia-offload" ''
         export __NV_PRIME_RENDER_OFFLOAD=1
@@ -21,9 +22,5 @@
         exec "$@"
       '')
     ];
-
-    nixpkgs.config.allowUnfreePredicate = pkg:
-      builtins.elem (lib.getName pkg) [
-      ];
   };
 }

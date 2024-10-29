@@ -4,16 +4,15 @@
   ...
 }: {
   imports = [
-    ./packages/programming/programming.nix
-    ./packages/games.nix
+    ./programming/programming.nix
+    ./games.nix
+    ./terminal_tools.nix
     #./packages/applications.nix
-    #./packages/terminal_tools.nix
   ];
 
-  programs.bat.enable = true;
-  programs.btop.enable = true;
-  programs.fzf.enable = true;
-  programs.tmux.enable = true;
+  terminal_tools.enable = lib.mkDefault true;
+  programming.enable = lib.mkDefault true;
+  games.enable = lib.mkDefault false;
   #programs.neovim.enable = true;
 
   home.packages = with pkgs; [
@@ -21,34 +20,9 @@
     librewolf
     discord
 
-    cmake
-    meson
-    cpio
-
-    pfetch
-    zoxide
-    bat
-    btop
-    cmatrix
-    entr
-    figlet
-    jp2a
-    yt-dlp
-    oh-my-posh
-    eza
-    nvtopPackages.full
-    neofetch
-    wget
-    curl
-
-    fzf
-    tldr
-
     alejandra
     nh
     nixd
-
-    wine
 
     stellarium
     libreoffice

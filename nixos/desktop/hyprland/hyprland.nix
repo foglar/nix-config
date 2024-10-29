@@ -20,7 +20,20 @@
 
     waybar.enable = lib.mkDefault true;
     rofi.enable = lib.mkDefault true;
+    
     services.network-manager-applet.enable = true;
+    services.dunst.enable = true;
+
+    stylix.targets = {
+
+      dunst.enable = true;
+      
+      waybar = {
+        enableCenterBackColors = false;
+        enableLeftBackColors = false;
+        enableRightBackColors = false;
+        };
+    };
 
     wayland.windowManager.hyprland = {
       enable = true;
