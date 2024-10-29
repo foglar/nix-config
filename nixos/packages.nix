@@ -15,6 +15,10 @@
     librewolf
     discord
 
+    cmake
+    meson
+    cpio
+
     pfetch
     zoxide
     bat
