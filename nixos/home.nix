@@ -23,17 +23,18 @@
   games.enable = true;
 
   services.dunst.enable = true;
-  
-  stylix.targets.bat.enable = true;
-  stylix.targets.btop.enable = true;
-  stylix.targets.dunst.enable = true;
-  stylix.targets.fzf.enable = true;
-  stylix.targets.neovim.enable = true;
-  stylix.targets.tmux.enable = true;
-  stylix.targets.waybar.enableCenterBackColors = false;
-  stylix.targets.waybar.enableLeftBackColors = false;
-  stylix.targets.waybar.enableRightBackColors = false;
 
+  stylix.targets = {
+    bat.enable = true;
+    btop.enable = true;
+    dunst.enable = true;
+    fzf.enable = true;
+    neovim.enable = true;
+    tmux.enable = true;
+    waybar.enableCenterBackColors = false;
+    waybar.enableLeftBackColors = false;
+    waybar.enableRightBackColors = false;
+  };
 
   programs.bash = {
     enable = true;
@@ -113,10 +114,10 @@
     FLAKE = "/home/foglar/mysystem";
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_PICTURES_DIR = "$HOME/Pictures/Screenshots/";
-    FZF_DEFAULT_OPTS = " \
-      --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
-      --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
-      --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8";
+    #FZF_DEFAULT_OPTS = " \
+    #  --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+    #  --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+    #  --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8";
   };
 
   # Let Home Manager install and manage itself.

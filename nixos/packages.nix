@@ -14,7 +14,7 @@
   programs.btop.enable = true;
   programs.fzf.enable = true;
   programs.tmux.enable = true;
-  programs.neovim.enable = true;
+  #programs.neovim.enable = true;
 
   home.packages = with pkgs; [
     firefox
