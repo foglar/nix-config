@@ -1,1 +1,3 @@
-# mysystem
+# dotfiles
+
+- my personal nix dotfiles
