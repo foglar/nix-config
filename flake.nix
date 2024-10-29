@@ -5,8 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     hyprland = {
       url = "github:hyprwm/Hyprland";
-      type = "git";
-      submodules = true;
     };
     #hyprland-plugins = {
     #  url = "github:hyprwm/hyprland-plugins";

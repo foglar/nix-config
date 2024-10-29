@@ -10,6 +10,12 @@
     #./packages/terminal_tools.nix
   ];
 
+  programs.bat.enable = true;
+  programs.btop.enable = true;
+  programs.fzf.enable = true;
+  programs.tmux.enable = true;
+  programs.neovim.enable = true;
+
   home.packages = with pkgs; [
     firefox
     librewolf
