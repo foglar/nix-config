@@ -4,18 +4,19 @@
   config,
   ...
 }: {
-  imports = [
-    ./code.nix
-    ./git.nix
-  ];
 
   options = {
     programming.enable =
       lib.mkEnableOption "enable programming toolset";
   };
 
-  config = lib.mkIf config.programming.enable {
+  imports = [
+    ./code.nix
+    ./git.nix
+  ];
 
+  config = lib.mkIf config.programming.enable {
+    
     vscode.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
 

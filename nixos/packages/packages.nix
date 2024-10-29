@@ -34,8 +34,6 @@
     openrocket
     spotify
 
-    ranger
-
     #zed-editor
     #gtk3
     #(python3.withPackages (subpkgs: with subpkgs; [

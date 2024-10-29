@@ -23,6 +23,7 @@
     };
 
     stylix.url = "github:danth/stylix";
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
   outputs = {

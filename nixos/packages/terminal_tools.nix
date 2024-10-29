@@ -1,5 +1,7 @@
 { 
+  pkgs, 
   lib,
+  config,
   ...
 }:
 {
@@ -70,6 +72,7 @@
       curl
       fzf
       tldr
+      ranger
     ];
   };
 }
