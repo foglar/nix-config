@@ -87,6 +87,7 @@
      noto-fonts
      noto-fonts-emoji
      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+     monaspace
   ];
 
   #services.xserver.enable = true;  

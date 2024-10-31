@@ -25,6 +25,7 @@
       fzf.enable = true;
       neovim.enable = true;
       tmux.enable = true;
+      spicetify.enable = true;
     };
 
     programs.oh-my-posh = {
@@ -73,6 +74,7 @@
       fzf
       tldr
       ranger
+      spicetify-cli
     ];
   };
 }
