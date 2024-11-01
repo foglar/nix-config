@@ -18,7 +18,6 @@
   #programs.neovim.enable = true;
 
   home.packages = with pkgs; [
-    firefox
     librewolf
     discord
 
@@ -63,6 +62,8 @@
       "spotify"
       "steam"
       "steam-unwrapped"
+
+      "enhancer-for-youtube"
 
       "gitkraken"
       # VSCODE

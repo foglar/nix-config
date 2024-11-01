@@ -17,6 +17,7 @@
       enable = true;
 
       userSettings = {
+          "files.autoSave"= "afterDelay";
           "editor.fontSize" = 16;
           "editor.minimap.side"= "right";
           "editor.scrollbar.vertical"= "hidden";
@@ -34,6 +35,23 @@
           "workbench.productIconTheme"= "material-product-icons";
           "window.menuBarVisibility"= "toggle";
           "github.copilot.editor.enableAutoCompletions"= false;
+          "nix.serverPath"= "nixd";
+          "nix.enableLanguageServer"= true;
+          "nix.serverSettings" = {
+            "nixd" = {
+              "formatting"= {
+                "command"= [ "alejandra" ]; # or nixfmt or nixpkgs-fmt
+              };
+              # "options": {
+              #    "nixos": {
+              #      "expr": "(builtins.getFlake \"~/mysystem/").nixosConfigurations.laptop.options"
+              #    },
+              #    "home_manager": {
+              #      "expr": "(builtins.getFlake \"/PATH/TO/FLAKE\").homeConfigurations..options"
+              #    },
+              # },
+            };
+          };
       };
 
       extensions = with pkgs.vscode-extensions; [
