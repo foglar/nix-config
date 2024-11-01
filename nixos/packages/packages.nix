@@ -7,12 +7,14 @@
     ./programming/programming.nix
     ./games.nix
     ./terminal_tools.nix
+    ./applications/firefox.nix
     #./packages/applications.nix
   ];
 
   terminal_tools.enable = lib.mkDefault true;
   programming.enable = lib.mkDefault true;
   games.enable = lib.mkDefault false;
+  firefox.enable = lib.mkDefault true;
   #programs.neovim.enable = true;
 
   home.packages = with pkgs; [
