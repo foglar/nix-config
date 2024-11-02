@@ -29,7 +29,7 @@
 
           "hyprland/workspaces" = {
             disable-scroll = true;
-            #rotate = ${r_deg};
+            #rotate = 1;
             all-outputs = true;
             active-only = false;
             on-click = "activate";
@@ -39,7 +39,7 @@
           };
 
           "hyprland/window" = {
-            format = "  {}";
+            format = "   {}";
             #rotate = ${r_deg};
             separate-outputs = true;
             rewrite = {
@@ -186,7 +186,7 @@
           };
 
           "pulseaudio" = {
-            format = "{icon} {volume}";
+            format = "{icon}  {volume}";
             rotate = 0;
             format-muted = "婢";
             on-click = "pavucontrol -t 3";
