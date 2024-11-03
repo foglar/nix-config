@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    #nix-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
     };

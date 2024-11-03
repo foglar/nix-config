@@ -19,7 +19,7 @@
 
   home.packages = with pkgs; [
     librewolf
-    discord
+    vesktop
 
     alejandra
     nh
@@ -34,6 +34,7 @@
     #tor-browser
     openrocket
     spotify
+    inkscape
 
     #zed-editor
     #gtk3
