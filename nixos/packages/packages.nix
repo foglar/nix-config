@@ -20,6 +20,7 @@
   home.packages = with pkgs; [
     librewolf
     vesktop
+    ferdium
 
     alejandra
     nh
@@ -34,6 +35,7 @@
     #tor-browser
     openrocket
     spotify
+    spotube
     inkscape
 
     #zed-editor

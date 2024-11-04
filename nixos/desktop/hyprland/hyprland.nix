@@ -107,6 +107,7 @@
 
         exec-once = [
           "discord --start-minimized"
+          "vesktop --start-minimized"
           "ferdium --minimized"
           "kdeconnect-indicator"
           "swww-daemon --format xrgb"
