@@ -17,41 +17,44 @@
       enable = true;
 
       userSettings = {
-          "files.autoSave"= "afterDelay";
-          "editor.fontSize" = 16;
-          "editor.minimap.side"= "right";
-          "editor.scrollbar.vertical"= "hidden";
-          "editor.scrollbar.verticalScrollbarSize"= 0;
-          "editor.fontLigatures"= "'calt', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09', 'liga'";
-          "editor.stickyScroll.enabled"= false;
-          "security.workspace.trust.untrustedFiles"= "newWindow";
-          "security.workspace.trust.startupPrompt"= "never";
-          "security.workspace.trust.enabled"= false;
-          "terminal.external.linuxExec"= "kitty";
-          "terminal.integrated.stickyScroll.enabled"= true;
-          "telemetry.telemetryLevel"= "off";
-          "workbench.activityBar.location"= "hidden"; # bottom
-          "workbench.iconTheme"= "material-icon-theme";
-          "workbench.productIconTheme"= "material-product-icons";
-          "window.menuBarVisibility"= "toggle";
-          "github.copilot.editor.enableAutoCompletions"= false;
-          "nix.serverPath"= "nixd";
-          "nix.enableLanguageServer"= true;
-          "nix.serverSettings" = {
-            "nixd" = {
-              "formatting"= {
-                "command"= [ "alejandra" ]; # or nixfmt or nixpkgs-fmt
-              };
-              # "options": {
-              #    "nixos": {
-              #      "expr": "(builtins.getFlake \"~/mysystem/").nixosConfigurations.laptop.options"
-              #    },
-              #    "home_manager": {
-              #      "expr": "(builtins.getFlake \"/PATH/TO/FLAKE\").homeConfigurations..options"
-              #    },
-              # },
+        "files.autoSave" = "afterDelay";
+        "editor.fontSize" = 16;
+        "editor.minimap.side" = "right";
+        "editor.scrollbar.vertical" = "hidden";
+        "editor.scrollbar.verticalScrollbarSize" = 0;
+        "editor.fontLigatures" = "'calt', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09', 'liga'";
+        "editor.stickyScroll.enabled" = false;
+        "security.workspace.trust.untrustedFiles" = "newWindow";
+        "security.workspace.trust.startupPrompt" = "never";
+        "security.workspace.trust.enabled" = false;
+        "terminal.external.linuxExec" = "kitty";
+        "terminal.integrated.stickyScroll.enabled" = true;
+        "telemetry.telemetryLevel" = "off";
+        "workbench.activityBar.location" = "hidden"; # bottom
+        "workbench.iconTheme" = "material-icon-theme";
+        "workbench.productIconTheme" = "material-product-icons";
+        "window.menuBarVisibility" = "toggle";
+        "github.copilot.editor.enableAutoCompletions" = false;
+        "[json]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
+        "nix.serverPath" = "nixd";
+        "nix.enableLanguageServer" = true;
+        "nix.serverSettings" = {
+          "nixd" = {
+            "formatting" = {
+              "command" = ["alejandra"]; # or nixfmt or nixpkgs-fmt
             };
+            # "options": {
+            #    "nixos": {
+            #      "expr": "(builtins.getFlake \"~/mysystem/").nixosConfigurations.laptop.options"
+            #    },
+            #    "home_manager": {
+            #      "expr": "(builtins.getFlake \"/PATH/TO/FLAKE\").homeConfigurations..options"
+            #    },
+            # },
           };
+        };
       };
 
       extensions = with pkgs.vscode-extensions; [

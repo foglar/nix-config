@@ -63,6 +63,7 @@
     builtins.elem (lib.getName pkg) [
       "discord"
       "spotify"
+      
       "steam"
       "steam-unwrapped"
 
