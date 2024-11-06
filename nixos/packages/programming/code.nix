@@ -38,6 +38,9 @@
         "[json]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
+        "[python]" = {
+          "editor.defaultFormatter" = "ms-python.black-formatter";
+        };
         "nix.serverPath" = "nixd";
         "nix.enableLanguageServer" = true;
         "nix.serverSettings" = {

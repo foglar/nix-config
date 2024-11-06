@@ -1,23 +1,25 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ inputs, config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.home-manager
-    ];
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
-    home-manager = {
-      extraSpecialArgs = {inherit inputs; };
-      backupFileExtension = "backup";
-      users = {
-        foglar = import ./home.nix;
-      };
+  home-manager = {
+    extraSpecialArgs = {inherit inputs;};
+    backupFileExtension = "backup";
+    users = {
+      foglar = import ./home.nix;
     };
+  };
 
   stylix = {
     enable = true;
@@ -34,7 +36,7 @@
       name = "Bibata-Modern-Ice";
       size = 24;
     };
-    
+
     fonts = {
       sizes = {
         desktop = 8;
@@ -45,14 +47,14 @@
 
       monospace = {
         name = "JetBrainsMono Nerd Font";
-        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+        package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
       };
     };
   };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   networking.hostName = "laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -84,13 +86,13 @@
   };
 
   fonts.packages = with pkgs; [
-     noto-fonts
-     noto-fonts-emoji
-     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-     monaspace
+    noto-fonts
+    noto-fonts-emoji
+    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+    monaspace
   ];
 
-  #services.xserver.enable = true;  
+  #services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
@@ -127,11 +129,11 @@
     khelpcenter
   ];
 
- # qt = {
- #   enable = true;
- #   platformTheme = "gnome";
- #   style = "adwaita-dark";
- # };
+  # qt = {
+  #   enable = true;
+  #   platformTheme = "gnome";
+  #   style = "adwaita-dark";
+  # };
 
   programs.hyprland = {
     enable = true;
@@ -141,7 +143,25 @@
 
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
-  
+
+  programs.proxychains = {
+    enable = true;
+    chain.type = "dynamic";
+    proxies = {
+      tor-proxy = {
+        enable = true;
+        type = "socks5";
+        host = "127.0.0.1";
+        port = 9050;
+      };
+    };
+  };
+
+  services.tor = {
+    enable = true;
+  };
+  services.tor.client.enable = true;
+
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
@@ -156,13 +176,12 @@
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
-
     # Modesetting is required.
     modesetting.enable = true;
 
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
     # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
+    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
     # of just the bare essentials.
     powerManagement.enable = false;
 
@@ -172,15 +191,15 @@
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of 
-    # supported GPUs is at: 
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+    # Support is limited to the Turing and later architectures. Full list of
+    # supported GPUs is at:
+    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     # Currently alpha-quality/buggy, so false is currently the recommended setting.
     open = false;
 
     # Enable the Nvidia settings menu,
-	# accessible via `nvidia-settings`.
+    # accessible via `nvidia-settings`.
     nvidiaSettings = true;
     prime.amdgpuBusId = "pci@000:04:0";
     prime.nvidiaBusId = "pci@000:01:0";
@@ -193,7 +212,6 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
-  
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -227,9 +245,9 @@
   users.users.foglar = {
     isNormalUser = true;
     description = "foglar";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -247,8 +265,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
     inputs.zen-browser.packages."${system}".default
   ];
 
@@ -278,5 +296,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }
