@@ -7,56 +7,20 @@
     ./programming/programming.nix
     ./games.nix
     ./terminal_tools.nix
-    ./applications/firefox.nix
-    #./packages/applications.nix
+    ./applications.nix
   ];
 
   terminal_tools.enable = lib.mkDefault true;
   programming.enable = lib.mkDefault true;
   games.enable = lib.mkDefault false;
   firefox.enable = lib.mkDefault true;
+  applications.enable = lib.mkDefault true;
   #programs.neovim.enable = true;
 
   home.packages = with pkgs; [
-    librewolf
-    vesktop
-    ferdium
-
-    alejandra
-    nh
-    nixd
-
-    stellarium
-    libreoffice
-    localsend
-    plasma5Packages.kdeconnect-kde
-    qbittorrent
-    vlc
-    #tor-browser
-    openrocket
-    spotify
-    spotube
-    inkscape
-
-    #zed-editor
-    #gtk3
-    #(python3.withPackages (subpkgs: with subpkgs; [
-    #pygobject3
-    #gobject-introspection
-    #astropy
-    #tomli
-    #tomli-w
-    #matplotlib
-    #basemap
-    #opencv4
-    #requests
-    #]))
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+      alejandra
+      nh
+      nixd
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:

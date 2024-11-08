@@ -24,7 +24,6 @@
       neovim
       arduino-ide
       go
-      dotnet-sdk_8
       jq
       conda
     ];
