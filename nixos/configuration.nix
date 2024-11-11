@@ -166,7 +166,7 @@
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
     EDITOR = "nvim";
-    FLAKE = "/home/foglar/mysystem";
+    FLAKE = "/home/foglar/dotfiles";
   };
 
   hardware = {

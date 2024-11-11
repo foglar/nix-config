@@ -70,7 +70,7 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    FLAKE = "/home/foglar/mysystem";
+    FLAKE = "/home/foglar/dotfiles";
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_PICTURES_DIR = "$HOME/Pictures/Screenshots/";
     #FZF_DEFAULT_OPTS = " \
