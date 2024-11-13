@@ -13,7 +13,7 @@
 
       settings = {
         mainBar = {
-          layer = "top";
+          layer = "bottom";
           position = "top";
           height = 31;
           exclusive = true;

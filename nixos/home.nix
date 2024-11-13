@@ -1,4 +1,4 @@
-{lib, ...}: {
+{...}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "foglar";
@@ -78,6 +78,16 @@
     #  --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
     #  --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8";
   };
+
+  #xdg.mimeApps = {
+  #  enable = true;
+  #  associations.added = {
+  #    "application/pdf" = ["org.gnome.Evince.desktop"];
+  #  };
+  #  defaultApplications = {
+  #    "application/pdf" = ["org.gnome.Evince.desktop"];
+  #  };
+  #};
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
