@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   inputs,
   config,
@@ -24,9 +21,9 @@
   stylix = {
     enable = true;
     image = ./aurora_borealis.png;
-    #base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     #base16Scheme = "${pkgs.base16-schemes}/share/themes/onedark.yaml";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
     polarity = "dark";
     autoEnable = true;
 
@@ -67,6 +64,23 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.blueman.enable = true;
+
+  services.printing.enable = true;
+  services.printing.drivers = with pkgs; [gutenprint hplip splix];
+  hardware.printers = {
+    ensurePrinters = [
+      {
+        name = "HP_psc_1200_series";
+        location = "Home";
+        deviceUri = "usb://HP/psc%201200%20series?serial=UA51SGB35WT0&interface=1";
+        model = "HP_psc_1200_series.ppd";
+        ppdOptions = {
+          PageSize = "A4";
+        };
+      }
+    ];
+    ensureDefaultPrinter = "HP_psc_1200_series";
+  };
   # Set your time zone.
   time.timeZone = "Europe/Prague";
 
@@ -218,9 +232,6 @@
     layout = "us";
     variant = "";
   };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
