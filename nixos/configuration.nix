@@ -110,25 +110,25 @@
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-tour
-    gnome-connections
-    epiphany # web browser
-    geary # email reader. Up to 24.05. Starting from 24.11 the package name is just geary.
-    #evince # document viewer
-    gnome-weather
-    gnome-contacts
-    gnome-maps
-    gnome-logs
-    gnome-music
-    gnome-system-monitor
-    gnome-text-editor
-    yelp
-    totem
-    snapshot
-    seahorse
-  ];
+  #services.xserver.desktopManager.gnome.enable = true;
+  #environment.gnome.excludePackages = with pkgs; [
+  #  gnome-tour
+  #  gnome-connections
+  #  epiphany # web browser
+  #  geary # email reader. Up to 24.05. Starting from 24.11 the package name is just geary.
+  #  #evince # document viewer
+  #  gnome-weather
+  #  gnome-contacts
+  #  gnome-maps
+  #  gnome-logs
+  #  gnome-music
+  #  gnome-system-monitor
+  #  gnome-text-editor
+  #  yelp
+  #  totem
+  #  snapshot
+  #  seahorse
+  #];
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     ark
@@ -188,6 +188,10 @@
   };
 
   services.xserver.videoDrivers = ["nvidia"];
+  services.xserver = {
+    xkb.layout = "us,cz";
+    xkb.options = "grp:win_space_toggle";
+  };
 
   hardware.nvidia = {
     # Modesetting is required.
@@ -225,12 +229,6 @@
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
   };
 
   # Enable sound with pipewire.
