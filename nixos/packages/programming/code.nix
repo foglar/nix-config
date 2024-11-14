@@ -12,7 +12,6 @@
     home.packages = with pkgs; [
       vscode
       python3
-      dotnet-sdk_8
     ];
 
     programs.vscode = {
@@ -42,6 +41,9 @@
         };
         "[python]" = {
           "editor.defaultFormatter" = "ms-python.black-formatter";
+        };
+        "[html]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
         "python.defaultInterpreterPath" = "${pkgs.python3}";
         "nix.serverPath" = "nixd";
