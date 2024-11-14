@@ -18,6 +18,8 @@
       vesktop
       ferdium
 
+      gnome.simple-scan
+
       stellarium
       libreoffice
       localsend

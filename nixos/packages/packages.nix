@@ -27,6 +27,10 @@
     builtins.elem (lib.getName pkg) [
       "discord"
       "spotify"
+
+      "webstorm"
+      "pycharm"
+      "pycharm-professional"
       
       "steam"
       "steam-unwrapped"

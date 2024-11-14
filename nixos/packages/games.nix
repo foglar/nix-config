@@ -12,6 +12,7 @@
     home.packages = with pkgs; [
       vitetris
       steam
+      heroic
       wine
 
       (writeShellScriptBin "nvidia-offload" ''

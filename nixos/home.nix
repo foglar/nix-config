@@ -1,16 +1,6 @@
 {...}: {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
   home.username = "foglar";
   home.homeDirectory = "/home/foglar";
-
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   imports = [
@@ -60,7 +50,12 @@
     ".config/hypr/mocha.conf".source = ../config/mocha.conf;
     ".config/hypr/hypridle.conf".source = ../config/hypridle.conf;
     ".config/dolphinrc".source = ../config/dolphinrc;
-    ".prettierrc".source = ../config/.prettierrc;
+    ".prettierrc".text = ''
+      {
+        "tabWidth": 4,
+        "useTabs": true
+      }
+    '';
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
