@@ -71,6 +71,7 @@
       tldr
       ranger
       spicetify-cli
+      unzip
     ];
   };
 }
