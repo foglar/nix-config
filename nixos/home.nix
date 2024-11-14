@@ -60,7 +60,7 @@
     ".config/hypr/mocha.conf".source = ../config/mocha.conf;
     ".config/hypr/hypridle.conf".source = ../config/hypridle.conf;
     ".config/dolphinrc".source = ../config/dolphinrc;
-    ".prettierrc".source = ../config/
+    ".prettierrc".source = ../config/.prettierrc;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
