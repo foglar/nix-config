@@ -81,6 +81,11 @@
     ];
     ensureDefaultPrinter = "HP_psc_1200_series";
   };
+  #Printing
+  hardware.sane.enable = true;
+  services.ipp-usb.enable=true;
+  hardware.sane.extraBackends = [ pkgs.hplipWithPlugin ];
+
   # Set your time zone.
   time.timeZone = "Europe/Prague";
 
@@ -254,7 +259,7 @@
   users.users.foglar = {
     isNormalUser = true;
     description = "foglar";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "lp" "scanner"];
     packages = with pkgs; [
       #  thunderbird
     ];
