@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./programming/programming.nix
+    ./hacking/hacking.nix
     ./games.nix
     ./terminal_tools.nix
     ./applications.nix
@@ -15,6 +16,7 @@
   games.enable = lib.mkDefault false;
   firefox.enable = lib.mkDefault true;
   applications.enable = lib.mkDefault true;
+  hacking.enable = lib.mkDefault true;
   #programs.neovim.enable = true;
 
   home.packages = with pkgs; [
