@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    #nix-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
     hyprland = {
       url = "github:hyprwm/Hyprland";
@@ -37,6 +37,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-stable,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -47,10 +48,18 @@
         allowUnfree = true;
       };
     };
+
+    pkgs-stable = import nixpkgs-stable {
+      inherit system;
+
+      config = {
+        allowUnfree = true;
+      };
+    };
   in {
     nixosConfigurations = {
       laptop = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs system;};
+        specialArgs = {inherit inputs system pkgs-stable;};
 
         modules = [
           ./nixos/configuration.nix

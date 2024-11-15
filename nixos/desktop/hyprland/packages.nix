@@ -1,15 +1,13 @@
-{pkgs, lib, ...}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     hyprlock
     hyprpicker
     hypridle
 
-    rofi
-    waybar
-    swww
+    #swww
+    playerctl
 
     kitty
-    kitty-themes
     kitty-img
 
     pavucontrol
@@ -65,7 +63,12 @@
       rm "$temp_screenshot"
     '')
 
-    #(writeShellScriptBin "keyboardswitch")
+    (writeShellScriptBin "keyboardswitch" ''
+      hyprctl switchxkblayout all next
+      layMain=$(hyprctl -j devices | jq '.keyboards' | jq '.[] | select (.main == true)' | awk -F '"' '{if ($2=="active_keymap") print $4}')
+      dunstify -a "t1" -r 91190 -t 800 "$layMain" -i ~/dotfiles/config/keyboard.svg
+    '')
+
     #(writeShellScriptBin "windowpin")
     #(writeShellScriptBin "logoutlaunch")
     #(writeShellScriptBin "sysmonlaunch")

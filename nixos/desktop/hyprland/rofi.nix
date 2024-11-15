@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   options = {
@@ -8,6 +9,10 @@
   };
 
   config = lib.mkIf config.rofi.enable {
+    home.packages = [
+      pkgs.rofi
+    ];
+
     programs.rofi = {
       enable = true;
       cycle = true;
@@ -154,7 +159,7 @@
         "element-icon" = {
           size = mkLiteral "3em";
           cursor = "inherit";
-          background-color = mkLiteral "transparent";
+          #background-color = mkLiteral "transparent";
           #text-color = mkLiteral "inherit";
         };
       
@@ -163,7 +168,7 @@
           vertical-align = mkLiteral "0.5";
           horizontal-align = mkLiteral "0.0";
           cursor = "inherit";
-          background-color = mkLiteral "transparent";
+          #background-color = mkLiteral "transparent";
           #text-color = mkLiteral "inherit";
         };
       

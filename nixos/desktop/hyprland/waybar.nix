@@ -236,11 +236,11 @@
           };
 
           "custom/power" = {
-            format = "{}";
+            format = " {}";
             rotate = 0;
             exec = "echo ; echo  logout";
-            on-click = "wlogout";
-            on-click-right = "wlogout";
+            on-click = "wlogout -b 2";
+            on-click-right = "wlogout -b 2";
             interval = 86400; # once every day
             tooltip = true;
           };

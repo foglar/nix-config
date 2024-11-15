@@ -1,7 +1,7 @@
 {
   lib,
   config,
-  pkgs,
+  pkgs-stable,
   ...
 }: {
   options = {
@@ -25,7 +25,7 @@
     services.dunst.enable = true;
 
     home.packages = [
-      pkgs.toybox
+      pkgs-stable.toybox
     ];
 
     stylix.targets = {
@@ -216,7 +216,7 @@
           "Alt, Return, fullscreen"
           "$mod, Escape, exec, hyprlock"
           #"$mod+Shift,F, exec, windowpin.sh"
-          #"$mod, Backspace, exec, logoutlaunch.sh"
+          "$mod, Backspace, exec, wlogout -b 2"
           "$Ctrl+Alt, W, exec, killall waybar || waybar" # toggle waybar
 
           "$mod, T, exec, $term"
