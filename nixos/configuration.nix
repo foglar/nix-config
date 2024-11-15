@@ -2,16 +2,17 @@
   inputs,
   config,
   pkgs,
+  pkgs-stable,
   ...
 }: {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./system/nvidia.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = {inherit inputs pkgs pkgs-stable;};
     backupFileExtension = "backup";
     users = {
       foglar = import ./home.nix;
@@ -65,6 +66,7 @@
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.blueman.enable = true;
 
+  # Printing
   services.printing.enable = true;
   services.printing.drivers = with pkgs; [gutenprint hplip splix];
   hardware.printers = {
@@ -81,9 +83,10 @@
     ];
     ensureDefaultPrinter = "HP_psc_1200_series";
   };
-  #Printing
+
+  # Scanning
   hardware.sane.enable = true;
-  services.ipp-usb.enable=true;
+  services.ipp-usb.enable= true;
   hardware.sane.extraBackends = [ pkgs.hplipWithPlugin ];
 
   # Set your time zone.
@@ -111,7 +114,6 @@
     monaspace
   ];
 
-  #services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
@@ -188,52 +190,9 @@
     FLAKE = "/home/foglar/dotfiles";
   };
 
-  hardware = {
-    graphics.enable = true;
-  };
-
-  services.xserver.videoDrivers = ["nvidia"];
   services.xserver = {
     xkb.layout = "us,cz";
     xkb.options = "grp:win_space_toggle";
-  };
-
-  hardware.nvidia = {
-    # Modesetting is required.
-    modesetting.enable = true;
-
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
-    # of just the bare essentials.
-    powerManagement.enable = false;
-
-    # Fine-grained power management. Turns off GPU when not in use.
-    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
-
-    # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of
-    # supported GPUs is at:
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
-    # Only available from driver 515.43.04+
-    # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
-
-    # Enable the Nvidia settings menu,
-    # accessible via `nvidia-settings`.
-    nvidiaSettings = true;
-    prime.amdgpuBusId = "pci@000:04:0";
-    prime.nvidiaBusId = "pci@000:01:0";
-
-    prime.offload = {
-      enable = true;
-      enableOffloadCmd = true;
-    };
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   # Enable sound with pipewire.
@@ -278,11 +237,10 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
-    inputs.zen-browser.packages."${system}".default
-  ];
+  ]);
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
