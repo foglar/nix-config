@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   options = {
@@ -8,6 +9,10 @@
   };
 
   config = lib.mkIf config.waybar.enable {
+    home.packages = [
+      pkgs.waybar
+    ];
+
     programs.waybar = {
       enable = true;
 
@@ -70,15 +75,15 @@
               "m" = 30; # medium
             };
             interval = 30;
-            format = "󰾆 {used}GB";
+            format = "󰾆  {used}GB";
             #rotate = ${r_deg};
-            format-m = "󰾅 {used}GB";
-            format-h = "󰓅 {used}GB";
-            format-c = " {used}GB";
-            format-alt = "󰾆 {percentage}%";
+            format-m = "󰾅  {used}GB";
+            format-h = "󰓅  {used}GB";
+            format-c = "  {used}GB";
+            format-alt = "󰾆  {percentage}%";
             max-length = 10;
             tooltip = true;
-            tooltip-format = "󰾆 {percentage}%\n {used:0.1f}GB/{total:0.1f}GB";
+            tooltip-format = "󰾆  {percentage}%\n  {used:0.1f}GB/{total:0.1f}GB";
           };
 
           "bluetooth" = {
@@ -189,19 +194,19 @@
             format = "{icon}  {volume}";
             rotate = 0;
             format-muted = "婢";
-            on-click = "pavucontrol -t 3";
-            on-click-middle = "volumecontrol.sh -o m";
-            on-scroll-up = "volumecontrol.sh -o i";
-            on-scroll-down = "volumecontrol.sh -o d";
+            on-click = "nvidia-offload pavucontrol -t 3";
+            on-click-middle = "swayosd-client --output-volume mute-toggle";
+            on-scroll-up = "swayosd-client --output-volume 5";
+            on-scroll-down = "swayosd-client --output-volume -5";
             tooltip-format = "{icon} {desc} // {volume}%";
             scroll-step = 5;
             format-icons = {
-              headphone = "";
-              hands-free = "";
-              headset = "";
-              phone = "";
-              portable = "";
-              car = "";
+              headphone = " ";
+              hands-free = " ";
+              headset = " ";
+              phone = " ";
+              portable = " ";
+              car = " ";
               default = ["" "" ""];
             };
           };
@@ -211,10 +216,10 @@
             rotate = 0;
             format-source = "";
             format-source-muted = "";
-            on-click = "pavucontrol -t 4";
-            on-click-middle = "volumecontrol.sh -i m";
-            on-scroll-up = "volumecontrol.sh -i i";
-            on-scroll-down = "volumecontrol.sh -i d";
+            on-click = "nvidia-offload pavucontrol -t 4";
+            on-click-middle = "swayosd-client --input-volume mute-toggle";
+            on-scroll-up = "swayosd-client --input-volume 5";
+            on-scroll-down = "swayosd-client --input-volume -5";
             tooltip-format = "{format_source} {source_desc} // {source_volume}%";
             scroll-step = 5;
           };
@@ -234,8 +239,8 @@
             format = "{}";
             rotate = 0;
             exec = "echo ; echo  logout";
-            on-click = "logoutlaunch.sh 2";
-            on-click-right = "logoutlaunch.sh 1";
+            on-click = "wlogout";
+            on-click-right = "wlogout";
             interval = 86400; # once every day
             tooltip = true;
           };

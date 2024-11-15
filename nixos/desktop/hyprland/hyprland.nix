@@ -1,44 +1,49 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   options = {
-    hyprland.enable = 
-    lib.mkEnableOption "enable Hyprland module";
+    hyprland.enable =
+      lib.mkEnableOption "enable Hyprland module";
   };
 
   imports = [
-      ./packages.nix
-      ./waybar.nix
-      ./rofi.nix
-    ];
+    ./packages.nix
+    ./waybar.nix
+    ./rofi.nix
+    ./wlogout.nix
+  ];
 
   config = lib.mkIf config.hyprland.enable {
-
     waybar.enable = lib.mkDefault true;
     rofi.enable = lib.mkDefault true;
-    
+    wlogout.enable = lib.mkDefault true;
+
     services.network-manager-applet.enable = true;
     services.dunst.enable = true;
 
-    stylix.targets = {
+    home.packages = [
+      pkgs.toybox
+    ];
 
+    stylix.targets = {
       dunst.enable = true;
-      
+
       waybar = {
         enableCenterBackColors = false;
         enableLeftBackColors = false;
         enableRightBackColors = false;
-        };
+      };
     };
 
     wayland.windowManager.hyprland = {
       enable = true;
 
       #plugins = [
-        #inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
-        #inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+      #inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+      #inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
       #];
 
       settings = {
@@ -50,7 +55,8 @@
         input = {
           "kb_layout" = "us, cz, ru";
           "follow_mouse" = "1";
-          "kb_options" = "caps:swapecase";
+
+          #"kb_options" = "caps:swapecase";
           #"kb_options" = "ctrl:nocaps";
 
           touchpad = {
@@ -108,8 +114,8 @@
           "vesktop --start-minimized"
           "ferdium --minimized"
           "kdeconnect-indicator"
-          "swww-daemon --format xrgb"
-          "swww ../../aurora_borealis.png"
+          #"swww-daemon --format xrgb"
+          #"swww ../../aurora_borealis.png"
           "hypridle"
           "waybar"
           "swayosd-server"
@@ -156,7 +162,7 @@
         };
 
         bindr = [
-          "ALTSHIFT, Shift_L, exec, keyboardswitch.sh"
+          "ALTSHIFT, Shift_L, exec, keyboardswitch"
           "CAPS,Caps_Lock, exec, swayosd-client --caps-lock"
         ];
 
@@ -169,7 +175,7 @@
 
         bindl = [
           # Audio
-          ",XF86AudioMute, exec,  swayosd-client --output-volume mute-toggle"
+          ",XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
           ",XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
 
           # Media
@@ -179,8 +185,8 @@
         ];
 
         bindel = [
-          ",XF86AudioLowerVolume, exec, swayosd-client --output-volume -5"
-          ",XF86AudioRaiseVolume, exec, swayosd-client --output-volume 5"
+          ",XF86AudioLowerVolume, exec, swayosd-client --output-volume -1"
+          ",XF86AudioRaiseVolume, exec, swayosd-client --output-volume 1"
           # Brightness
           ",XF86MonBrightnessUp, exec, swayosd-client --brightness raise"
           ",XF86MonBrightnessDown, exec, swayosd-client --brightness lower"
@@ -217,7 +223,7 @@
           "$mod, F, exec, $browser"
           "$mod, E, exec, $file"
           "$mod, C, exec, $editor"
-          #"Ctrl+Shift, Escape, exec, $sysmonlaunch.sh"
+          "Ctrl+Shift, Escape, exec, btop"
 
           # Rofi
           "$mod, A, exec, pkill -x rofi || rofi -show drun"
