@@ -18,7 +18,8 @@
       vesktop
       ferdium
 
-      gnome.simple-scan
+      simple-scan
+      loupe
 
       stellarium
       libreoffice

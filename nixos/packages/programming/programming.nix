@@ -27,7 +27,7 @@
       jq
       conda
       jetbrains.webstorm
-      jetbrains.pycharm-professional
+      #jetbrains.pycharm-professional
       dotnet-sdk_8
       nodejs
       pnpm
