@@ -1,9 +1,9 @@
 # TODO
 
 - [ ] Wallpaper switch
-- [ ] Keyboard switch
-- [ ] Waybar fix
-- [ ] Rofi config
+- [x] Keyboard switch
+- [x] Waybar fix
+- [x] Rofi config
 - [ ] Cliphist manager fix
 - [x] Stylix theming
 - [ ] Enabling nvidia graphics and disabling it
