@@ -1,25 +1,28 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    hyprlock
-    hyprpicker
-    hypridle
+{pkgs, pkgs-stable, ...}: {
+  home.packages = (with pkgs; [
+      hyprlock
+      hyprpicker
+      hypridle
 
-    #swww
-    playerctl
+      dunst
+      libnotify
+      swayosd
 
-    kitty
-    kitty-img
+      #swww
+      playerctl
 
-    pavucontrol
-    hyprshade
-    swappy
-    grimblast
-    dunst
-    udiskie
-    wl-clipboard
-    cliphist
-    swayosd
+      kitty
+      kitty-img
 
+      hyprshade
+      swappy
+      grimblast
+
+      udiskie
+
+      wl-clipboard
+      cliphist
+    
     (writeShellScriptBin "dontkillsteam" ''
       if [[ $(hyprctl activewindow -j | jq -r ".class") == "Steam" ]]; then
         xdotool windowunmap $(xdotool getactivewindow)
@@ -66,12 +69,14 @@
     (writeShellScriptBin "keyboardswitch" ''
       hyprctl switchxkblayout all next
       layMain=$(hyprctl -j devices | jq '.keyboards' | jq '.[] | select (.main == true)' | awk -F '"' '{if ($2=="active_keymap") print $4}')
-      dunstify -a "t1" -r 91190 -t 800 "$layMain" -i ~/dotfiles/config/keyboard.svg
+      ${libnotify}/bin/notify-send -a "t1" -r 91190 -t 800 "$layMain" -i ~/dotfiles/config/keyboard.svg
     '')
 
     #(writeShellScriptBin "windowpin")
     #(writeShellScriptBin "logoutlaunch")
     #(writeShellScriptBin "sysmonlaunch")
     #(writeShellScriptBin "rofilaunch" '''')
-  ];
+  ]) ++ (with pkgs-stable; [
+    pavucontrol
+  ]);
 }

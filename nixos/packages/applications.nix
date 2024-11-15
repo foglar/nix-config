@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  pkgs-stable,
   config,
   ...
 }: {
@@ -13,25 +14,27 @@
   ];
 
   config = lib.mkIf config.applications.enable {
-    home.packages = with pkgs; [
-      librewolf
-      vesktop
-      ferdium
+    home.packages =
+      (with pkgs; [
+        librewolf
+        ferdium
 
-      simple-scan
-      loupe
-
-      stellarium
-      libreoffice
-      localsend
-      plasma5Packages.kdeconnect-kde
-      qbittorrent
-      vlc
-      #tor-browser
-      openrocket
-      spotify
-      spotube
-      inkscape
-    ];
+        stellarium
+        libreoffice
+        localsend
+        plasma5Packages.kdeconnect-kde
+        qbittorrent
+        vlc
+        #tor-browser
+        openrocket
+        spotify
+        spotube
+        inkscape
+      ])
+      ++ (with pkgs-stable; [
+        loupe
+        simple-scan
+        vesktop
+      ]);
   };
 }

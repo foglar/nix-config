@@ -1,7 +1,7 @@
 {
   lib,
   config,
-  pkgs-stable,
+  pkgs,
   ...
 }: {
   options = {
@@ -25,7 +25,7 @@
     services.dunst.enable = true;
 
     home.packages = [
-      pkgs-stable.toybox
+      pkgs.toybox
     ];
 
     stylix.targets = {
@@ -126,18 +126,18 @@
           "dunst"
           "wl-paste --type text --watch cliphist store # clipboard store text data"
           "wl-paste --type image --watch cliphist store # clipboard store image data"
-          "$scrPath/batterynotify.sh # battery notification"
+          #"$scrPath/batterynotify.sh # battery notification"
 
-          "$scrPath/resetxdgportal.sh # reset XDPH for screenshare"
+          #"$scrPath/resetxdgportal.sh # reset XDPH for screenshare"
           #"dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # for XDPH"
           #"dbus-update-activation-environment --systemd --all # for XDPH"
           #"systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # for XDPH"
-          "$scrPath/polkitkdeauth.sh # authentication dialogue for GUI apps"
+          #"$scrPath/polkitkdeauth.sh # authentication dialogue for GUI apps"
         ];
 
         "$mod" = "SUPER";
-        "$term" = "kitty";
-        "$editor" = "code";
+        "$term" = "${pkgs.kitty}/bin/kitty";
+        "$editor" = "${pkgs.vscode}/bin/code";
         "$file" = "dolphin";
         "$browser" = "librewolf";
 

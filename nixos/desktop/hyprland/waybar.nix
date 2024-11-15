@@ -172,8 +172,8 @@
             rotate = 0;
             format = "{icon} {percent}%";
             format-icons = ["" "" "" "" "" "" "" "" ""];
-            on-scroll-up = " swayosd-client --brightness raise";
-            on-scroll-down = " swayosd-client --brightness lower";
+            on-scroll-up = "${pkgs.swayosd}/bin/swayosd-client --brightness raise";
+            on-scroll-down = "${pkgs.swayosd}/bin/swayosd-client --brightness lower";
             min-length = 6;
           };
 
@@ -194,7 +194,7 @@
             format = "{icon}  {volume}";
             rotate = 0;
             format-muted = "婢";
-            on-click = "nvidia-offload pavucontrol -t 3";
+            on-click = "pavucontrol -t 3";
             on-click-middle = "swayosd-client --output-volume mute-toggle";
             on-scroll-up = "swayosd-client --output-volume 5";
             on-scroll-down = "swayosd-client --output-volume -5";
@@ -216,7 +216,7 @@
             rotate = 0;
             format-source = "";
             format-source-muted = "";
-            on-click = "nvidia-offload pavucontrol -t 4";
+            on-click = "pavucontrol -t 4";
             on-click-middle = "swayosd-client --input-volume mute-toggle";
             on-scroll-up = "swayosd-client --input-volume 5";
             on-scroll-down = "swayosd-client --input-volume -5";
