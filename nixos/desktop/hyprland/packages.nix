@@ -4,6 +4,8 @@
       hyprpicker
       hypridle
 
+      kdePackages.dolphin
+
       dunst
       libnotify
       swayosd

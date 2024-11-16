@@ -10,7 +10,7 @@
 
   config = lib.mkIf config.rofi.enable {
     home.packages = [
-      pkgs.rofi
+      pkgs.rofi-wayland
     ];
 
     programs.rofi = {
@@ -19,6 +19,7 @@
       location = "center";
       pass = {};
       font = lib.mkDefault "JetBrainsMono NF 14";
+      package = pkgs.rofi-wayland;
       theme = let
         inherit (config.lib.formats.rasi) mkLiteral;
       in {
