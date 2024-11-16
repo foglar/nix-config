@@ -37,9 +37,8 @@
       "steam"
       "steam-unwrapped"
 
-      "enhancer-for-youtube"
-
       "gitkraken"
+
       # VSCODE
       "vscode"
       "vscode-extension-github-codespaces"

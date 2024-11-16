@@ -1,6 +1,5 @@
 {
   inputs,
-  config,
   pkgs,
   pkgs-stable,
   ...
@@ -70,24 +69,24 @@
   services.printing.enable = true;
   services.printing.drivers = with pkgs; [gutenprint hplip splix];
   hardware.printers = {
-    ensurePrinters = [
-      {
-        name = "HP_psc_1200_series";
-        location = "Home";
-        deviceUri = "usb://HP/psc%201200%20series?serial=UA51SGB35WT0&interface=1";
-        model = "HP_psc_1200_series.ppd";
-        ppdOptions = {
-          PageSize = "A4";
-        };
-      }
-    ];
-    ensureDefaultPrinter = "HP_psc_1200_series";
+    #ensurePrinters = [
+    #  {
+    #    name = "HP_psc_1200_series";
+    #    location = "Home";
+    #    deviceUri = "usb://HP/psc%201200%20series?serial=UA51SGB35WT0&interface=1";
+    #    model = "HP_psc_1200_series.ppd";
+    #    ppdOptions = {
+    #      PageSize = "A4";
+    #    };
+    #  }
+    #];
+    #ensureDefaultPrinter = "HP_psc_1200_series";
   };
 
   # Scanning
   hardware.sane.enable = true;
-  services.ipp-usb.enable= true;
-  hardware.sane.extraBackends = [ pkgs.hplipWithPlugin ];
+  services.ipp-usb.enable = true;
+  hardware.sane.extraBackends = [pkgs.hplipWithPlugin];
 
   # Set your time zone.
   time.timeZone = "Europe/Prague";
@@ -114,9 +113,17 @@
     monaspace
   ];
 
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.displayManager = {
+    defaultSession = "hyprland";
+    sddm = {
+      enable = true;
+      wayland.enable = true;
+      theme = "sddm-astronaut-theme";
+      package = pkgs.kdePackages.sddm;
+      extraPackages = [pkgs.sddm-astronaut pkgs.kdePackages.qtvirtualkeyboard];
+    };
+  };
+  #services.desktopManager.plasma6.enable = true;
   #services.xserver.desktopManager.gnome.enable = true;
   #environment.gnome.excludePackages = with pkgs; [
   #  gnome-tour
@@ -160,6 +167,7 @@
     enable = true;
     xwayland.enable = true;
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
 
   virtualisation.libvirtd.enable = true;
@@ -225,6 +233,7 @@
   };
 
   programs.kdeconnect.enable = true;
+  programs.wireshark.enable = true;
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -237,10 +246,18 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = (with pkgs; [
+  environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
-  ]);
+    sddm-chili-theme
+    (sddm-astronaut.override {
+      themeConfig = {
+        ScreenWidth = 1920;
+        ScreenHeight = 1080;
+        PartialBlur = false;
+      };
+    })
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

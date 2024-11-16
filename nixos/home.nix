@@ -1,4 +1,5 @@
-{...}: {
+{pkgs,
+...}: {
   home.username = "foglar";
   home.homeDirectory = "/home/foglar";
   home.stateVersion = "24.05"; # Please read the comment before changing.
@@ -12,6 +13,13 @@
   programming.enable = true;
   games.enable = true;
 
+  gtk.enable = true;
+  qt = {
+    enable = true;
+    style.package = pkgs.libsForQt5.breeze-qt5;
+    style.name = "breeze-dark";
+    platformTheme.name = "kde";
+  };
   programs.bash = {
     enable = true;
     enableCompletion = true;
@@ -26,7 +34,7 @@
       s = "kitten ssh";
       diff = "diff --color";
       cd = "z";
-      arduino-cli = "arduino-ports-enable ; arduino-cli";
+      #arduino-cli = "arduino-ports-enable ; arduino-cli";
       respawn = "clear; pfetch";
       l = "eza -lh  --icons=auto";
       mkdir = "mkdir -p";
