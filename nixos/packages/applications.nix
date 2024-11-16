@@ -30,11 +30,13 @@
         spotify
         spotube
         inkscape
+        gnome-disk-utility
       ])
       ++ (with pkgs-stable; [
         loupe
         simple-scan
         vesktop
+        evince
       ]);
   };
 }

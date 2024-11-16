@@ -21,6 +21,9 @@
     rofi.enable = lib.mkDefault true;
     wlogout.enable = lib.mkDefault true;
 
+    xdg.portal.enable =  true;
+    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
     services.network-manager-applet.enable = true;
     services.dunst.enable = true;
 
@@ -112,8 +115,8 @@
         exec-once = [
           "discord --start-minimized"
           "vesktop --start-minimized"
-          "ferdium --minimized"
-          "kdeconnect-indicator"
+          "${pkgs.ferdium}/bin/ferdium --minimized"
+          "${pkgs.plasma5Packages.kdeconnect-kde}/bin/kdeconnect-indicator"
           #"swww-daemon --format xrgb"
           #"swww ../../aurora_borealis.png"
           "hypridle"
@@ -139,7 +142,7 @@
         "$term" = "${pkgs.kitty}/bin/kitty";
         "$editor" = "${pkgs.vscode}/bin/code";
         "$file" = "dolphin";
-        "$browser" = "librewolf";
+        "$browser" = "${pkgs.librewolf}/bin/librewolf";
 
         animations = {
           "enabled" = "yes";

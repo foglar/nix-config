@@ -16,6 +16,9 @@
       nmap
       netcat-openbsd
       bettercap
+      hashcat
+      tcpdump
+      sqlmap
     ];
   };
 }

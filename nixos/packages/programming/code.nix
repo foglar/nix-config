@@ -12,7 +12,14 @@
     home.packages = with pkgs; [
       vscode
       python3
+      gopls
     ];
+
+    home.sessionVariables = {
+      GOOS = "linux";
+      GOARCH = "amd64";
+      GOPATH = "$HOME/.local/share/go";
+    };
 
     programs.vscode = {
       enable = true;
@@ -46,6 +53,10 @@
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
         "python.defaultInterpreterPath" = "${pkgs.python3}";
+        "go.alternateTools" = {
+          "go-langserver" = "${pkgs.gopls}/bin/gopls";
+        };
+        "gopls" = {"ui.diagnostic.staticcheck" = true;};
         "nix.serverPath" = "nixd";
         "nix.enableLanguageServer" = true;
         "nix.serverSettings" = {
