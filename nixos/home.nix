@@ -1,5 +1,4 @@
-{pkgs,
-...}: {
+{...}: {
   home.username = "foglar";
   home.homeDirectory = "/home/foglar";
   home.stateVersion = "24.05"; # Please read the comment before changing.
@@ -14,12 +13,7 @@
   games.enable = true;
 
   gtk.enable = true;
-  qt = {
-    enable = true;
-    style.package = pkgs.libsForQt5.breeze-qt5;
-    style.name = "breeze-dark";
-    platformTheme.name = "kde";
-  };
+  
   programs.bash = {
     enable = true;
     enableCompletion = true;

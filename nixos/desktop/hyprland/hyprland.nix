@@ -33,6 +33,8 @@
 
     stylix.targets = {
       dunst.enable = true;
+      kde.enable = true;
+      gtk.enable = true;
 
       waybar = {
         enableCenterBackColors = false;
@@ -117,6 +119,8 @@
           "vesktop --start-minimized"
           "${pkgs.ferdium}/bin/ferdium --minimized"
           "${pkgs.plasma5Packages.kdeconnect-kde}/bin/kdeconnect-indicator"
+
+          "systemctl --user start hyprpolkitagent"
           #"swww-daemon --format xrgb"
           #"swww ../../aurora_borealis.png"
           "hypridle"
@@ -135,7 +139,6 @@
           #"dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # for XDPH"
           #"dbus-update-activation-environment --systemd --all # for XDPH"
           #"systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # for XDPH"
-          #"$scrPath/polkitkdeauth.sh # authentication dialogue for GUI apps"
         ];
 
         "$mod" = "SUPER";
@@ -188,8 +191,8 @@
         ];
 
         bindel = [
-          ",XF86AudioLowerVolume, exec, swayosd-client --output-volume -1"
-          ",XF86AudioRaiseVolume, exec, swayosd-client --output-volume 1"
+          ",XF86AudioLowerVolume, exec, swayosd-client --output-volume -5"
+          ",XF86AudioRaiseVolume, exec, swayosd-client --output-volume 5"
           # Brightness
           ",XF86MonBrightnessUp, exec, swayosd-client --brightness raise"
           ",XF86MonBrightnessDown, exec, swayosd-client --brightness lower"

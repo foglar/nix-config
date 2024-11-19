@@ -3,6 +3,7 @@
       hyprlock
       hyprpicker
       hypridle
+      hyprpolkitagent
 
       kdePackages.dolphin
 

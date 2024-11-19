@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   pkgs-stable,
+  lib,
   ...
 }: {
   imports = [
@@ -119,11 +120,12 @@
       enable = true;
       wayland.enable = true;
       theme = "sddm-astronaut-theme";
-      package = pkgs.kdePackages.sddm;
+      package = lib.mkDefault pkgs.kdePackages.sddm;
       extraPackages = [pkgs.sddm-astronaut pkgs.kdePackages.qtvirtualkeyboard];
     };
   };
-  #services.desktopManager.plasma6.enable = true;
+
+  services.desktopManager.plasma6.enable = true;
   #services.xserver.desktopManager.gnome.enable = true;
   #environment.gnome.excludePackages = with pkgs; [
   #  gnome-tour
@@ -249,7 +251,6 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
-    sddm-chili-theme
     (sddm-astronaut.override {
       themeConfig = {
         ScreenWidth = 1920;

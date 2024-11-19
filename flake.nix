@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "My highly sofisticated and complicated flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -39,6 +39,7 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
+
     pkgs = import nixpkgs {
       inherit system;
 
