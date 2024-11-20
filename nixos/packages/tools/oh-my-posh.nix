@@ -38,6 +38,12 @@
                 "template" = "{{if eq .Type \"impure\" }}[󱄅 nix-shell]{{ end }}";
               }
               {
+                "type" = "text";
+                "style" = "plain";
+                "foreground" = "yellow";
+                "template" = "{{ if .Env.CONTAINER_ID }}-[󰡨 {{ .Env.CONTAINER_ID }}]-{{ end }}";
+              }
+              {
                 "type" = "python";
                 "foreground" = "yellow";
                 "properties" = {
