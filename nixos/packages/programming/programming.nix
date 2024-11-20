@@ -23,6 +23,7 @@
     home.packages = with pkgs; [
       neovim
       arduino-ide
+      distrobox
       go
       jq
       conda

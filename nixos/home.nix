@@ -37,6 +37,10 @@
       hist = "history | awk '{for (i=2; i<=NF; i++) printf \$i\" \"; print \"\"}' | fzf | wl-copy";
       packages = "paru -Qe | fzf | wl-copy";
       cdx = "zoxide query --interactive";
+
+      
+      distrobox-enter = "distrobox-enter --root";
+      distrobox-create = "distrobox-create --root";
     };
 
     bashrcExtra = ''

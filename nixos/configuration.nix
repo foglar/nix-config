@@ -228,10 +228,18 @@
   users.users.foglar = {
     isNormalUser = true;
     description = "foglar";
-    extraGroups = ["networkmanager" "wheel" "lp" "scanner"];
+    extraGroups = ["networkmanager" "wheel" "lp" "scanner" "docker"];
     packages = with pkgs; [
       #  thunderbird
     ];
+  };
+
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
   };
 
   programs.kdeconnect.enable = true;
