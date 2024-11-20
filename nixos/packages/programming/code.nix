@@ -41,7 +41,7 @@
         "workbench.iconTheme" = "material-icon-theme";
         "workbench.productIconTheme" = "material-product-icons";
         "window.menuBarVisibility" = "toggle";
-        "github.copilot.editor.enableAutoCompletions" = false;
+        "github.copilot.editor.enableAutoCompletions" = true;
         "[json]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };

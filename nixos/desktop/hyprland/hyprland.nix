@@ -22,7 +22,8 @@
     wlogout.enable = lib.mkDefault true;
 
     xdg.portal.enable =  true;
-    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    #xdg.portal.config = { commom;
+    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
 
     services.network-manager-applet.enable = true;
     services.dunst.enable = true;
