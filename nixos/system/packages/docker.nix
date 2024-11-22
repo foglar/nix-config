@@ -15,5 +15,7 @@
         setSocketVariable = true;
       };
     };
+
+    users.users.foglar.extraGroups = [ "docker" ];
   };
 }

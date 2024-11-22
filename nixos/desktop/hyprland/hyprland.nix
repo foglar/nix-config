@@ -5,7 +5,7 @@
   ...
 }: {
   options = {
-    hyprland.enable =
+    desktop.hyprland.enable =
       lib.mkEnableOption "enable Hyprland module";
   };
 
@@ -16,14 +16,17 @@
     ./wlogout.nix
   ];
 
-  config = lib.mkIf config.hyprland.enable {
+  config = lib.mkIf config.desktop.hyprland.enable {
     waybar.enable = lib.mkDefault true;
     rofi.enable = lib.mkDefault true;
     wlogout.enable = lib.mkDefault true;
 
-    xdg.portal.enable =  true;
-    #xdg.portal.config = { commom;
-    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+    xdg.portal.enable = true;
+    xdg.portal.config = { common = {
+      default = ["gtk"];
+      };
+    };
+    xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland];
 
     services.network-manager-applet.enable = true;
     services.dunst.enable = true;

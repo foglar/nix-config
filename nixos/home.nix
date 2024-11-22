@@ -8,7 +8,7 @@
     ./desktop/desktops.nix
   ];
 
-  hyprland.enable = true;
+  desktop.hyprland.enable = true;
   programming.enable = true;
   games.enable = true;
 
@@ -28,7 +28,7 @@
       s = "kitten ssh";
       diff = "diff --color";
       cd = "z";
-      #arduino-cli = "arduino-ports-enable ; arduino-cli";
+
       respawn = "clear; pfetch";
       l = "eza -lh  --icons=auto";
       mkdir = "mkdir -p";

@@ -8,14 +8,14 @@
     package.proxychains.enable = lib.mkEnableOption "Enable Proxychains";
   };
 
-  config =
-    lib.mkIf config.package.tor.enable {
+  config = lib.mkMerge [
+    (lib.mkIf config.package.tor.enable {
       services.tor = {
         enable = true;
       };
       services.tor.client.enable = true;
-    }
-    // lib.mkIf config.package.proxychains.enable {
+    })
+    (lib.mkIf config.package.proxychains.enable {
       programs.proxychains = {
         enable = true;
         chain.type = "dynamic";
@@ -28,5 +28,6 @@
           };
         };
       };
-    };
+    })
+  ];
 }

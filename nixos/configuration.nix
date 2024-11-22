@@ -36,10 +36,7 @@
   users.users.foglar = {
     isNormalUser = true;
     description = "foglar";
-    extraGroups = ["networkmanager" "wheel" "lp" "scanner" "docker"];
-    packages = with pkgs; [
-      #  thunderbird
-    ];
+    extraGroups = ["wheel"];
   };
 
   xdg.mime.enable = true;

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   # Printing
   services.printing.enable = true;
   services.printing.drivers = with pkgs; [gutenprint hplip splix];
@@ -26,4 +22,5 @@
   services.ipp-usb.enable = true;
   hardware.sane.extraBackends = [pkgs.hplipWithPlugin];
 
+  users.users.foglar.extraGroups = ["lp" "scanner"];
 }
