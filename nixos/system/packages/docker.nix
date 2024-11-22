@@ -1,9 +1,19 @@
-{...}: {
-  virtualisation.docker = {
-    enable = true;
-    rootless = {
+{
+  lib,
+  config,
+  ...
+}: {
+  options = {
+    package.docker.enable = lib.mkEnableOption "Enable Docker";
+  };
+
+  config = lib.mkIf config.package.docker.enable {
+    virtualisation.docker = {
       enable = true;
-      setSocketVariable = true;
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
     };
   };
 }

@@ -25,7 +25,6 @@
         plasma5Packages.kdeconnect-kde
         qbittorrent
         vlc
-        #tor-browser
         openrocket
         spotify
         spotube

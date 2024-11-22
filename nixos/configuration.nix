@@ -10,10 +10,10 @@
     ./system/system.nix
     inputs.home-manager.nixosModules.home-manager
   ];
-  
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-    # Bootloader.
+  # Bootloader.
   boot.loader.systemd-boot.enable = true;
 
   home-manager = {
@@ -29,6 +29,8 @@
     NIXOS_OZONE_WL = "1";
     EDITOR = "nvim";
     FLAKE = "/home/foglar/dotfiles";
+
+    DEFAULT_BROWSER = "${pkgs.librewolf}/bin/librewolf";
   };
 
   users.users.foglar = {
@@ -38,6 +40,17 @@
     packages = with pkgs; [
       #  thunderbird
     ];
+  };
+
+  xdg.mime.enable = true;
+  xdg.mime.defaultApplications = {
+    "text/html" = "librewolf.desktop";
+    "x-scheme-handler/http" = "librewolf.desktop";
+    "x-scheme-handler/https" = "librewolf.desktop";
+    "x-scheme-handler/about" = "librewolf.desktop";
+    "x-scheme-handler/unknown" = "librewolf.desktop";
+    "text/plain" = "nvim.desktop";
+    "application/pdf" = "evince";
   };
 
   # Allow unfree packages

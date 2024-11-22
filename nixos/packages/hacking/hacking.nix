@@ -19,6 +19,7 @@
       hashcat
       tcpdump
       sqlmap
+      tor-browser
     ];
   };
 }

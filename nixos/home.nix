@@ -13,7 +13,7 @@
   games.enable = true;
 
   gtk.enable = true;
-  
+
   programs.bash = {
     enable = true;
     enableCompletion = true;
@@ -38,7 +38,6 @@
       packages = "paru -Qe | fzf | wl-copy";
       cdx = "zoxide query --interactive";
 
-      
       distrobox-enter = "distrobox-enter --root";
       distrobox-create = "distrobox-create --root";
     };
@@ -66,16 +65,6 @@
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_PICTURES_DIR = "$HOME/Pictures/Screenshots/";
   };
-
-  #xdg.mimeApps = {
-  #  enable = true;
-  #  associations.added = {
-  #    "application/pdf" = ["org.gnome.Evince.desktop"];
-  #  };
-  #  defaultApplications = {
-  #    "application/pdf" = ["org.gnome.Evince.desktop"];
-  #  };
-  #};
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
