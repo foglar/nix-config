@@ -5,6 +5,9 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
+    nix-ld.url = "github:Mic92/nix-ld";
+    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
     };
@@ -36,6 +39,7 @@
     self,
     nixpkgs,
     nixpkgs-stable,
+    nix-ld,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -63,6 +67,8 @@
         modules = [
           ./nixos/configuration.nix
           inputs.stylix.nixosModules.stylix
+          nix-ld.nixosModules.nix-ld
+          { programs.nix-ld.dev.enable = true; }
         ];
       };
     };
