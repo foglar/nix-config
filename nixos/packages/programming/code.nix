@@ -25,6 +25,7 @@
 
       userSettings = {
         "files.autoSave" = "afterDelay";
+        "explorer.confirmDragAndDrop" = false;
         "editor.fontSize" = 16;
         "editor.minimap.side" = "right";
         "editor.scrollbar.vertical" = "hidden";
@@ -63,10 +64,11 @@
             "formatting" = {
               "command" = ["alejandra"]; # or nixfmt or nixpkgs-fmt
             };
-            # "options": {
-            #    "nixos": {
-            #      "expr": "(builtins.getFlake \"~/mysystem/").nixosConfigurations.laptop.options"
-            #    },
+            "options" = {
+              "nixos" = {
+                "expr" = "(builtins.getFlake \"~/dotfiles/\").nixosConfigurations.laptop.options";
+              };
+            };
             #    "home_manager": {
             #      "expr": "(builtins.getFlake \"/PATH/TO/FLAKE\").homeConfigurations..options"
             #    },
