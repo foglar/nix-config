@@ -1,6 +1,6 @@
 {...}:
 {
-  import = [
+  imports = [
     ./packages/docker.nix
     ./packages/programs.nix
     ./packages/steam.nix
