@@ -5,7 +5,7 @@
 {
   stylix = {
     enable = true;
-    image = ./aurora_borealis.png;
+    image = ../../../config/backgrounds/aurora_borealis.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     #base16Scheme = "${pkgs.base16-schemes}/share/themes/onedark.yaml";
     #base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
