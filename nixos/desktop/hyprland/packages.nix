@@ -5,8 +5,6 @@
       hypridle
       hyprpolkitagent
 
-      kdePackages.dolphin
-
       dunst
       libnotify
       swayosd
@@ -81,5 +79,6 @@
     #(writeShellScriptBin "rofilaunch" '''')
   ]) ++ (with pkgs-stable; [
     pavucontrol
+    gnome.nautilus
   ]);
 }

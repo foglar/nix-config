@@ -13,7 +13,6 @@
       vitetris
       steam
       heroic
-      gamescope
       wine
 
       (writeShellScriptBin "nvidia-offload" ''

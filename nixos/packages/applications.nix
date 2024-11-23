@@ -23,13 +23,13 @@
         libreoffice
         localsend
         plasma5Packages.kdeconnect-kde
-        qbittorrent
         vlc
         openrocket
         spotify
         spotube
         inkscape
         gnome-disk-utility
+        qbittorrent
       ])
       ++ (with pkgs-stable; [
         loupe

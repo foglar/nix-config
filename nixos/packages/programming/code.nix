@@ -37,6 +37,7 @@
         "security.workspace.trust.enabled" = false;
         "terminal.external.linuxExec" = "kitty";
         "terminal.integrated.stickyScroll.enabled" = true;
+        "terminal.integrated.inheritEnv"= false;
         "telemetry.telemetryLevel" = "off";
         "workbench.activityBar.location" = "hidden"; # bottom
         "workbench.iconTheme" = "material-icon-theme";

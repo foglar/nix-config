@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  username,
   ...
 }: {
   options = {
@@ -16,6 +17,6 @@
       };
     };
 
-    users.users.foglar.extraGroups = [ "docker" ];
+    users.users.${username}.extraGroups = [ "docker" ];
   };
 }

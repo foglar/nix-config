@@ -148,7 +148,7 @@
         "$mod" = "SUPER";
         "$term" = "${pkgs.kitty}/bin/kitty";
         "$editor" = "${pkgs.vscode}/bin/code";
-        "$file" = "dolphin";
+        "$file" = "nautilus";
         "$browser" = "${pkgs.librewolf}/bin/librewolf";
 
         animations = {

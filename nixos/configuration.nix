@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   pkgs-stable,
+  username,
   ...
 }: {
   imports = [
@@ -28,14 +29,14 @@
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
     EDITOR = "nvim";
-    FLAKE = "/home/foglar/dotfiles";
+    FLAKE = "/home/${username}/dotfiles";
 
     DEFAULT_BROWSER = "${pkgs.librewolf}/bin/librewolf";
   };
 
-  users.users.foglar = {
+  users.users.${username} = {
     isNormalUser = true;
-    description = "foglar";
+    description = "${username}";
     extraGroups = ["wheel"];
   };
 
