@@ -11,17 +11,20 @@
     ./sys/style.nix
   ];
 
-  sys.audio.enable = lib.mkDefault true;
-  sys.desktop.plasma.enable = lib.mkDefault true;
-  sys.desktop.gnome.enable = lib.mkDefault false;
-  sys.desktop.hyprland.enable = lib.mkDefault true;
-  sys.fonts.packages = lib.mkDefault true;
-  sys.locales.enable = lib.mkDefault true;
-  sys.network.enable = lib.mkDefault true;
-  sys.bluetooth.enable = lib.mkDefault true;
-  sys.nvidia.enable = lib.mkDefault true;
-  sys.printing.enable = lib.mkDefault true;
-  sys.sddm.enable = lib.mkDefault true;
-  sys.style.enable = lib.mkDefault true;
-
+  sys = {
+    audio.enable = lib.mkDefault true;
+    desktop = {
+      plasma.enable = lib.mkDefault true;
+      gnome.enable = lib.mkDefault false;
+      hyprland.enable = lib.mkDefault true;
+    };
+    fonts.packages = lib.mkDefault true;
+    locales.enable = lib.mkDefault true;
+    network.enable = lib.mkDefault true;
+    bluetooth.enable = lib.mkDefault true;
+    nvidia.enable = lib.mkDefault true;
+    printing.enable = lib.mkDefault true;
+    sddm.enable = lib.mkDefault true;
+    style.enable = lib.mkDefault true;
+  };
 }

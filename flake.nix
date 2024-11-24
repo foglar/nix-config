@@ -11,6 +11,7 @@
     hyprland = {
       url = "github:hyprwm/Hyprland";
     };
+    
     #hyprland-plugins = {
     #  url = "github:hyprwm/hyprland-plugins";
     #  inputs.hyprland.follows = "hyprland";
@@ -42,6 +43,10 @@
     nix-ld,
     ...
   } @ inputs: let
+
+    username = "foglar";
+    hostname = "laptop";
+
     system = "x86_64-linux";
 
     pkgs = import nixpkgs {
@@ -62,13 +67,15 @@
   in {
     nixosConfigurations = {
       laptop = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs system pkgs pkgs-stable;};
+        specialArgs = {
+          inherit inputs system pkgs pkgs-stable username hostname;
+        };
 
         modules = [
           ./nixos/configuration.nix
           inputs.stylix.nixosModules.stylix
           nix-ld.nixosModules.nix-ld
-          { programs.nix-ld.dev.enable = true; }
+          {programs.nix-ld.dev.enable = true;}
         ];
       };
     };

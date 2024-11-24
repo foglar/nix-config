@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{...}: {
   home.username = "foglar";
   home.homeDirectory = "/home/foglar";
   home.stateVersion = "24.05"; # Please read the comment before changing.
@@ -38,11 +35,11 @@
       cat = "bat --style plain";
       rasp = "s foglar@192.168.8.140";
       hist = "history | awk '{for (i=2; i<=NF; i++) printf \$i\" \"; print \"\"}' | fzf | wl-copy";
-      packages = "paru -Qe | fzf | wl-copy";
       cdx = "zoxide query --interactive";
 
       distrobox-enter = "distrobox-enter --root";
       distrobox-create = "distrobox-create --root";
+      distrobox-list = "distrobox-list --root";
     };
 
     bashrcExtra = ''
@@ -68,38 +65,6 @@
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_PICTURES_DIR = "$HOME/Pictures/Screenshots/";
   };
-
-  home.packages = with pkgs; [
-    (writeShellScriptBin "gs" ''
-          set -xeuo pipefail
-
-      gamescopeArgs=(
-          --adaptive-sync # VRR support
-          --hdr-enabled
-          --mangoapp # performance overlay
-          --rt
-          --steam
-      )
-      steamArgs=(
-          -pipewire-dmabuf
-          -tenfoot
-      )
-      mangoConfig=(
-          cpu_temp
-          gpu_temp
-          ram
-          vram
-      )
-      mangoVars=(
-          MANGOHUD=1
-          MANGOHUD_CONFIG="$(IFS=,; echo "$mangoConfig[*]")"
-      )
-
-      export "$mangoVars[@]"
-      exec gamescope "$gamescopeArgs[@]" -- steam "$steamArgs[@]"
-
-    '')
-  ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

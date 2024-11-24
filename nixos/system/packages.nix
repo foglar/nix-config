@@ -13,6 +13,7 @@
     tor.enable = lib.mkDefault true;
     virt-manager.enable = lib.mkDefault true;
   };
+  desktop.steamdeck.enable = lib.mkDefault false;
   programs.kdeconnect.enable = true;
   programs.wireshark.enable = true;
 }
