@@ -5,10 +5,10 @@
   ...
 }: {
   options = {
-    vscode.enable = lib.mkEnableOption "enable vscode";
+    programming.vscode.enable = lib.mkEnableOption "enable vscode";
   };
 
-  config = lib.mkIf config.vscode.enable {
+  config = lib.mkIf config.programming.vscode.enable {
     home.packages = with pkgs; [
       vscode
       gopls

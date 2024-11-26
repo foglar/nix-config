@@ -30,7 +30,6 @@
       "discord"
       "spotify"
 
-      "webstorm"
       "pycharm"
       "pycharm-professional"
       

@@ -6,10 +6,10 @@
   }:
 {
   options = {
-    git.enable = lib.mkEnableOption "enable git";
+    programming.git.enable = lib.mkEnableOption "enable git";
   };
 
-  config = lib.mkIf config.git.enable {
+  config = lib.mkIf config.programming.git.enable {
     programs.git = {
       enable = true;
       userName = "foglar";

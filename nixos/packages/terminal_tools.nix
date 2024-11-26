@@ -15,7 +15,8 @@
 
   config = lib.mkIf config.terminal_tools.enable {
 
-    oh-my-posh.enable = lib.mkDefault true;
+    shell.bash.enable = lib.mkDefault true;
+    shell.bash.oh-my-posh.enable = lib.mkDefault true;
 
     programs = {
       bat.enable = true;

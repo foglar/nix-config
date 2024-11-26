@@ -12,6 +12,7 @@
     home.packages = with pkgs; [
       vitetris
       steam
+      superTuxKart
       heroic
       wine
 

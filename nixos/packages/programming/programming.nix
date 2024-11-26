@@ -17,8 +17,8 @@
 
   config = lib.mkIf config.programming.enable {
     
-    vscode.enable = lib.mkDefault true;
-    git.enable = lib.mkDefault true;
+    programming.vscode.enable = lib.mkDefault true;
+    programming.git.enable = lib.mkDefault true;
 
     home.packages = with pkgs; [
       neovim
@@ -27,7 +27,6 @@
       go
       jq
       conda
-      jetbrains.webstorm
       jetbrains.pycharm-professional
       dotnet-sdk_8
       nodejs
