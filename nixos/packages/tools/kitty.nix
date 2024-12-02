@@ -21,12 +21,12 @@
         enable_audio_bell = false;
         window_padding_width = 25;
       };
-
-      home.packages = with pkgs; [
-        kitty
-        kitty-img
-        kitty-themes
-      ];
     };
+
+    home.packages = with pkgs; [
+      kitty
+      kitty-img
+      kitty-themes
+    ];
   };
 }
