@@ -12,6 +12,8 @@
   imports = [
     ./tools/oh-my-posh.nix
     ./tools/shell.nix
+    ./tools/kitty.nix
+    ./tools/tmux.nix
   ];
 
   config = lib.mkIf config.terminal_tools.enable {
@@ -21,11 +23,15 @@
       oh-my-posh.enable = lib.mkDefault true;
     };
 
+    program = {
+      kitty.enable = lib.mkDefault true;
+      tmux.enable = lib.mkDefault true;
+    };
+
     programs = {
       bat.enable = true;
       btop.enable = true;
       fzf.enable = true;
-      tmux.enable = true;
     };
 
     stylix.targets = {
@@ -40,20 +46,6 @@
     programs.zoxide = {
       enable = true;
       enableBashIntegration = true;
-    };
-
-    programs.kitty = {
-      enable = true;
-      font.name = lib.mkDefault "JetBrainsMono Nerd Font";
-      #themeFile = "tokyo_night_night";
-      #themeFile = "Catppuccin-Mocha";
-      settings = {
-        font_size = 11.5;
-        confirm_os_window_close = 0;
-        hide_window_decorations = 0;
-        enable_audio_bell = false;
-        window_padding_width = 25;
-      };
     };
 
     home.packages = with pkgs; [
