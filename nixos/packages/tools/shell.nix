@@ -1,10 +1,15 @@
-{lib, ...}: {
+{
+  lib,
+  config,
+  ...
+}: {
   options = {
-    shell.enable =
+    sh.bash.enable =
       lib.mkEnableOption "enables shell tools";
   };
 
-  config = lib.mkIf lib.config.shell.enable {
+  config = lib.mkIf config.sh.bash.enable {
+    
     programs.bash = {
       enable = true;
       enableCompletion = true;

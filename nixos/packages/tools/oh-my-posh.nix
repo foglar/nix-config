@@ -5,10 +5,10 @@
   ...
 }: {
   options = {
-    shell.oh-my-posh.enable = lib.mkEnableOption "enable oh-my-posh";
+    sh.bash.oh-my-posh.enable = lib.mkEnableOption "enable oh-my-posh";
   };
 
-  config = lib.mkIf config.shell.oh-my-posh.enable {
+  config = lib.mkIf config.sh.bash.oh-my-posh.enable {
     programs.oh-my-posh = {
       enable = true;
       enableBashIntegration = true;

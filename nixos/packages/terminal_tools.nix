@@ -11,12 +11,15 @@
 
   imports = [
     ./tools/oh-my-posh.nix
+    ./tools/shell.nix
   ];
 
   config = lib.mkIf config.terminal_tools.enable {
-
-    shell.bash.enable = lib.mkDefault true;
-    shell.bash.oh-my-posh.enable = lib.mkDefault true;
+    
+    sh.bash = {
+      enable = lib.mkDefault true;
+      oh-my-posh.enable = lib.mkDefault true;
+    };
 
     programs = {
       bat.enable = true;
