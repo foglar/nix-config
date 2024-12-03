@@ -6,14 +6,10 @@
   ...
 }: {
   options = {
-    applications.enable = lib.mkEnableOption "enable Graphical applications";
+    group.applications.enable = lib.mkEnableOption "Enable graphical applications";
   };
 
-  imports = [
-    ./applications/firefox.nix
-  ];
-
-  config = lib.mkIf config.applications.enable {
+  config = lib.mkIf config.group.applications.enable {
     home.packages =
       (with pkgs; [
         librewolf

@@ -9,15 +9,16 @@
     ./games.nix
     ./terminal_tools.nix
     ./applications.nix
+    ./applications/firefox.nix
   ];
 
-  terminal_tools.enable = lib.mkDefault true;
-  programming.enable = lib.mkDefault true;
-  games.enable = lib.mkDefault false;
-  firefox.enable = lib.mkDefault true;
-  applications.enable = lib.mkDefault true;
-  hacking.enable = lib.mkDefault true;
-  #programs.neovim.enable = true;
+  group.terminal_tools.enable = lib.mkDefault true;
+  group.programming.enable = lib.mkDefault true;
+  group.games.enable = lib.mkDefault false;
+  group.applications.enable = lib.mkDefault true;
+  group.hacking.enable = lib.mkDefault true;
+
+  program.firefox.enable = lib.mkDefault true;
 
   home.packages = with pkgs; [
       alejandra

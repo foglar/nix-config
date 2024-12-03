@@ -6,7 +6,7 @@
 }: {
 
   options = {
-    programming.enable =
+    group.programming.enable =
       lib.mkEnableOption "enable programming toolset";
   };
 
@@ -15,7 +15,7 @@
     ./git.nix
   ];
 
-  config = lib.mkIf config.programming.enable {
+  config = lib.mkIf config.group.programming.enable {
     
     program.vscode.enable = lib.mkDefault true;
     program.git.enable = lib.mkDefault true;

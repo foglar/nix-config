@@ -9,6 +9,9 @@
   };
 
   config = lib.mkIf config.program.tmux.enable {
+          
+    stylix.targets.tmux.enable = true;
+
     programs.tmux = {
       enable = true;
       clock24 = true;
@@ -31,10 +34,10 @@
           '';
         }
 
-        #pkgs.tmuxPlugins.tmux-fzf
         pkgs.tmuxPlugins.sensible
         pkgs.tmuxPlugins.yank
-        pkgs.tmuxPlugins.jump
+        #pkgs.tmuxPlugins.jump
+        #pkgs.tmuxPlugins.tmux-fzf
       ];
 
       extraConfig = ''

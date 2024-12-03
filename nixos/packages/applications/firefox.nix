@@ -5,10 +5,10 @@
   ...
 }: {
   options = {
-    firefox.enable = lib.mkEnableOption "enable Firefox module";
+    program.firefox.enable = lib.mkEnableOption "enable Firefox module";
   };
 
-  config = lib.mkIf config.firefox.enable {
+  config = lib.mkIf config.program.firefox.enable {
     programs.firefox = {
       enable = true;
 
