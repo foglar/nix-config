@@ -17,8 +17,8 @@
 
   config = lib.mkIf config.programming.enable {
     
-    programming.vscode.enable = lib.mkDefault true;
-    programming.git.enable = lib.mkDefault true;
+    program.vscode.enable = lib.mkDefault true;
+    program.git.enable = lib.mkDefault true;
 
     home.packages = with pkgs; [
       neovim

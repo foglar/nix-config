@@ -5,13 +5,12 @@
   ...
 }: {
   options = {
-    programming.vscode.enable = lib.mkEnableOption "enable vscode";
+    program.vscode.enable = lib.mkEnableOption "enable vscode";
   };
 
-  config = lib.mkIf config.programming.vscode.enable {
+  config = lib.mkIf config.program.vscode.enable {
     home.packages = with pkgs; [
       vscode
-      gopls
     ];
 
     home.sessionVariables = {

@@ -2,17 +2,18 @@
   pkgs,
   lib,
   config,
+  username,
   ...
   }:
 {
   options = {
-    programming.git.enable = lib.mkEnableOption "enable git";
+    program.git.enable = lib.mkEnableOption "enable git";
   };
 
-  config = lib.mkIf config.programming.git.enable {
+  config = lib.mkIf config.program.git.enable {
     programs.git = {
       enable = true;
-      userName = "foglar";
+      userName = "${username}";
       userEmail = "kohout.fi.2023@skola.ssps.cz";
     };
 

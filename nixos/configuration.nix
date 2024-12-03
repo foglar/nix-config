@@ -18,10 +18,10 @@
   boot.loader.systemd-boot.enable = true;
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs pkgs pkgs-stable;};
+    extraSpecialArgs = {inherit inputs pkgs pkgs-stable username;};
     backupFileExtension = "backup";
     users = {
-      foglar = import ./home.nix;
+      ${username} = import ./home.nix;
     };
   };
 

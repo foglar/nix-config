@@ -35,8 +35,8 @@
         loupe
         simple-scan
         vesktop
+        gnome.gnome-font-viewer
         evince
-        gnome-font-viewer
       ]);
   };
 }

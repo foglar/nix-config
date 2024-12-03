@@ -12,9 +12,6 @@
       #swww
       playerctl
 
-      kitty
-      kitty-img
-
       hyprshade
       swappy
       grimblast
