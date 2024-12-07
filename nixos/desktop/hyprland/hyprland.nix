@@ -237,9 +237,8 @@
 
           # Rofi
           "$mod, A, exec, pkill -x rofi || rofi -show drun"
-          #"$mod, A, exec, pkill -x rofi || rofilaunch.sh d"
-          #"$mod, Tab, exec, pkill -x rofi || rofilaunch.sh w"
-          #"$mod+Shift, E, exec, pkill -x rofi || rofilaunch.sh f"
+          "$mod, Tab, exec, pkill -x rofi || rofi -show window"
+          "$mod+Shift, E, exec, pkill -x rofi || rofi -show emoji"
 
           # Grouped Windows
           "$mod CTRL, H, changegroupactive, b"

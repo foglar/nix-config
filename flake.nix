@@ -11,7 +11,7 @@
     hyprland = {
       url = "github:hyprwm/Hyprland";
     };
-    
+
     #hyprland-plugins = {
     #  url = "github:hyprwm/hyprland-plugins";
     #  inputs.hyprland.follows = "hyprland";
@@ -40,10 +40,8 @@
     self,
     nixpkgs,
     nixpkgs-stable,
-    nix-ld,
     ...
   } @ inputs: let
-
     username = "foglar";
     hostname = "laptop";
 
@@ -74,7 +72,7 @@
         modules = [
           ./nixos/configuration.nix
           inputs.stylix.nixosModules.stylix
-          nix-ld.nixosModules.nix-ld
+          inputs.nix-ld.nixosModules.nix-ld
           {programs.nix-ld.dev.enable = true;}
         ];
       };

@@ -1,6 +1,6 @@
-{...}: {
-  home.username = "foglar";
-  home.homeDirectory = "/home/foglar";
+{username, ...}: {
+  home.username = "${username}";
+  home.homeDirectory = "/home/${username}";
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   imports = [
@@ -9,8 +9,8 @@
   ];
 
   desktop.hyprland.enable = true;
-  programming.enable = true;
-  games.enable = true;
+  group.programming.enable = true;
+  group.games.enable = true;
 
   gtk.enable = true;
 

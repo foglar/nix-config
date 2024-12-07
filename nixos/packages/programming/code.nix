@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   lib,
   config,
   ...
@@ -42,7 +43,7 @@
         "workbench.iconTheme" = "material-icon-theme";
         "workbench.productIconTheme" = "material-product-icons";
         "window.menuBarVisibility" = "toggle";
-        "github.copilot.editor.enableAutoCompletions" = true;
+        "github.copilot.editor.enableAutoCompletions" = false;
         "[json]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
@@ -77,7 +78,7 @@
         };
       };
 
-      extensions = with pkgs.vscode-extensions; [
+      extensions = with pkgs-stable.vscode-extensions; [
         ms-azuretools.vscode-docker
 
         # Mardown

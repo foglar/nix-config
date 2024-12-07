@@ -13,7 +13,7 @@
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
-
+  programs.nix-ld.dev.enable = true;
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
 
