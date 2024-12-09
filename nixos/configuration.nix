@@ -14,6 +14,7 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   programs.nix-ld.dev.enable = true;
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
 
@@ -26,8 +27,6 @@
   };
 
   environment.sessionVariables = {
-    WLR_NO_HARDWARE_CURSORS = "1";
-    NIXOS_OZONE_WL = "1";
     EDITOR = "nvim";
     FLAKE = "/home/${username}/dotfiles";
 

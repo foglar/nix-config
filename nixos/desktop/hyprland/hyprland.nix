@@ -22,8 +22,9 @@
     wlogout.enable = lib.mkDefault true;
 
     xdg.portal.enable = true;
-    xdg.portal.config = { common = {
-      default = ["gtk"];
+    xdg.portal.config = {
+      common = {
+        default = ["gtk"];
       };
     };
     xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland];
@@ -34,6 +35,11 @@
     home.packages = [
       pkgs.toybox
     ];
+
+    environment.sessionVariables = {
+      WLR_NO_HARDWARE_CURSORS = "1";
+      NIXOS_OZONE_WL = "1";
+    };
 
     stylix.targets = {
       dunst.enable = true;
