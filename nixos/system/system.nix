@@ -7,7 +7,7 @@
     ./sys/network.nix
     ./sys/nvidia.nix
     ./sys/printing.nix
-    ./sys/sddm.nix
+    ./sys/loginManager.nix
     ./sys/style.nix
   ];
 
@@ -21,10 +21,16 @@
     fonts.packages = lib.mkDefault true;
     locales.enable = lib.mkDefault true;
     network.enable = lib.mkDefault true;
-    bluetooth.enable = lib.mkDefault true;
+    bluetooth = {
+      enable = lib.mkDefault true;
+      blueman = lib.mkDefault true;
+    };
     nvidia.enable = lib.mkDefault true;
     printing.enable = lib.mkDefault true;
-    sddm.enable = lib.mkDefault true;
+    login = {
+      sddm.enable = lib.mkDefault true;
+      gdm.enable = lib.mkDefault false;
+    };
     style.enable = lib.mkDefault true;
   };
 }

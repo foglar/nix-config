@@ -22,7 +22,7 @@
     };
   };
 
-  # Bootloader.
+  # Bootloader
   boot.loader.systemd-boot.enable = true;
 
   environment.sessionVariables = {
@@ -49,6 +49,7 @@
     locales.enable = true;
     network.enable = true;
     bluetooth.enable = true;
+    bluetooth.blueman.enable = false;
     nvidia.enable = false;
     printing.enable = false;
     sddm.enable = false;

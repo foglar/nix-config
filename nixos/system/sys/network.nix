@@ -8,6 +8,7 @@
   options = {
     sys.network.enable = lib.mkEnableOption "Enable networking";
     sys.bluetooth.enable = lib.mkEnableOption "Enable Bluetooth support";
+    sys.bluetooth.blueman.enable = lib.mkEnableOption "Enable Blueman App";
   };
 
   config = lib.mkMerge [
@@ -27,6 +28,10 @@
       lib.mkIf config.sys.bluetooth.enable {
         hardware.bluetooth.enable = true; # enables support for Bluetooth
         hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+      }
+    )
+    (
+      lib.mkIf config.sys.bluetooth.blueman.enable {
         services.blueman.enable = true;
       }
     )
