@@ -9,12 +9,10 @@
 
   imports = [
     ../nixos/packages/packages.nix
-    ../nixos/desktop/desktops.nix
+    ../nixos/desktop/gnome/gnome.nix
   ];
 
   desktop.gnome.enable = true;
-  desktop.hyprland.enable = false;
-  desktop.kde.enable = false;
 
   program.firefox.enable = false;
 
