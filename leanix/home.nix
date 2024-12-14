@@ -35,9 +35,16 @@
     oh-my-posh.enable = false;
   };
 
+  programs = {
+    bat.enable = false;
+    btop.enable = false;
+    fzf.enable = false;
+  };
+
   home.packages = with pkgs-stable; [
     libreoffice
     inkscape
+    gimp
   ];
 
   programs.home-manager.enable = true;

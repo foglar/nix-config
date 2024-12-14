@@ -31,9 +31,9 @@
     };
 
     programs = {
-      bat.enable = true;
-      btop.enable = true;
-      fzf.enable = true;
+      bat.enable = lib.mkDefault true;
+      btop.enable = lib.mkDefault true;
+      fzf.enable = lib.mkDefault true;
     };
 
     stylix.targets = {
@@ -41,7 +41,6 @@
       btop.enable = true;
       fzf.enable = true;
       neovim.enable = true;
-      #spicetify.enable = true;
     };
 
     home.packages = with pkgs; [

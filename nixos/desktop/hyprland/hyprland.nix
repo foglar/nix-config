@@ -10,7 +10,7 @@
   };
 
   imports = [
-    ./packages.nix
+    ./dependencies.nix
     ./waybar.nix
     ./rofi.nix
     ./wlogout.nix
