@@ -35,7 +35,7 @@
     oh-my-posh.enable = false;
   };
 
-  home.applications = with pkgs-stable; [
+  home.packages = with pkgs-stable; [
     libreoffice
     inkscape
   ];
