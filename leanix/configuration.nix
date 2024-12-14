@@ -37,7 +37,6 @@
     extraGroups = ["wheel"];
   };
 
-
   sys = {
     audio.enable = true;
     desktop = {
@@ -48,11 +47,16 @@
     fonts.packages = true;
     locales.enable = true;
     network.enable = true;
-    bluetooth.enable = true;
-    bluetooth.blueman.enable = false;
+    bluetooth = {
+      enable = true;
+      blueman.enable = true;
+    };
     nvidia.enable = false;
     printing.enable = false;
-    login.sddm.enable = false;
+    login = {
+      sddm.enable = true;
+      gdm.enable = true;
+    };
     style.enable = true;
   };
 

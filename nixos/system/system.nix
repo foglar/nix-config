@@ -23,7 +23,7 @@
     network.enable = lib.mkDefault true;
     bluetooth = {
       enable = lib.mkDefault true;
-      blueman = lib.mkDefault true;
+      blueman.enable = lib.mkDefault true;
     };
     nvidia.enable = lib.mkDefault true;
     printing.enable = lib.mkDefault true;
