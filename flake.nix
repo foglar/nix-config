@@ -82,6 +82,7 @@
 
         modules = [
           ./leanix/configuration.nix
+          inputs.stylix.nixosModules.stylix
         ];
       };
     };
