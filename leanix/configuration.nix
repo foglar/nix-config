@@ -61,7 +61,7 @@
   };
 
   package = {
-    docker.enable = false;
+    docker.enable = true;
     steam.enable = false;
     proxychains.enable = false;
     tor.enable = false;
