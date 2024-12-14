@@ -10,6 +10,7 @@
     ./terminal_tools.nix
     ./applications.nix
     ./applications/firefox.nix
+    ./applications/spotify.nix
   ];
 
   group.terminal_tools.enable = lib.mkDefault true;
@@ -19,6 +20,7 @@
   group.hacking.enable = lib.mkDefault true;
 
   program.firefox.enable = lib.mkDefault true;
+  program.spotify.enable = lib.mkDefault true;
 
   home.packages = with pkgs; [
       alejandra

@@ -82,6 +82,6 @@
     ])
     ++ (with pkgs-stable; [
       pavucontrol
-      gnome.nautilus
+      nautilus
     ]);
 }

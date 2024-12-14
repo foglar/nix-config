@@ -41,7 +41,7 @@
       btop.enable = true;
       fzf.enable = true;
       neovim.enable = true;
-      spicetify.enable = true;
+      #spicetify.enable = true;
     };
 
     home.packages = with pkgs; [
@@ -62,7 +62,6 @@
       fzf
       tldr
       ranger
-      spicetify-cli
       unzip
     ];
   };

@@ -18,10 +18,9 @@
         stellarium
         libreoffice
         localsend
-        plasma5Packages.kdeconnect-kde
+        kdePackages.kdeconnect-kde
         vlc
         openrocket
-        spotify
         spotube
         inkscape
         gnome-disk-utility
@@ -39,7 +38,7 @@
         loupe
         simple-scan
         vesktop
-        gnome.gnome-font-viewer
+        gnome-font-viewer
         evince
       ]);
   };

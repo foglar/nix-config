@@ -36,7 +36,7 @@
       pkgs.toybox
     ];
 
-    environment.sessionVariables = {
+    home.sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";
     };
@@ -113,7 +113,7 @@
           "XDG_SESSION_TYPE,wayland"
           "XDG_SESSION_DESKTOP,Hyprland"
           "QT_QPA_PLATFORM,wayland;xcb"
-          "QT_QPA_PLATFORMTHEME,qt6ct"
+          #"QT_QPA_PLATFORMTHEME,qt6ct"
           "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
           "QT_AUTO_SCREEN_SCALE_FACTOR,1"
           "MOZ_ENABLE_WAYLAND,1"
@@ -128,7 +128,7 @@
           "discord --start-minimized"
           "vesktop --start-minimized"
           "${pkgs.ferdium}/bin/ferdium --minimized"
-          "${pkgs.plasma5Packages.kdeconnect-kde}/bin/kdeconnect-indicator"
+          "${pkgs.kdePackages.kdeconnect-kde}/bin/kdeconnect-indicator"
 
           "systemctl --user start hyprpolkitagent"
           #"swww-daemon --format xrgb"

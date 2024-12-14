@@ -14,6 +14,6 @@
     virt-manager.enable = lib.mkDefault true;
   };
   desktop.steamdeck.enable = lib.mkDefault false;
-  programs.kdeconnect.enable = true;
-  programs.wireshark.enable = true;
+  programs.kdeconnect.enable = lib.mkDefault true;
+  programs.wireshark.enable = lib.mkDefault true;
 }

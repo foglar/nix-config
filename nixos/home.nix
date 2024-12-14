@@ -19,7 +19,7 @@
     ".config/hypr/hyprlock.conf".source = ../config/hyprlock.conf;
     ".config/hypr/mocha.conf".source = ../config/mocha.conf;
     ".config/hypr/hypridle.conf".source = ../config/hypridle.conf;
-    ".config/dolphinrc".source = ../config/dolphinrc;
+    #".config/dolphinrc".source = ../config/dolphinrc;
     ".prettierrc".text = ''
       {
         "tabWidth": 4,

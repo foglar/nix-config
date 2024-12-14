@@ -15,7 +15,7 @@
       enableCompletion = true;
 
       shellAliases = {
-        vim = "nvim";
+        #vim = "nvim";
         ls = "exa --icons";
         ll = "exa -alh --icons";
         tree = "exa --tree --icons";
@@ -43,7 +43,6 @@
     };
 
     home.sessionVariables = {
-      EDITOR = "nvim";
       FLAKE = "/home/foglar/dotfiles";
       XDG_DATA_HOME = "$HOME/.local/share";
       XDG_PICTURES_DIR = "$HOME/Pictures/Screenshots/";

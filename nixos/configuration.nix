@@ -15,19 +15,19 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
   programs.nix-ld.dev.enable = true;
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-
   home-manager = {
     extraSpecialArgs = {inherit inputs pkgs pkgs-stable username;};
     backupFileExtension = "backup";
     users = {
       ${username} = import ./home.nix;
     };
+    sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
   };
 
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+
   environment.sessionVariables = {
-    EDITOR = "nvim";
     FLAKE = "/home/${username}/dotfiles";
 
     DEFAULT_BROWSER = "${pkgs.librewolf}/bin/librewolf";
