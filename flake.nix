@@ -3,32 +3,31 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
-    nix-ld.url = "github:Mic92/nix-ld";
-    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
+    stylix.url = "github:danth/stylix";
+    hyprland.url = "github:hyprwm/Hyprland";
 
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #hyprland-plugins = {
-    #  url = "github:hyprwm/hyprland-plugins";
-    #  inputs.hyprland.follows = "hyprland";
-    #};
-
-    #Hyprspace = {
-    #  url = "github:KZDKM/Hyprspace";
-    #  # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
-    #  inputs.hyprland.follows = "hyprland";
-    #};
+    nix-ld = {
+      url = "github:Mic92/nix-ld";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix.url = "github:danth/stylix";
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -71,8 +70,18 @@
 
         modules = [
           ./nixos/configuration.nix
+
           inputs.stylix.nixosModules.stylix
           inputs.nix-ld.nixosModules.nix-ld
+        ];
+      };
+      leanix = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs system pkgs-stable;
+        };
+
+        modules = [
+          ./leanix/configuration.nix
         ];
       };
     };
