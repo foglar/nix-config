@@ -16,7 +16,7 @@
   desktop.hyprland.enable = false;
   desktop.kde.enable = false;
 
-  program.firefox.enable = true;
+  program.firefox.enable = false;
 
   group = {
     hacking.enable = false;
@@ -50,6 +50,7 @@
     libreoffice
     inkscape
     gimp
+    firefox
   ];
 
   programs.home-manager.enable = true;
