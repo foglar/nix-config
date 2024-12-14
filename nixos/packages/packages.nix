@@ -13,19 +13,21 @@
     ./applications/spotify.nix
   ];
 
-  group.terminal_tools.enable = lib.mkDefault true;
-  group.programming.enable = lib.mkDefault true;
-  group.games.enable = lib.mkDefault false;
-  group.applications.enable = lib.mkDefault true;
-  group.hacking.enable = lib.mkDefault true;
+  group = {
+    terminal_tools.enable = lib.mkDefault true;
+    programming.enable = lib.mkDefault true;
+    games.enable = lib.mkDefault false;
+    applications.enable = lib.mkDefault true;
+    hacking.enable = lib.mkDefault true;
+  };
 
   program.firefox.enable = lib.mkDefault true;
   program.spotify.enable = lib.mkDefault true;
 
   home.packages = with pkgs; [
-      alejandra
-      nh
-      nixd
+    alejandra
+    nh
+    nixd
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
@@ -35,7 +37,7 @@
 
       "pycharm"
       "pycharm-professional"
-      
+
       "steam"
       "steam-unwrapped"
 

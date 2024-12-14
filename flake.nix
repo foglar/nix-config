@@ -77,7 +77,7 @@
       };
       leanix = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit inputs system pkgs-stable;
+          inherit inputs system pkgs pkgs-stable username hostname;
         };
 
         modules = [

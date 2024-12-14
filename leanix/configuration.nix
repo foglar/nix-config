@@ -1,8 +1,8 @@
 {
   inputs,
-  lib,
   pkgs,
   pkgs-stable,
+  username,
   ...
 }: {
   imports = [
@@ -14,11 +14,11 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  inputs.home-manager = {
+  home-manager = {
     extraSpecialArgs = {inherit inputs pkgs pkgs-stable;};
     backupFileExtension = "backup";
     users = {
-      konsta = import ./home.nix;
+      ${username} = import ./home.nix;
     };
   };
 
@@ -26,14 +26,14 @@
   boot.loader.systemd-boot.enable = true;
 
   environment.sessionVariables = {
-    FLAKE = "/home/konsta/.dotfiles";
+    FLAKE = "/home/${username}/.dotfiles";
 
     DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
   };
 
-  users.users.konsta = {
+  users.users.${username} = {
     isNormalUser = true;
-    description = "konsta";
+    description = "${username}";
     extraGroups = ["wheel"];
   };
 
