@@ -12,7 +12,7 @@
   config = lib.mkMerge [
     (lib.mkIf config.sys.login.sddm.enable {
       services.displayManager = {
-        defaultSession = "hyprland";
+        #defaultSession = "hyprland";
         sddm = {
           enable = true;
           wayland.enable = true;

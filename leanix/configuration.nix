@@ -49,12 +49,12 @@
     network.enable = true;
     bluetooth = {
       enable = true;
-      blueman.enable = true;
+      blueman.enable = false;
     };
     nvidia.enable = false;
     printing.enable = false;
     login = {
-      sddm.enable = true;
+      sddm.enable = false;
       gdm.enable = true;
     };
     style.enable = true;

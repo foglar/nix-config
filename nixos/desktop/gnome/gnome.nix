@@ -1,7 +1,7 @@
 {
   lib,
   config,
-  pkgs-stable,
+  pkgs,
   ...
 }: {
   options = {
@@ -10,13 +10,16 @@
   };
 
   config = lib.mkIf config.desktop.gnome.enable {
+    services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
+
     dconf = {
       enable = true;
       settings."org/gnome/shell" = {
         disable-user-extensions = false;
-        enabled-extensions = with pkgs-stable.gnomeExtensions; [
+        enabled-extensions = with pkgs.gnomeExtensions; [
           blur-my-shell.extensionUuid
           gsconnect.extensionUuid
+          appindicator.extensionUuid
         ];
       };
     };

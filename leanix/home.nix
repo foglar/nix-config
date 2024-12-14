@@ -14,8 +14,6 @@
 
   desktop.gnome.enable = true;
 
-  program.firefox.enable = false;
-
   group = {
     hacking.enable = false;
     applications.enable = false;
@@ -30,6 +28,7 @@
     vscode.enable = false;
     git.enable = false;
     neovim.enable = false;
+    firefox.enable = false;
     spotify.enable = false;
   };
 
