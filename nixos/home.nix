@@ -9,6 +9,7 @@
   ];
 
   desktop.hyprland.enable = true;
+  desktop.kde.enable = true;
   group.programming.enable = true;
   group.games.enable = true;
 
