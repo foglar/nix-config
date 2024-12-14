@@ -15,7 +15,7 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs pkgs pkgs-stable;};
+    extraSpecialArgs = {inherit inputs pkgs pkgs-stable username;};
     backupFileExtension = "backup";
     users = {
       ${username} = import ./home.nix;
