@@ -1,5 +1,8 @@
-{lib, config, ...}:
 {
+  lib,
+  config,
+  ...
+}: {
   options = {
     program.zoxide.enable = lib.mkEnableOption "zoxide";
   };
@@ -8,6 +11,9 @@
     programs.zoxide = {
       enable = true;
       enableBashIntegration = true;
+      options = [
+        "--cmd cd"
+      ];
     };
   };
 }

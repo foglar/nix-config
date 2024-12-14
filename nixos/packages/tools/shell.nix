@@ -23,8 +23,6 @@
         ip = "ip -c";
         s = "kitten ssh";
         diff = "diff --color";
-        cd = "z";
-
         respawn = "clear; pfetch";
         l = "eza -lh  --icons=auto";
         mkdir = "mkdir -p";
