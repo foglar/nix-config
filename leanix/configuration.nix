@@ -52,7 +52,7 @@
     bluetooth.blueman.enable = false;
     nvidia.enable = false;
     printing.enable = false;
-    sddm.enable = false;
+    login.sddm.enable = false;
     style.enable = true;
   };
 
