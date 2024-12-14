@@ -48,6 +48,7 @@
     inkscape
     gimp
     firefox
+    distrobox
   ];
 
   programs.home-manager.enable = true;

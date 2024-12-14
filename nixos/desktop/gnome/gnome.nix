@@ -15,6 +15,8 @@
       blur-my-shell
       gsconnect
       appindicator
+      privacy-settings-menu
+      
     ];
 
     dconf = {
@@ -25,6 +27,7 @@
           blur-my-shell.extensionUuid
           gsconnect.extensionUuid
           appindicator.extensionUuid
+          privacy-settings-menu.extensionUuid
         ];
       };
     };
