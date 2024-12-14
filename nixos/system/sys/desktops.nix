@@ -31,7 +31,7 @@
 
     (lib.mkIf config.sys.desktop.gnome.enable {
       services.xserver.desktopManager.gnome.enable = true;
-
+      services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
       environment.gnome.excludePackages = with pkgs; [
         gnome-tour
         gnome-connections

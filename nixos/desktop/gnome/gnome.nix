@@ -10,8 +10,6 @@
   };
 
   config = lib.mkIf config.desktop.gnome.enable {
-    services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
-
     dconf = {
       enable = true;
       settings."org/gnome/shell" = {
