@@ -10,6 +10,13 @@
   };
 
   config = lib.mkIf config.desktop.gnome.enable {
+
+    home.packages = with pkgs.gnomeExtensions; [
+      blur-my-shell
+      gsconnect
+      appindicator
+    ];
+
     dconf = {
       enable = true;
       settings."org/gnome/shell" = {
