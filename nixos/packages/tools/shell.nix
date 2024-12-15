@@ -31,9 +31,9 @@
         hist = "history | awk '{for (i=2; i<=NF; i++) printf \$i\" \"; print \"\"}' | fzf | wl-copy";
         cdx = "zoxide query --interactive";
 
-        distrobox-enter = "distrobox-enter --root";
-        distrobox-create = "distrobox-create --root";
-        distrobox-list = "distrobox-list --root";
+        #distrobox-enter = "distrobox-enter --root";
+        #distrobox-create = "distrobox-create --root";
+        #distrobox-list = "distrobox-list --root";
       };
 
       bashrcExtra = ''
