@@ -69,7 +69,7 @@
         };
 
         modules = [
-          ./nixos/configuration.nix
+          ./zenith/configuration.nix
 
           inputs.stylix.nixosModules.stylix
           inputs.nix-ld.nixosModules.nix-ld

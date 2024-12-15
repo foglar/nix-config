@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   options = {
@@ -15,5 +16,9 @@
         "--cmd cd"
       ];
     };
+
+    home.packages= with pkgs; [
+      zoxide
+    ];
   };
 }

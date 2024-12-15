@@ -7,14 +7,15 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ./system/packages.nix
-    ./system/system.nix
+    ../nixos/system/packages.nix
+    ../nixos/system/system.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   programs.nix-ld.dev.enable = true;
 
+  # Home manager
   home-manager = {
     extraSpecialArgs = {inherit inputs pkgs pkgs-stable username;};
     backupFileExtension = "backup";
@@ -24,21 +25,63 @@
     sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
   };
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-
-  environment.sessionVariables = {
-    FLAKE = "/home/${username}/dotfiles";
-
-    DEFAULT_BROWSER = "${pkgs.librewolf}/bin/librewolf";
-  };
-
+  # User configuration
   users.users.${username} = {
     isNormalUser = true;
     description = "${username}";
     extraGroups = ["wheel"];
   };
 
+  # Bootloader
+  boot.loader.systemd-boot.enable = true;
+
+  # Environment variables
+  environment.sessionVariables = {
+    FLAKE = "/home/${username}/dotfiles";
+
+    DEFAULT_BROWSER = "${pkgs.librewolf}/bin/librewolf";
+  };
+
+  # System level configuration
+  sys = {
+    audio.enable = true;
+    desktop = {
+      plasma.enable = true;
+      gnome.enable = false;
+      hyprland.enable = true;
+      steamdeck.enable = true;
+    };
+    fonts.packages = true;
+    locales.enable = true;
+    network.enable = true;
+    bluetooth = {
+      enable = true;
+      blueman.enable = true;
+    };
+    nvidia.enable = true;
+    printing.enable = true;
+    login = {
+      sddm.enable = true;
+      gdm.enable = false;
+    };
+    style.enable = true;
+  };
+
+  # Configured programs to enable
+  program = {
+    docker.enable = false;
+    podman.enable = true;
+    steam.enable = true;
+    proxychains.enable = true;
+    tor.enable = true;
+    virt-manager.enable = true;
+  };
+
+  # Basic programs to enable
+  programs.kdeconnect.enable = true;
+  programs.wireshark.enable = true;
+
+  # Default applications configuration
   xdg.mime.enable = true;
   xdg.mime.defaultApplications = {
     "text/html" = "librewolf.desktop";

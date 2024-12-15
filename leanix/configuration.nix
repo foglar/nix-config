@@ -14,6 +14,7 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  # Home manager
   home-manager = {
     extraSpecialArgs = {inherit inputs pkgs pkgs-stable username;};
     backupFileExtension = "backup";
@@ -22,27 +23,31 @@
     };
   };
 
-  # Bootloader
-  boot.loader.systemd-boot.enable = true;
-
-  environment.sessionVariables = {
-    FLAKE = "/home/${username}/.dotfiles";
-
-    DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
-  };
-
+  # User configuration
   users.users.${username} = {
     isNormalUser = true;
     description = "${username}";
     extraGroups = ["wheel"];
   };
 
+  # Bootloader
+  boot.loader.systemd-boot.enable = true;
+
+  # Environment variables
+  environment.sessionVariables = {
+    FLAKE = "/home/${username}/.dotfiles";
+
+    DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+  };
+
+  # System level configuration
   sys = {
     audio.enable = true;
     desktop = {
       plasma.enable = false;
       gnome.enable = true;
       hyprland.enable = false;
+      steamdeck.enable = false;
     };
     fonts.packages = true;
     locales.enable = true;
@@ -52,7 +57,7 @@
       blueman.enable = false;
     };
     nvidia.enable = false;
-    printing.enable = false;
+    printing.enable = true;
     login = {
       sddm.enable = false;
       gdm.enable = true;
@@ -60,7 +65,8 @@
     style.enable = true;
   };
 
-  package = {
+  # Configured programs to enable
+  program = {
     docker.enable = false;
     podman.enable = true;
     steam.enable = false;
@@ -68,7 +74,8 @@
     tor.enable = false;
     virt-manager.enable = false;
   };
-  desktop.steamdeck.enable = false;
+
+  # Basic programs to enable
   programs.kdeconnect.enable = true;
   programs.wireshark.enable = false;
 

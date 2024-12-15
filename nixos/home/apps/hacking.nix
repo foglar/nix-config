@@ -5,10 +5,10 @@
   ...
 }: {
   options = {
-    group.hacking.enable = lib.mkEnableOption "enable Hacking module";
+    app_list.hacking.enable = lib.mkEnableOption "enable Hacking module";
   };
 
-  config = lib.mkIf config.group.hacking.enable {
+  config = lib.mkIf config.app_list.hacking.enable {
     home.packages = with pkgs; [
       ffuf
       wireshark

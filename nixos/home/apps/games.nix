@@ -5,10 +5,10 @@
   ...
 }: {
   options = {
-    group.games.enable =
-      lib.mkEnableOption "enables games";
+    app_list.games.enable =
+      lib.mkEnableOption "enable games";
   };
-  config = lib.mkIf config.group.games.enable {
+  config = lib.mkIf config.app_list.games.enable {
     home.packages = with pkgs; [
       vitetris
       steam

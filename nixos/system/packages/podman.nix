@@ -5,10 +5,10 @@
   ...
 }: {
   options = {
-    package.podman.enable = lib.mkEnableOption "Enable Podman";
+    program.podman.enable = lib.mkEnableOption "Enable Podman";
   };
 
-  config = lib.mkIf config.package.podman.enable {
+  config = lib.mkIf config.program.podman.enable {
     virtualisation.containers.enable = true;
     virtualisation = {
       podman = {

@@ -5,10 +5,10 @@
   ...
 }: {
   options = {
-    package.docker.enable = lib.mkEnableOption "Enable Docker";
+    program.docker.enable = lib.mkEnableOption "Enable Docker";
   };
 
-  config = lib.mkIf config.package.docker.enable {
+  config = lib.mkIf config.program.docker.enable {
     virtualisation.docker = {
       enable = true;
       rootless = {

@@ -5,21 +5,11 @@
   ...
 }: {
   options = {
-    group.programming.enable =
+    app_list.programming.enable =
       lib.mkEnableOption "enable programming toolset";
   };
 
-  imports = [
-    ./code.nix
-    ./git.nix
-    ./neovim.nix
-  ];
-
-  config = lib.mkIf config.group.programming.enable {
-    program.vscode.enable = lib.mkDefault true;
-    program.git.enable = lib.mkDefault true;
-    program.neovim.enable = lib.mkDefault true;
-
+  config = lib.mkIf config.app_list.programming.enable {
     home.packages = with pkgs; [
       arduino-ide
       distrobox

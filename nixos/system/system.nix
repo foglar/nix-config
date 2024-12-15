@@ -1,14 +1,14 @@
 {lib, ...}: {
   imports = [
-    ./sys/audio.nix
-    ./sys/desktops.nix
-    ./sys/fonts.nix
-    ./sys/locales.nix
-    ./sys/network.nix
-    ./sys/nvidia.nix
-    ./sys/printing.nix
-    ./sys/loginManager.nix
-    ./sys/style.nix
+    ./settings/audio.nix
+    ./settings/desktops.nix
+    ./settings/fonts.nix
+    ./settings/locales.nix
+    ./settings/network.nix
+    ./settings/nvidia.nix
+    ./settings/printing.nix
+    ./settings/loginManager.nix
+    ./settings/style.nix
   ];
 
   sys = {

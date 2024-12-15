@@ -10,13 +10,11 @@
   };
 
   config = lib.mkIf config.desktop.gnome.enable {
-
     home.packages = with pkgs.gnomeExtensions; [
       blur-my-shell
       gsconnect
       appindicator
       privacy-settings-menu
-      
     ];
 
     dconf = {

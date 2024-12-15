@@ -6,10 +6,10 @@
   ...
 }: {
   options = {
-    group.applications.enable = lib.mkEnableOption "Enable graphical applications";
+    app_list.applications.enable = lib.mkEnableOption "Enable graphical applications";
   };
 
-  config = lib.mkIf config.group.applications.enable {
+  config = lib.mkIf config.app_list.applications.enable {
     home.packages =
       (with pkgs; [
         librewolf
