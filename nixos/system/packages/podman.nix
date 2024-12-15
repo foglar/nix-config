@@ -1,7 +1,7 @@
 {
   lib,
   config,
-  username,
+  userSettings,
   ...
 }: {
   options = {
@@ -18,7 +18,7 @@
       };
     };
 
-    users.users.${username} = {
+    users.users.${userSettings.username} = {
       isNormalUser = true;
       extraGroups = ["podman"];
     };

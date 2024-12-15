@@ -2,7 +2,7 @@
   lib,
   config,
   pkgs,
-  username,
+  userSettings,
   ...
 }: {
   options = {
@@ -32,6 +32,6 @@
     services.ipp-usb.enable = true;
     hardware.sane.extraBackends = [pkgs.hplipWithPlugin];
 
-    users.users.${username}.extraGroups = ["lp" "scanner"];
+    users.users.${userSettings.username}.extraGroups = ["lp" "scanner"];
   };
 }

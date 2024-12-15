@@ -1,7 +1,7 @@
-{username, ...}: {
+{userSettings, ...}: {
   # Home manager configuration
-  home.username = "${username}";
-  home.homeDirectory = "/home/${username}";
+  home.username = "${userSettings.username}";
+  home.homeDirectory = "/home/${userSettings.username}";
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   imports = [

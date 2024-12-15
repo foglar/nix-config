@@ -1,7 +1,7 @@
 {
   lib,
   config,
-  username,
+  userSettings,
   ...
 }: {
   options = {
@@ -17,6 +17,6 @@
       };
     };
 
-    users.users.${username}.extraGroups = [ "docker" ];
+    users.users.${userSettings.username}.extraGroups = [ "docker" ];
   };
 }

@@ -2,7 +2,7 @@
   lib,
   config,
   pkgs,
-  username,
+  userSettings,
   ...
 }: {
   options = {
@@ -21,7 +21,7 @@
       };
     })
     (lib.mkIf config.sys.desktop.steamdeck.enable {
-      services.getty.autologinUser = "${username}";
+      services.getty.autologinUser = "${userSettings.username}";
       environment = {
         systemPackages = [pkgs.mangohud];
         loginShellInit = ''

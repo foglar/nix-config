@@ -2,7 +2,7 @@
   pkgs,
   lib,
   config,
-  username,
+  userSettings,
   ...
   }:
 {
@@ -13,7 +13,7 @@
   config = lib.mkIf config.program.git.enable {
     programs.git = {
       enable = true;
-      userName = "${username}";
+      userName = "${userSettings.username}";
       userEmail = "kohout.fi.2023@skola.ssps.cz";
     };
 

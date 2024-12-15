@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs-stable,
+  userSettings,
   ...
 }: {
   options = {
@@ -11,7 +12,7 @@
   config = lib.mkIf config.sys.style.enable {
     stylix = {
       enable = true;
-      image = ../../../config/backgrounds/aurora_borealis.png;
+      image = ../../../config/backgrounds/${userSettings.background};
       base16Scheme = "${pkgs-stable.base16-schemes}/share/themes/catppuccin-mocha.yaml";
       #base16Scheme = "${pkgs.base16-schemes}/share/themes/onedark.yaml";
       #base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";

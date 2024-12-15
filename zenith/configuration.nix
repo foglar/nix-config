@@ -2,7 +2,7 @@
   inputs,
   pkgs,
   pkgs-stable,
-  username,
+  userSettings,
   ...
 }: {
   imports = [
@@ -17,18 +17,18 @@
 
   # Home manager
   home-manager = {
-    extraSpecialArgs = {inherit inputs pkgs pkgs-stable username;};
+    extraSpecialArgs = {inherit inputs pkgs pkgs-stable userSettings;};
     backupFileExtension = "backup";
     users = {
-      ${username} = import ./home.nix;
+      ${userSettings.username} = import ./home.nix;
     };
     sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
   };
 
   # User configuration
-  users.users.${username} = {
+  users.users.${userSettings.username} = {
     isNormalUser = true;
-    description = "${username}";
+    description = "${userSettings.username}";
     extraGroups = ["wheel"];
   };
 
@@ -37,7 +37,7 @@
 
   # Environment variables
   environment.sessionVariables = {
-    FLAKE = "/home/${username}/dotfiles";
+    FLAKE = "/home/${userSettings.username}/dotfiles";
 
     DEFAULT_BROWSER = "${pkgs.librewolf}/bin/librewolf";
   };
