@@ -187,6 +187,7 @@
 
         bindd = [
           "$mod SHIFT, P, Color Picker, exec, hyprpicker -a"
+          "$mod SHIFT, R, Random Background, exec, background-switch-random"
         ];
 
         bindl = [
