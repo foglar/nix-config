@@ -75,10 +75,22 @@
         ${libnotify}/bin/notify-send -a "t1" -r 91190 -t 800 "$layMain" -i ~/dotfiles/config/icons/keyboard.svg
       '')
 
+      (writeShellScriptBin "background-switch-random" ''
+        directory=$HOME/dotfiles/config/backgrounds/
+        monitor=$(hyprctl monitors | grep Monitor | awk '{print $2}')
+
+        if [ -d "$directory" ]; then
+            # Use find to include .jpg, .png, and .jpeg files
+            random_background=$(find "$directory" -type f \( -name "*.jpg" -o -name "*.png" -o -name "*.jpeg" \) | shuf -n 1)
+
+            hyprctl hyprpaper unload all
+            hyprctl hyprpaper preload "$random_background"
+            hyprctl hyprpaper wallpaper "$monitor, $random_background"
+        fi
+
+      '')
+
       #(writeShellScriptBin "windowpin")
-      #(writeShellScriptBin "logoutlaunch")
-      #(writeShellScriptBin "sysmonlaunch")
-      #(writeShellScriptBin "rofilaunch" '''')
     ])
     ++ (with pkgs-stable; [
       pavucontrol

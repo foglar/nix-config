@@ -13,7 +13,7 @@
     stylix = {
       enable = true;
       image = ../../../config/backgrounds/${userSettings.background};
-      base16Scheme = "${pkgs-stable.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+      base16Scheme = "${pkgs-stable.base16-schemes}/share/themes/${userSettings.theme}.yaml"; # List all possible themes: $ nix build nixpkgs#base16-schemes && ls result/share/themes
       #base16Scheme = "${pkgs.base16-schemes}/share/themes/onedark.yaml";
       #base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
       polarity = "dark";

@@ -48,8 +48,13 @@
     nixpkgs-stable,
     ...
   } @ inputs: let
-    username = "foglar";
-    hostname = "laptop";
+    userSettings = {
+      username = "foglar";
+      hostname = "laptop";
+
+      theme = "catppuccin-mocha";
+      background = "aurora_borealis.png";
+    };
 
     system = "x86_64-linux";
 
@@ -72,7 +77,7 @@
     nixosConfigurations = {
       laptop = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit inputs system pkgs pkgs-stable username hostname;
+          inherit inputs system pkgs pkgs-stable userSettings;
         };
 
         modules = [
@@ -84,7 +89,7 @@
       };
       leanix = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit inputs system pkgs pkgs-stable username hostname;
+          inherit inputs system pkgs pkgs-stable userSettings;
         };
 
         modules = [
