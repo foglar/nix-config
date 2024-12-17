@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   options = {
@@ -9,27 +10,26 @@
   };
 
   config = lib.mkIf config.sh.bash.enable {
-    
     programs.bash = {
       enable = true;
       enableCompletion = true;
 
       shellAliases = {
         #vim = "nvim";
-        ls = "exa --icons";
-        ll = "exa -alh --icons";
-        tree = "exa --tree --icons";
+        ls = "${pkgs.eza}/bin/eza --icons";
+        ll = "${pkgs.eza}/bin/eza -alh --icons";
+        l = "${pkgs.eza}/bin/eza -lh  --icons=auto";
+        tree = "${pkgs.eza}/bin/eza --tree --icons";
         open = "rifle";
         ip = "ip -c";
         s = "kitten ssh";
         diff = "diff --color";
-        respawn = "clear; pfetch";
-        l = "eza -lh  --icons=auto";
+        respawn = "clear; ${pkgs.pfetch}/bin/pfetch";
         mkdir = "mkdir -p";
-        cat = "bat --style plain";
+        cat = "${pkgs.bat}/bin/bat --style plain";
         rasp = "s foglar@192.168.8.140";
         hist = "history | awk '{for (i=2; i<=NF; i++) printf \$i\" \"; print \"\"}' | fzf | wl-copy";
-        cdx = "zoxide query --interactive";
+        cdx = "${pkgs.zoxide}/bin/zoxide query --interactive";
 
         #distrobox-enter = "distrobox-enter --root";
         #distrobox-create = "distrobox-create --root";
@@ -37,7 +37,7 @@
       };
 
       bashrcExtra = ''
-        pfetch'';
+        ${pkgs.pfetch}/bin/pfetch'';
     };
 
     home.sessionVariables = {

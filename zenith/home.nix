@@ -22,11 +22,11 @@
 
   # Application lists
   app_list = {
-    hacking.enable = true;
     applications.enable = true;
-    terminal_tools.enable = true;
-    programming.enable = true;
     games.enable = true;
+    hacking.enable = true;
+    programming.enable = true;
+    terminal_tools.enable = true;
   };
 
   # Configured programs to enable
@@ -34,9 +34,13 @@
     kitty.enable = true;
     tmux.enable = true;
     zoxide.enable = true;
-    vscode.enable = true;
+    
+    vscode = {
+      enable = true;
+    };
     git.enable = true;
     neovim.enable = true;
+
     firefox.enable = true;
     spotify.enable = true;
   };

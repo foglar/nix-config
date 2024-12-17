@@ -56,11 +56,6 @@
     wayland.windowManager.hyprland = {
       enable = true;
 
-      #plugins = [
-      #inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
-      #inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
-      #];
-
       settings = {
         monitor = [
           "eDP-1,1920x1080,0x0,1"

@@ -37,7 +37,22 @@
     firefox.enable = lib.mkDefault true;
     spotify.enable = lib.mkDefault true;
 
-    vscode.enable = lib.mkDefault true;
+    vscode = {
+      enable = lib.mkDefault true;
+      ide = {
+        python.enable = lib.mkDefault true;
+        go.enable = lib.mkDefault true;
+        csharp.enable = lib.mkDefault true;
+        cpp.enable = lib.mkDefault false;
+        web.enable = lib.mkDefault true;
+      };
+      nix.enable = lib.mkDefault true;
+      markdown.enable = lib.mkDefault true;
+      ai.enable = lib.mkDefault true;
+      git.enable = lib.mkDefault true;
+      
+      themes.enable = lib.mkDefault false;
+    };
     git.enable = lib.mkDefault true;
     neovim.enable = lib.mkDefault true;
   };

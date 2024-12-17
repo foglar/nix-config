@@ -52,6 +52,9 @@
       username = "foglar";
       hostname = "laptop";
 
+      shell = "bash"; # bash, zsh
+      terminal = "kitty";
+
       theme = "catppuccin-mocha";
       background = "aurora_borealis.png";
     };
