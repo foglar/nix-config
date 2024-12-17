@@ -192,7 +192,7 @@
 
     (lib.mkIf config.program.vscode.ai.enable {
       programs.vscode.userSettings = {
-        "github.copilot.editor.enableAutoCompletions" = false;
+        "github.copilot.editor.enableAutoCompletions" = true;
       };
 
       programs.vscode.extensions = with pkgs-stable.vscode-extensions; [
