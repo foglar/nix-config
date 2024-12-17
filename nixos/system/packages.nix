@@ -14,6 +14,7 @@
     proxychains.enable = lib.mkDefault true;
     tor.enable = lib.mkDefault true;
     virt-manager.enable = lib.mkDefault true;
+    virtualbox.enable = lib.mkDefault true;
   };
   sys.desktop.steamdeck.enable = lib.mkDefault false;
   programs.kdeconnect.enable = lib.mkDefault true;

@@ -73,6 +73,7 @@
     proxychains.enable = false;
     tor.enable = false;
     virt-manager.enable = false;
+    virtualbox.enable = false;
   };
 
   # Basic programs to enable

@@ -4,5 +4,7 @@
 
 ```bash
 git clone https://git.foglar.tech/foglar/dotfiles.git $HOME/dotfiles --depth 1 
-sudo nixos-rebuild switch ~/dotfiles#laptop
+sudo nixos-rebuild switch --flake ~/dotfiles#laptop
 ```
+
+## Features
