@@ -38,8 +38,6 @@
   # Environment variables
   environment.sessionVariables = {
     FLAKE = "/home/${userSettings.username}/dotfiles";
-
-    DEFAULT_BROWSER = "${pkgs.librewolf}/bin/librewolf";
   };
 
   # System level configuration
@@ -81,18 +79,6 @@
   # Basic programs to enable
   programs.kdeconnect.enable = true;
   programs.wireshark.enable = true;
-
-  # Default applications configuration
-  xdg.mime.enable = true;
-  xdg.mime.defaultApplications = {
-    "text/html" = "librewolf.desktop";
-    "x-scheme-handler/http" = "librewolf.desktop";
-    "x-scheme-handler/https" = "librewolf.desktop";
-    "x-scheme-handler/about" = "librewolf.desktop";
-    "x-scheme-handler/unknown" = "librewolf.desktop";
-    "text/plain" = "nvim.desktop";
-    "application/pdf" = "evince";
-  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

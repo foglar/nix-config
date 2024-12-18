@@ -72,7 +72,7 @@
       programs.vscode.userSettings = {
         "[python]" = {
           "editor.defaultFormatter" = "ms-python.black-formatter";
-          "python.defaultInterpreterPath" = "${pkgs.python3}";
+          "python.defaultInterpreterPath" = "${pkgs.python3}/bin/python";
         };
       };
 
@@ -172,6 +172,12 @@
     })
 
     (lib.mkIf config.program.vscode.markdown.enable {
+      programs.vscode.userSettings = {
+        "[markdown]" = {
+          "editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
+        };
+      };
+
       programs.vscode.extensions = with pkgs-stable.vscode-extensions; [
         yzhang.markdown-all-in-one
         davidanson.vscode-markdownlint

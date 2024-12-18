@@ -36,8 +36,6 @@
   # Environment variables
   environment.sessionVariables = {
     FLAKE = "/home/${userSettings.username}/.dotfiles";
-
-    DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
   };
 
   # System level configuration
