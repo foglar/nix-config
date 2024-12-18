@@ -74,6 +74,7 @@
     tor.enable = true;
     virt-manager.enable = true;
     virtualbox.enable = false;
+    yubikey.enable = true;
   };
 
   # Basic programs to enable
