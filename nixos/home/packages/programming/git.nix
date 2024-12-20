@@ -4,8 +4,7 @@
   config,
   userSettings,
   ...
-  }:
-{
+}: {
   options = {
     program.git.enable = lib.mkEnableOption "enable git";
   };

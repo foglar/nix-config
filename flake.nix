@@ -54,8 +54,11 @@
 
       shell = "bash"; # bash, zsh
       terminal = "kitty";
+      browser = "librewolf";
+      editor = "neovim";
 
-      theme = "catppuccin-mocha";
+      # List all themes: $ nix build nixpkgs#base16-schemes && ls result/share/themes
+      theme = "catppuccin-mocha"; #tokyo-night-dark, one-dark
       background = "aurora_borealis.png";
     };
 
@@ -79,6 +82,7 @@
   in {
     nixosConfigurations = {
       laptop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
         specialArgs = {
           inherit inputs system pkgs pkgs-stable userSettings;
         };
@@ -91,6 +95,7 @@
         ];
       };
       leanix = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
         specialArgs = {
           inherit inputs system pkgs pkgs-stable userSettings;
         };
