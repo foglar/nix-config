@@ -27,7 +27,7 @@
       cliphist
 
       (writeShellScriptBin "dontkillsteam" ''
-        if [[ $(hyprctl activewindow -j | jq -r ".class") == "Steam" ]]; then
+        if [[ $(hyprctl activewindow -j | ${pkgs.jq}/bin/jq -r ".class") == "Steam" ]]; then
           xdotool windowunmap $(xdotool getactivewindow)
         else
           hyprctl dispatch killactive ""
@@ -37,14 +37,14 @@
       (writeShellScriptBin "screenshot" ''
         restore_shader() {
          if [ -n "$shader" ]; then
-         	hyprshade on "$shader"
+         	${pkgs.hyprshade}/bin/hyprshade on "$shader"
          fi
         }
 
         # Saves the current shader and turns it off
         save_shader() {
         	shader=$(hyprshade current)
-        	hyprshade off
+        	${pkgs.hyprshade}/bin/hyprshade off
         	trap restore_shader EXIT
         }
 
@@ -71,7 +71,7 @@
 
       (writeShellScriptBin "keyboardswitch" ''
         hyprctl switchxkblayout all next
-        layMain=$(hyprctl -j devices | jq '.keyboards' | jq '.[] | select (.main == true)' | awk -F '"' '{if ($2=="active_keymap") print $4}')
+        layMain=$(hyprctl -j devices | ${pkgs.jq}/bin/jq '.keyboards' | ${pkgs.jq}/bin/jq '.[] | select (.main == true)' | awk -F '"' '{if ($2=="active_keymap") print $4}')
         ${libnotify}/bin/notify-send -a "t1" -r 91190 -t 800 "$layMain" -i ~/dotfiles/config/icons/keyboard.svg
       '')
 

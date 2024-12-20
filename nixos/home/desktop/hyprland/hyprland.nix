@@ -120,16 +120,16 @@
         ];
 
         exec-once = [
-          "discord --start-minimized"
-          "vesktop --start-minimized"
+          #"discord --start-minimized"
+          "${pkgs.vesktop}/bin/vesktop --start-minimized"
           "${pkgs.ferdium}/bin/ferdium --minimized"
           "${pkgs.kdePackages.kdeconnect-kde}/bin/kdeconnect-indicator"
 
           "systemctl --user start hyprpolkitagent"
           #"swww-daemon --format xrgb"
           #"swww ../../aurora_borealis.png"
-          "hypridle"
-          "waybar"
+          "${pkgs.hypridle}/bin/hypridle"
+          "${pkgs.waybar}/bin/waybar"
           "swayosd-server"
 
           "blueman-applet"
@@ -149,7 +149,7 @@
         "$mod" = "SUPER";
         "$term" = "${pkgs.kitty}/bin/kitty";
         "$editor" = "${pkgs.vscode}/bin/code";
-        "$file" = "nautilus";
+        "$file" = "${pkgs.nautilus}/bin/nautilus";
         "$browser" = "${pkgs.librewolf}/bin/librewolf";
 
         animations = {
@@ -226,21 +226,21 @@
           "$mod, W, togglefloating"
           "$mod, G, togglegroup"
           "Alt, Return, fullscreen"
-          "$mod, Escape, exec, hyprlock"
+          "$mod, Escape, exec, ${pkgs.hyprlock}/bin/hyprlock"
           #"$mod+Shift,F, exec, windowpin.sh"
-          "$mod, Backspace, exec, wlogout -b 2"
-          "$Ctrl+Alt, W, exec, killall waybar || waybar" # toggle waybar
+          "$mod, Backspace, exec, ${pkgs.wlogout}/bin/wlogout -b 2"
+          "$Ctrl+Alt, W, exec, killall waybar || ${pkgs.waybar}/bin/waybar" # toggle waybar
 
           "$mod, T, exec, $term"
           "$mod, F, exec, $browser"
           "$mod, E, exec, $file"
           "$mod, C, exec, $editor"
-          "Ctrl+Shift, Escape, exec, btop"
+          "Ctrl+Shift, Escape, exec, ${pkgs.btop}/bin/btop"
 
           # Rofi
-          "$mod, A, exec, pkill -x rofi || rofi -show drun"
-          "$mod, Tab, exec, pkill -x rofi || rofi -show window"
-          "$mod+Shift, E, exec, pkill -x rofi || rofi -show emoji"
+          "$mod, A, exec, pkill -x rofi || ${pkgs.rofi-wayland}/bin/rofi -show drun"
+          "$mod, Tab, exec, pkill -x rofi || ${pkgs.rofi-wayland}/bin/rofi -show window"
+          "$mod+Shift, E, exec, pkill -x rofi || ${pkgs.rofi-wayland}/bin/rofi -show emoji"
 
           # Grouped Windows
           "$mod CTRL, H, changegroupactive, b"
