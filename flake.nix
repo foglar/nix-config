@@ -40,6 +40,11 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -92,6 +97,7 @@
 
           inputs.stylix.nixosModules.stylix
           inputs.nix-ld.nixosModules.nix-ld
+          inputs.sops-nix.nixosModules.sops
         ];
       };
       leanix = nixpkgs.lib.nixosSystem {

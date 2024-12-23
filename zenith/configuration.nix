@@ -22,9 +22,9 @@
 
   sops.age.keyFile = "/home/foglar/.config/sops/age/keys.txt";
 
-  sops.secrets.email = {};
-  #sops.secrets.email.owner = config.users.users.foglar.name;
-  #sops.secrets.email.group = config.users.users.foglar.group;
+  sops.secrets."zenith/password-hash" = {
+    neededForUsers = true;
+  };
 
   # Home manager
   home-manager = {
@@ -33,7 +33,10 @@
     users = {
       ${userSettings.username} = import ./home.nix;
     };
-    sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
+    sharedModules = [
+      inputs.sops-nix.homeManagerModules.sops
+      inputs.plasma-manager.homeManagerModules.plasma-manager
+    ];
   };
 
   # User configuration
@@ -41,6 +44,7 @@
     isNormalUser = true;
     description = "${userSettings.username}";
     extraGroups = ["wheel"];
+    hashedPasswordFile = "${config.sops.secrets."zenith/password-hash".path}";
   };
 
   # Bootloader
