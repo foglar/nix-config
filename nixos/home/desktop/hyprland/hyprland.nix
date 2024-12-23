@@ -41,6 +41,17 @@
       NIXOS_OZONE_WL = "1";
     };
 
+    stylix.iconTheme = {
+        enable = true;
+        package = pkgs.papirus-icon-theme;
+        dark = "Papirus-Dark";
+
+        #package = pkgs.dracula-icon-theme;
+        #dark = "Dracula";
+
+
+      };
+
     stylix.targets = {
       dunst.enable = true;
       kde.enable = true;
