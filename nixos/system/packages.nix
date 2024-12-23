@@ -21,6 +21,7 @@
     yubikey.enable = lib.mkDefault false;
   };
   sys.desktop.steamdeck.enable = lib.mkDefault false;
+  sys.default-applications.enable = lib.mkDefault true;
   programs.kdeconnect.enable = lib.mkDefault true;
   programs.wireshark.enable = lib.mkDefault true;
 }

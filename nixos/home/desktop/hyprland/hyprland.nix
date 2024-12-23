@@ -47,6 +47,7 @@
       gtk.enable = true;
 
       waybar = {
+        enable = true;
         enableCenterBackColors = false;
         enableLeftBackColors = false;
         enableRightBackColors = false;

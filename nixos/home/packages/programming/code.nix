@@ -33,7 +33,7 @@
         userSettings = {
           "files.autoSave" = "afterDelay";
           "explorer.confirmDragAndDrop" = false;
-          "editor.fontSize" = 16;
+          #"editor.fontSize" = 16;
           "editor.minimap.side" = "right";
           "editor.scrollbar.vertical" = "hidden";
           "editor.scrollbar.verticalScrollbarSize" = 0;
