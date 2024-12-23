@@ -3,6 +3,7 @@
   pkgs,
   pkgs-stable,
   userSettings,
+  config,
   ...
 }: {
   imports = [
@@ -10,10 +11,20 @@
     ../nixos/system/packages.nix
     ../nixos/system/system.nix
     inputs.home-manager.nixosModules.home-manager
+    inputs.sops-nix.nixosModules.sops
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   programs.nix-ld.dev.enable = true;
+
+  sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+
+  sops.age.keyFile = "/home/foglar/.config/sops/age/keys.txt";
+
+  sops.secrets.email = {};
+  #sops.secrets.email.owner = config.users.users.foglar.name;
+  #sops.secrets.email.group = config.users.users.foglar.group;
 
   # Home manager
   home-manager = {
@@ -44,7 +55,7 @@
   sys = {
     audio.enable = true;
     desktop = {
-      plasma.enable = true;
+      plasma.enable = false;
       gnome.enable = false;
       hyprland.enable = true;
       steamdeck.enable = true;
@@ -80,6 +91,8 @@
   # Basic programs to enable
   programs.kdeconnect.enable = true;
   programs.wireshark.enable = true;
+
+  services.twingate.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
