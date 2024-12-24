@@ -19,6 +19,7 @@
   config = lib.mkIf config.desktop.hyprland.enable {
     waybar.enable = lib.mkDefault true;
     rofi.enable = lib.mkDefault true;
+    rofi.clipboard.enable = lib.mkDefault true;
     wlogout.enable = lib.mkDefault true;
 
     xdg.portal.enable = true;
@@ -32,25 +33,16 @@
     services.network-manager-applet.enable = true;
     services.dunst.enable = true;
 
-    home.packages = [
-      pkgs.toybox
-    ];
-
     home.sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";
     };
 
     stylix.iconTheme = {
-        enable = true;
-        package = pkgs.papirus-icon-theme;
-        dark = "Papirus-Dark";
-
-        #package = pkgs.dracula-icon-theme;
-        #dark = "Dracula";
-
-
-      };
+      enable = true;
+      package = pkgs.papirus-icon-theme;
+      dark = "Papirus-Dark";
+    };
 
     stylix.targets = {
       dunst.enable = true;
@@ -67,6 +59,10 @@
 
     wayland.windowManager.hyprland = {
       enable = true;
+
+      plugins = [
+        pkgs.hyprlandPlugins.hyprspace
+      ];
 
       settings = {
         monitor = [
@@ -87,7 +83,6 @@
 
           "sensitivity" = "0";
           "force_no_accel" = "1";
-          #"numlock_by_default" = "true";
         };
 
         gestures = {
@@ -120,7 +115,7 @@
           "XDG_SESSION_TYPE,wayland"
           "XDG_SESSION_DESKTOP,Hyprland"
           "QT_QPA_PLATFORM,wayland;xcb"
-          #"QT_QPA_PLATFORMTHEME,qt6ct"
+          "QT_QPA_PLATFORMTHEME,qt6ct"
           "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
           "QT_AUTO_SCREEN_SCALE_FACTOR,1"
           "MOZ_ENABLE_WAYLAND,1"
@@ -132,30 +127,22 @@
         ];
 
         exec-once = [
-          #"discord --start-minimized"
           "${pkgs.vesktop}/bin/vesktop --start-minimized"
           "${pkgs.ferdium}/bin/ferdium --minimized"
           "${pkgs.kdePackages.kdeconnect-kde}/bin/kdeconnect-indicator"
-
-          "systemctl --user start hyprpolkitagent"
-          #"swww-daemon --format xrgb"
-          #"swww ../../aurora_borealis.png"
           "${pkgs.hypridle}/bin/hypridle"
           "${pkgs.waybar}/bin/waybar"
+          "${pkgs.udiskie}/bin/udiskie --no-automount --smart-tray"
+          "${pkgs.blueman}/bin/blueman-applet"
+          "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store # clipboard store text data"
+          "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store # clipboard store image data"
+
+          "systemctl --user start hyprpolkitagent"
           "swayosd-server"
 
-          "blueman-applet"
-          "udiskie --no-automount --smart-tray"
-          "nm-applet --indicator"
-          "dunst"
-          "wl-paste --type text --watch cliphist store # clipboard store text data"
-          "wl-paste --type image --watch cliphist store # clipboard store image data"
+          #"swww-daemon --format xrgb"
+          #"swww ../../aurora_borealis.png"
           #"$scrPath/batterynotify.sh # battery notification"
-
-          #"$scrPath/resetxdgportal.sh # reset XDPH for screenshare"
-          #"dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # for XDPH"
-          #"dbus-update-activation-environment --systemd --all # for XDPH"
-          #"systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # for XDPH"
         ];
 
         "$mod" = "SUPER";
@@ -193,7 +180,7 @@
         #];
 
         bindd = [
-          "$mod SHIFT, P, Color Picker, exec, hyprpicker -a"
+          "$mod SHIFT, P, Color Picker, exec, ${pkgs.hyprpicker}/bin/hyprpicker -a"
           "$mod SHIFT, R, Random Background, exec, background-switch-random"
         ];
 
@@ -203,9 +190,9 @@
           ",XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
 
           # Media
-          "Alt, P, exec, playerctl play-pause"
-          "Alt, I, exec, playerctl next"
-          "Alt, O, exec, playerctl previous"
+          "Alt, P, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+          "Alt, I, exec, ${pkgs.playerctl}/bin/playerctl next"
+          "Alt, O, exec, ${pkgs.playerctl}/bin/playerctl previous"
         ];
 
         bindel = [
@@ -241,18 +228,20 @@
           "$mod, Escape, exec, ${pkgs.hyprlock}/bin/hyprlock"
           #"$mod+Shift,F, exec, windowpin.sh"
           "$mod, Backspace, exec, ${pkgs.wlogout}/bin/wlogout -b 2"
-          "$Ctrl+Alt, W, exec, killall waybar || ${pkgs.waybar}/bin/waybar" # toggle waybar
+          "$Ctrl+Alt, W, exec, ${pkgs.toybox}/bin/killall waybar || ${pkgs.waybar}/bin/waybar" # toggle waybar
 
           "$mod, T, exec, $term"
           "$mod, F, exec, $browser"
           "$mod, E, exec, $file"
           "$mod, C, exec, $editor"
-          "Ctrl+Shift, Escape, exec, ${pkgs.btop}/bin/btop"
+          "Ctrl+Shift, Escape, exec, ${pkgs.kitty}/bin/kitty -e ${pkgs.btop}/bin/btop"
 
           # Rofi
-          "$mod, A, exec, pkill -x rofi || ${pkgs.rofi-wayland}/bin/rofi -show drun"
-          "$mod, Tab, exec, pkill -x rofi || ${pkgs.rofi-wayland}/bin/rofi -show window"
-          "$mod+Shift, E, exec, pkill -x rofi || ${pkgs.rofi-wayland}/bin/rofi -show emoji"
+          "$mod, A, exec, ${pkgs.toybox}/bin/pkill -x rofi || ${pkgs.rofi-wayland}/bin/rofi -show drun"
+          "$mod, Tab, exec, ${pkgs.toybox}/bin/pkill -x rofi || ${pkgs.rofi-wayland}/bin/rofi -show window"
+          "$mod+Shift, E, exec, ${pkgs.toybox}/bin/pkill -x rofi || ${pkgs.rofi-wayland}/bin/rofi -show emoji"
+          # Clipboard manager
+          "$mod, V, exec, ${pkgs.toybox}/bin/pkill -x rofi || clipboard"
 
           # Grouped Windows
           "$mod CTRL, H, changegroupactive, b"
@@ -263,9 +252,6 @@
           "$mod+Ctrl, P, exec, screenshot sf"
           "$mod+Alt, P, exec, screenshot m"
           ", Print, exec, screenshot p" # All monitors screenshot capture
-
-          # Custom scripts
-          "$mod, V, exec, pkill -x rofi || scliphist c"
 
           # Move/Change window focus
           "$mod, H, movefocus, l"
