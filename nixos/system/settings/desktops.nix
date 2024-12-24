@@ -59,6 +59,8 @@
         package = inputs.hyprland.packages."${pkgs.system}".hyprland;
         portalPackage = pkgs.xdg-desktop-portal-hyprland;
       };
+
+      services.udisks2.enable = true;
     })
   ];
 }
