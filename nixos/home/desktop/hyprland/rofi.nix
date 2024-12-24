@@ -8,11 +8,11 @@
     rofi.enable = lib.mkEnableOption "enable Rofi module";
   };
 
-  config = lib.mkIf config.rofi.enable {
-    home.packages = [
-      pkgs.rofi-wayland
-    ];
+  imports = [
+      ./clipboard-rofi.nix
+  ];
 
+  config = lib.mkIf config.rofi.enable {
     programs.rofi = {
       enable = true;
       cycle = true;
@@ -23,17 +23,6 @@
       theme = let
         inherit (config.lib.formats.rasi) mkLiteral;
       in {
-      #  "*" = {
-      #    main-bg = mkLiteral "#11111be6";
-      #    main-fg = mkLiteral "#cdd6f4ff";
-      #    main-br = mkLiteral "#cba6f7ff";
-      #    main-ex = mkLiteral "#f5e0dcff";
-      #    select-bg = mkLiteral "#b4befeff";
-      #    select-fg = mkLiteral "#11111bff";
-      #    separatorcolor = mkLiteral "transparent";
-      #    border-color = mkLiteral "transparent";
-      #  };
-      #
         "configuration" = {
           modi = "drun,filebrowser,window,run";
           show-icons = true;
