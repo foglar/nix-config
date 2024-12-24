@@ -120,16 +120,13 @@
             format = "{:%H:%M}";
             rotate = 0;
             format-alt = "{:%R 󰃭 %d·%m·%y}";
-            tooltip-format = "<span>{calendar}</span>";
+            tooltip-format = "<span size='8pt' font='JetBrains Mono'><tt>{calendar}</tt></span>";
             calendar = {
-              mode = "month";
               mode-mon-col = 3;
-              on-scroll = 1;
-              on-click-right = "mode";
               format = {
-                months = "<span color='#ffead3'><b>{}</b></span>";
-                weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-                today = "<span color='#ff6699'><b>{}</b></span>";
+                months = "<span color='#ffffff'><b>{}</b></span>";
+                weekdays = "<span color='#ffffff'><b>{}</b></span>";
+                today = "<span color='#ffffff'><b>{}</b></span>";
               };
             };
             actions = {
