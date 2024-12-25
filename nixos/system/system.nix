@@ -9,6 +9,7 @@
     ./settings/printing.nix
     ./settings/loginManager.nix
     ./settings/style.nix
+    ./settings/default-applications.nix
   ];
 
   sys = {
@@ -32,5 +33,6 @@
       gdm.enable = lib.mkDefault false;
     };
     style.enable = lib.mkDefault true;
+    default-applications.enable = lib.mkDefault true;
   };
 }

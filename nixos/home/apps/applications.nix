@@ -41,6 +41,7 @@
         simple-scan
         vesktop
         gnome-font-viewer
+        gnome-characters
         evince
       ]);
   };
