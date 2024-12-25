@@ -27,6 +27,20 @@
         vscode
       ];
 
+      nixpkgs.config.allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [
+          # VSCODE
+          "vscode"
+          "vscode-extension-github-codespaces"
+          "vscode-extension-ms-vscode-remote-remote-ssh"
+          "vscode-extension-ms-vscode-remote-remote-ssh-edit"
+          "vscode-extension-github-copilot"
+          "vscode-extension-github-copilot-chat"
+          "vscode-extension-MS-python-vscode-pylance"
+          "vscode-extension-ms-dotnettools-csdevkit"
+          "vscode-extension-ms-dotnettools-vscodeintellicode-csharp"
+        ];
+
       programs.vscode = {
         enable = true;
 

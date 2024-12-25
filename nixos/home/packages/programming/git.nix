@@ -21,5 +21,10 @@
       github-cli
       gitkraken
     ];
+
+     nixpkgs.config.allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [
+          "gitkraken"
+        ];
   };
 }

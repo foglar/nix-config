@@ -15,9 +15,7 @@
       wl-clipboard
       cliphist
 
-      #dunst
       #swww
-      #hyprshade
 
       (writeShellScriptBin "dontkillsteam" ''
         if [[ $(hyprctl activewindow -j | ${pkgs.jq}/bin/jq -r ".class") == "Steam" ]]; then
