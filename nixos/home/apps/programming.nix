@@ -21,5 +21,11 @@
       nodejs
       pnpm
     ];
+
+    nixpkgs.config.allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) [
+        "pycharm"
+        "pycharm-professional"
+      ];
   };
 }
