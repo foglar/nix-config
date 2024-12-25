@@ -67,7 +67,6 @@
   };
 
   home.file = {
-    ".config/hypr/hyprlock.conf".source = ../config/hyprlock.conf;
     ".config/hypr/mocha.conf".source = ../config/mocha.conf;
     ".config/hypr/hypridle.conf".source = ../config/hypridle.conf;
     ".prettierrc".text = ''

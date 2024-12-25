@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   pkgs-stable,
   userSettings,
   ...
@@ -32,9 +33,24 @@
           terminal = 12;
         };
 
+        serif = {
+          package = pkgs.nerd-fonts.monaspace;
+          name = "Monaspace Xenon";
+        };
+
+        sansSerif = {
+          package = pkgs.nerd-fonts.monaspace;
+          name = "Monaspace Argon";
+        };
+
         monospace = {
-          name = "JetBrainsMono Nerd Font";
-          package = pkgs-stable.nerdfonts.override {fonts = ["JetBrainsMono"];};
+          package = pkgs.nerd-fonts.monaspace;
+          name = "Monaspace Neon";
+        };
+
+        emoji = {
+          package = pkgs-stable.noto-fonts-emoji;
+          name = "Noto Color Emoji";
         };
       };
     };
