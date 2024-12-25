@@ -14,13 +14,19 @@
     ./waybar.nix
     ./rofi.nix
     ./wlogout.nix
+    ./hyprlock.nix
   ];
 
   config = lib.mkIf config.desktop.hyprland.enable {
-    waybar.enable = lib.mkDefault true;
-    rofi.enable = lib.mkDefault true;
-    rofi.clipboard.enable = lib.mkDefault true;
-    wlogout.enable = lib.mkDefault true;
+    desktop.hyprland = {
+      waybar.enable = lib.mkDefault true;
+      rofi = {
+        enable = lib.mkDefault true;
+        clipboard.enable = lib.mkDefault true;
+      };
+      hyprlock.enable = lib.mkDefault true;
+      wlogout.enable = lib.mkDefault true;
+    };
 
     xdg.portal.enable = true;
     xdg.portal.config = {
@@ -32,6 +38,7 @@
 
     services.network-manager-applet.enable = true;
     services.dunst.enable = true;
+    programs.hyprlock.enable = true;
 
     home.sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";

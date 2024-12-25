@@ -5,10 +5,10 @@
   ...
 }: {
   options = {
-    waybar.enable = lib.mkEnableOption "enable Waybar module";
+    desktop.hyprland.waybar.enable = lib.mkEnableOption "enable Waybar module";
   };
 
-  config = lib.mkIf config.waybar.enable {
+  config = lib.mkIf config.desktop.hyprland.waybar.enable {
     home.packages = [
       pkgs.waybar
     ];

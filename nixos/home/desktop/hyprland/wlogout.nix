@@ -5,10 +5,10 @@
   ...
 }: {
   options = {
-    wlogout.enable = lib.mkEnableOption "enable wlogout module";
+    desktop.hyprland.wlogout.enable = lib.mkEnableOption "enable wlogout module";
   };
 
-  config = lib.mkIf config.wlogout.enable {
+  config = lib.mkIf config.desktop.hyprland.wlogout.enable {
     programs.wlogout = {
       enable = true;
       layout = [

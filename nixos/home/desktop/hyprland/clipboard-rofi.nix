@@ -6,10 +6,10 @@
 }:
 {
   options = {
-    rofi.clipboard.enable = lib.mkEnableOption "rofi-clipboard";
+    desktop.hyprland.rofi.clipboard.enable = lib.mkEnableOption "rofi-clipboard";
   };
 
-  config = lib.mkIf config.rofi.clipboard.enable {
+  config = lib.mkIf config.desktop.hyprland.rofi.clipboard.enable {
     home.file = {
       ".config/rofi/cliboard.rasi".source = ../../../../config/clipboard.rasi;
     };

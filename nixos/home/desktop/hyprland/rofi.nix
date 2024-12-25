@@ -5,14 +5,14 @@
   ...
 }: {
   options = {
-    rofi.enable = lib.mkEnableOption "enable Rofi module";
+    desktop.hyprland.rofi.enable = lib.mkEnableOption "enable Rofi module";
   };
 
   imports = [
       ./clipboard-rofi.nix
   ];
 
-  config = lib.mkIf config.rofi.enable {
+  config = lib.mkIf config.desktop.hyprland.rofi.enable {
     programs.rofi = {
       enable = true;
       cycle = true;
