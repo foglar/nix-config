@@ -16,6 +16,7 @@
         qutebrowser
         ferdium
 
+        file-roller
         stellarium
         libreoffice
         localsend
