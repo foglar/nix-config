@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  userSettings,
   ...
 }: {
   imports = [
@@ -30,27 +31,33 @@
   };
 
   program = {
-    kitty.enable = lib.mkDefault true;
+    kitty.enable =
+      if userSettings.terminal == "kitty"
+      then lib.mkDefault true
+      else lib.mkDefault false;
     tmux.enable = lib.mkDefault true;
     zoxide.enable = lib.mkDefault true;
 
-    firefox.enable = lib.mkDefault true;
+    firefox.enable =
+      if userSettings.browser == "firefox"
+      then lib.mkDefault true
+      else lib.mkDefault false;
     spotify.enable = lib.mkDefault true;
 
     vscode = {
       enable = lib.mkDefault true;
       ide = {
-        python.enable = lib.mkDefault true;
-        go.enable = lib.mkDefault true;
-        csharp.enable = lib.mkDefault true;
+        python.enable = lib.mkDefault false;
+        go.enable = lib.mkDefault false;
+        csharp.enable = lib.mkDefault false;
         cpp.enable = lib.mkDefault false;
-        web.enable = lib.mkDefault true;
+        web.enable = lib.mkDefault false;
       };
-      nix.enable = lib.mkDefault true;
-      markdown.enable = lib.mkDefault true;
-      ai.enable = lib.mkDefault true;
-      git.enable = lib.mkDefault true;
-      
+      nix.enable = lib.mkDefault false;
+      markdown.enable = lib.mkDefault false;
+      ai.enable = lib.mkDefault false;
+      git.enable = lib.mkDefault false;
+
       themes.enable = lib.mkDefault false;
     };
     git.enable = lib.mkDefault true;

@@ -54,13 +54,13 @@
     ...
   } @ inputs: let
     userSettings = {
-      username = "foglar";
+      username = "foglar"; # konsta or foglar (else defaulting to foglar or none)
       hostname = "laptop";
 
       shell = "bash"; # bash, zsh
-      terminal = "kitty";
-      browser = "librewolf";
-      editor = "neovim";
+      terminal = "kitty"; # kitty, alacritty
+      browser = "librewolf"; # firefox, librewolf, qutebrowser
+      editor = "neovim"; # neovim, vscode
 
       # List all themes: $ nix build nixpkgs#base16-schemes && ls result/share/themes
       theme = "catppuccin-mocha"; #tokyo-night-dark, one-dark

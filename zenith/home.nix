@@ -34,11 +34,24 @@
     kitty.enable = true;
     tmux.enable = true;
     zoxide.enable = true;
-    
+
     vscode = {
       enable = true;
+      ide = {
+        python.enable = true;
+        go.enable = true;
+        csharp.enable = true;
+        cpp.enable = false;
+        web.enable = true;
+      };
       nix.enable = true;
+      markdown.enable = true;
+      ai.enable = true;
+      git.enable = true;
+
+      themes.enable = false;
     };
+    
     git.enable = true;
     neovim.enable = true;
 
@@ -57,7 +70,6 @@
     ".config/hypr/hyprlock.conf".source = ../config/hyprlock.conf;
     ".config/hypr/mocha.conf".source = ../config/mocha.conf;
     ".config/hypr/hypridle.conf".source = ../config/hypridle.conf;
-    #".config/dolphinrc".source = ../config/dolphinrc;
     ".prettierrc".text = ''
       {
         "tabWidth": 4,

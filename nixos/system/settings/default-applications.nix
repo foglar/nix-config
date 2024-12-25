@@ -6,10 +6,15 @@
   ...
 }: {
   options = {
-    default-applications.enable = lib.mkEnableOption "Enable default applications";
+    sys.default-applications.enable = lib.mkEnableOption "Enable default applications";
+    xdg.da.browser = lib.mkOption {
+      type = lib.types.str;
+      default = "firefox";
+      description = "Default browser";
+    };
   };
 
-  config = lib.mkIf config.default-applications.enable {
+  config = lib.mkIf config.sys.default-applications.enable {
     environment.sessionVariables = {
       DEFAULT_BROWSER = "${pkgs."${userSettings.browser}"}/bin/${userSettings.browser}";
       TERMINAL = "${pkgs."${userSettings.terminal}"}/bin/${userSettings.terminal}";
@@ -18,14 +23,25 @@
 
     # Default applications configuration
     xdg.mime.enable = true;
+
+    xdg.da.browser =
+      if userSettings.browser == "qutebrowser"
+      then "org.qutebrowser.qutebrowser"
+      else
+        (
+          if userSettings.browser == "librewolf"
+          then "librewolf"
+          else "firefox"
+        );
+
     xdg.mime.defaultApplications = {
-      "text/html" = "librewolf.desktop";
-      "x-scheme-handler/http" = "librewolf.desktop";
-      "x-scheme-handler/https" = "librewolf.desktop";
-      "x-scheme-handler/about" = "librewolf.desktop";
-      "x-scheme-handler/unknown" = "librewolf.desktop";
-      "text/plain" = "nvim.desktop";
-      "application/pdf" = "evince";
+      "text/html" = "${config.xdg.da.browser}.desktop";
+      "x-scheme-handler/http" = "${config.xdg.da.browser}.desktop";
+      "x-scheme-handler/https" = "${config.xdg.da.browser}.desktop";
+      "x-scheme-handler/about" = "${config.xdg.da.browser}.desktop";
+      "x-scheme-handler/unknown" = "${config.xdg.da.browser}.desktop";
+      "text/plain" = "${userSettings.editor}.desktop";
+      "application/pdf" = "org.gnome.Evince.desktop";
     };
   };
 }
