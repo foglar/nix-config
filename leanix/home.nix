@@ -54,6 +54,8 @@
     libreoffice
     inkscape
     gimp
+    mpv
+    loupe
     firefox
     distrobox
   ];

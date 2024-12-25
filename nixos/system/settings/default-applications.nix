@@ -42,6 +42,9 @@
       "x-scheme-handler/unknown" = "${config.xdg.da.browser}.desktop";
       "text/plain" = "${userSettings.editor}.desktop";
       "application/pdf" = "org.gnome.Evince.desktop";
+      "image/svg+xml" = "org.gnome.Loupe.desktop";
+      "image/jpeg" = "org.gnome.Loupe.desktop";
+      "image/png" = "org.gnome.Loupe.desktop";
     };
   };
 }
