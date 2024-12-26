@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  config,
+  ...
+}: {
   imports = [
     ./settings/audio.nix
     ./settings/desktops.nix
@@ -28,7 +32,17 @@
       enable = lib.mkDefault true;
       blueman.enable = lib.mkDefault true;
     };
-    nvidia.enable = lib.mkDefault true;
+    nvidia.enable = lib.mkDefault false;
+
+    nvidiaRTX.enable =
+      if config.sys.nvidia.enable == true
+      then lib.mkDefault true
+      else false;
+    nvidiaRTX.disable =
+      if config.sys.nvidia.enable == true
+      then lib.mkDefault false
+      else true;
+
     printing.enable = lib.mkDefault true;
     login = {
       sddm.enable = lib.mkDefault true;
