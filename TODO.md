@@ -1,11 +1,24 @@
 # TODO
 
-- [ ] Wallpaper switch
-- [x] Keyboard switch
-- [x] Waybar fix
-- [x] Rofi config
-- [ ] Cliphist manager fix
-- [x] Stylix theming to each module
-- [ ] Enabling nvidia graphics and disabling it
-- [ ] Modularity connected via configuration.nix file with home manager (disable gnome, gnome configuration will be disabled too)
-- [x] Rofi theme and other themes, where are colors setup declaratively
+- [x] wallpaper switch
+- [x] keyboard switch
+- [x] waybar fix
+- [x] rofi config
+- [x] cliphist manager fix
+- [x] stylix theming to each module
+- [x] rofi theme and other themes, where are colors setup declaratively
+- [ ] enabling nvidia graphics and disabling it
+- [ ] modularity connected via configuration.nix file with home manager (disable gnome, gnome configuration will be disabled too)
+- [x] custom if else statements
+- [ ] neovim
+- [ ] librewolf and firefox fix
+- [ ] fix kde theme in stylix
+- [x] move sops
+- [ ] figure out yubico authentication
+- [ ] graph of my system structure
+- [x] add zsh to my config
+- [ ] ?tryout starship?
+- [ ] cleanup hyprland subtools (rofi, hyprlock, waybar)
+- [ ] auto-cpufreq
+- [ ] modularize hyprland config into multiple files
+- [ ] consider moving nh config helper into module

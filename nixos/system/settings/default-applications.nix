@@ -19,6 +19,7 @@
       DEFAULT_BROWSER = "${pkgs."${userSettings.browser}"}/bin/${userSettings.browser}";
       TERMINAL = "${pkgs."${userSettings.terminal}"}/bin/${userSettings.terminal}";
       EDITOR = "${pkgs."${userSettings.editor}"}/bin/${userSettings.editor}";
+      FLAKE = "/home/${userSettings.username}/.dotfiles";
     };
 
     # Default applications configuration

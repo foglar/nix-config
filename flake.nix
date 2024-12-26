@@ -5,6 +5,11 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,6 +20,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,17 +34,6 @@
     nix-ld = {
       url = "github:Mic92/nix-ld";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
 
     firefox-addons = {
@@ -54,10 +54,10 @@
     ...
   } @ inputs: let
     userSettings = {
-      username = "foglar"; # konsta or foglar (else defaulting to foglar or none)
-      hostname = "laptop";
+      username = "foglar"; # konsta or shinya (else defaulting to shinya or none)
+      hostname = "kogami"; # kogami or ginoza
 
-      shell = "bash"; # bash, zsh
+      shell = "zsh"; # bash, zsh, none
       terminal = "kitty"; # kitty, alacritty
       browser = "librewolf"; # firefox, librewolf, qutebrowser
       editor = "neovim"; # neovim, vscode
@@ -86,28 +86,28 @@
     };
   in {
     nixosConfigurations = {
-      laptop = nixpkgs.lib.nixosSystem {
+      kogami = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs system pkgs pkgs-stable userSettings;
         };
 
         modules = [
-          ./zenith/configuration.nix
+          ./kogami/configuration.nix
 
           inputs.stylix.nixosModules.stylix
           inputs.nix-ld.nixosModules.nix-ld
           inputs.sops-nix.nixosModules.sops
         ];
       };
-      leanix = nixpkgs.lib.nixosSystem {
+      ginoza = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs system pkgs pkgs-stable userSettings;
         };
 
         modules = [
-          ./leanix/configuration.nix
+          ./ginoza/configuration.nix
           inputs.stylix.nixosModules.stylix
         ];
       };

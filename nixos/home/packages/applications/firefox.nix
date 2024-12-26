@@ -137,7 +137,7 @@
             ublock-origin
           ]
           ++ (
-            if (userSettings.username == "foglar")
+            if (userSettings.username == "shinya")
             then [
               inputs.firefox-addons.packages."x86_64-linux".simple-translate
               inputs.firefox-addons.packages."x86_64-linux".duckduckgo-privacy-essentials

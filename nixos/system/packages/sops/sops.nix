@@ -14,7 +14,7 @@
 
     sops.age.keyFile = "/home/${userSettings.username}/.config/sops/age/keys.txt";
 
-    sops.secrets."zenith/password-hash" = {
+    sops.secrets."${userSettings.hostname}/password-hash" = {
       neededForUsers = true;
     };
 

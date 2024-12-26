@@ -26,11 +26,6 @@
   # Bootloader
   boot.loader.systemd-boot.enable = true;
 
-  # Environment variables
-  environment.sessionVariables = {
-    FLAKE = "/home/${userSettings.username}/.dotfiles";
-  };
-
   # System level configuration
   sys = {
     audio.enable = true;

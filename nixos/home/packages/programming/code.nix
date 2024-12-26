@@ -3,6 +3,7 @@
   pkgs-stable,
   lib,
   config,
+  userSettings,
   ...
 }: {
   options = {
@@ -141,7 +142,7 @@
             };
             "options" = {
               "nixos" = {
-                "expr" = "(builtins.getFlake \"~/dotfiles/\").nixosConfigurations.laptop.options";
+                "expr" = "(builtins.getFlake \"~/.dotfiles/\").nixosConfigurations.${userSettings.hostname}.options";
               };
             };
             #    "home_manager": {

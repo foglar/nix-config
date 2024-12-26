@@ -1,4 +1,7 @@
-{lib, ...}: {
+{
+  lib,
+  ...
+}: {
   imports = [
     ./packages/docker.nix
     ./packages/podman.nix
