@@ -80,6 +80,9 @@
           # Remote
           ms-vscode-remote.remote-ssh
           ms-vscode-remote.remote-ssh-edit
+
+          pkief.material-product-icons
+          pkief.material-icon-theme
         ];
       };
     })
@@ -206,8 +209,6 @@
         zhuangtongfa.material-theme
         oderwat.indent-rainbow
         enkia.tokyo-night
-        pkief.material-product-icons
-        pkief.material-icon-theme
       ];
     })
 

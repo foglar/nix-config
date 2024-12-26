@@ -58,7 +58,7 @@
           orientation = mkLiteral "vertical";
           children = ["inputbar" "listbox"];
           background-color = mkLiteral "transparent";
-          background-image = mkLiteral "url(\"~/dotfiles/config/backgrounds/aurora_borealis.png\", height)";
+          background-image = mkLiteral "url(\"~/.dotfiles/config/backgrounds/aurora_borealis.png\", height)";
         };
       
         # Input bar settings
@@ -68,7 +68,7 @@
           padding = mkLiteral "5em";
           children = ["entry"];
           background-color = mkLiteral "transparent";
-          background-image = mkLiteral "url(\"~/dotfiles/config/backgrounds/aurora_borealis.png\", width)";
+          background-image = mkLiteral "url(\"~/.dotfiles/config/backgrounds/aurora_borealis.png\", width)";
         };
       
         # Entry field settings

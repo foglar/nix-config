@@ -13,6 +13,7 @@
   config = lib.mkIf config.program.firefox.enable {
     programs.firefox = {
       enable = true;
+      package = pkgs.firefox;
 
       profiles.default = {
         search.engines = {

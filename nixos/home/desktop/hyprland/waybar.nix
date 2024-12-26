@@ -44,7 +44,7 @@
           };
 
           "hyprland/window" = {
-            format = "   {}";
+            format = "  {}";
             #rotate = ${r_deg};
             separate-outputs = true;
             rewrite = {
@@ -75,12 +75,12 @@
               "m" = 30; # medium
             };
             interval = 30;
-            format = "󰾆  {used}GB";
+            format = "󰾆 {used}GB";
             #rotate = ${r_deg};
-            format-m = "󰾅  {used}GB";
-            format-h = "󰓅  {used}GB";
-            format-c = "  {used}GB";
-            format-alt = "󰾆  {percentage}%";
+            format-m = "󰾅 {used}GB";
+            format-h = "󰓅 {used}GB";
+            format-c = " {used}GB";
+            format-alt = "󰾆 {percentage}%";
             max-length = 10;
             tooltip = true;
             tooltip-format = "󰾆  {percentage}%\n  {used:0.1f}GB/{total:0.1f}GB";
@@ -188,13 +188,13 @@
           };
 
           "pulseaudio" = {
-            format = "{icon}  {volume}";
+            format = "{icon} {volume}";
             rotate = 0;
             format-muted = "婢";
-            on-click = "pavucontrol -t 3";
-            on-click-middle = "swayosd-client --output-volume mute-toggle";
-            on-scroll-up = "swayosd-client --output-volume 5";
-            on-scroll-down = "swayosd-client --output-volume -5";
+            on-click = "${pkgs.pavucontrol}/bin/pavucontrol -t 3";
+            on-click-middle = "${pkgs.swayosd}/bin/swayosd-client --output-volume mute-toggle";
+            on-scroll-up = "${pkgs.swayosd}/bin/swayosd-client --output-volume 5";
+            on-scroll-down = "${pkgs.swayosd}/bin/swayosd-client --output-volume -5";
             tooltip-format = "{icon} {desc} // {volume}%";
             scroll-step = 5;
             format-icons = {
@@ -213,10 +213,10 @@
             rotate = 0;
             format-source = "";
             format-source-muted = "";
-            on-click = "pavucontrol -t 4";
-            on-click-middle = "swayosd-client --input-volume mute-toggle";
-            on-scroll-up = "swayosd-client --input-volume 5";
-            on-scroll-down = "swayosd-client --input-volume -5";
+            on-click = "${pkgs.pavucontrol}/bin/pavucontrol -t 4";
+            on-click-middle = "${pkgs.swayosd}/bin/swayosd-client --input-volume mute-toggle";
+            on-scroll-up = "${pkgs.swayosd}/bin/swayosd-client --input-volume 5";
+            on-scroll-down = "${pkgs.swayosd}/bin/swayosd-client --input-volume -5";
             tooltip-format = "{format_source} {source_desc} // {source_volume}%";
             scroll-step = 5;
           };
@@ -236,8 +236,8 @@
             format = " {}";
             rotate = 0;
             exec = "echo ; echo  logout";
-            on-click = "wlogout -b 2";
-            on-click-right = "wlogout -b 2";
+            on-click = "${pkgs.wlogout}/bin/wlogout -b 2";
+            on-click-right = "${pkgs.wlogout}/bin/wlogout -b 2";
             interval = 86400; # once every day
             tooltip = true;
           };
