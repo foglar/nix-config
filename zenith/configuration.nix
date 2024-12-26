@@ -3,7 +3,6 @@
   pkgs,
   pkgs-stable,
   userSettings,
-  config,
   ...
 }: {
   imports = [
@@ -16,15 +15,6 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   programs.nix-ld.dev.enable = true;
-
-  sops.defaultSopsFile = ./secrets/secrets.yaml;
-  sops.defaultSopsFormat = "yaml";
-
-  sops.age.keyFile = "/home/foglar/.config/sops/age/keys.txt";
-
-  sops.secrets."zenith/password-hash" = {
-    neededForUsers = true;
-  };
 
   # Home manager
   home-manager = {
@@ -39,20 +29,12 @@
     ];
   };
 
-  # User configuration
-  users.users.${userSettings.username} = {
-    isNormalUser = true;
-    description = "${userSettings.username}";
-    extraGroups = ["wheel"];
-    hashedPasswordFile = "${config.sops.secrets."zenith/password-hash".path}";
-  };
-
   # Bootloader
   boot.loader.systemd-boot.enable = true;
 
   # Environment variables
   environment.sessionVariables = {
-    FLAKE = "/home/${userSettings.username}/dotfiles";
+    FLAKE = "/home/${userSettings.username}/.dotfiles";
   };
 
   # System level configuration

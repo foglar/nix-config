@@ -60,6 +60,7 @@
       };
 
       services.udisks2.enable = true;
+      services.power-profiles-daemon.enable = true;
 
       security = {
         polkit.enable = true;

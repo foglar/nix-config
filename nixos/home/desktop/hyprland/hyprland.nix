@@ -38,6 +38,7 @@
 
     services.network-manager-applet.enable = true;
     services.dunst.enable = true;
+
     programs.hyprlock.enable = true;
 
     home.sessionVariables = {

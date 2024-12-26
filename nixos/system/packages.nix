@@ -6,6 +6,7 @@
     ./packages/tor.nix
     ./packages/virtual-machines.nix
     ./packages/yubikey.nix
+    ./packages/sops/sops.nix
   ];
 
   program = {
@@ -19,6 +20,7 @@
     yubikey.enable = lib.mkDefault false;
   };
   sys.desktop.steamdeck.enable = lib.mkDefault false;
+  sys.security.sops.enable = lib.mkDefault true;
   programs.kdeconnect.enable = lib.mkDefault true;
   programs.wireshark.enable = lib.mkDefault true;
 }

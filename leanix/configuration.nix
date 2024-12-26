@@ -23,13 +23,6 @@
     };
   };
 
-  # User configuration
-  users.users.${userSettings.username} = {
-    isNormalUser = true;
-    description = "${userSettings.username}";
-    extraGroups = ["wheel"];
-  };
-
   # Bootloader
   boot.loader.systemd-boot.enable = true;
 
