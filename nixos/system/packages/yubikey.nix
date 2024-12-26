@@ -6,7 +6,7 @@
 }: {
   options = {
     program.yubikey = {
-      enable = lib.mkEnableOption "Enable YubiKey support";
+      enable = lib.mkEnableOption "Enable YubiKey authentication";
     };
   };
 
@@ -17,30 +17,30 @@
       pam_u2f
     ];
 
+    # Only have to be connected to the notebook
+    #security.pam.services = {
+    #  login.u2fAuth = true;
+    #  sudo.u2fAuth = true;
+    #};
+
+    security.pam.yubico = {
+      enable = true;
+      debug = false;
+      mode = "challenge-response";
+      control = "sufficient";
+      #! id = [ "1234567890" ];
+      #! YubiKey ID is stored in SOPS
+      #! and is set in the module configuration
+      #! file ./sops/sops.nix
+    };
+
     services.pcscd = {
       enable = true;
     };
-    #services.udev.packages = [pkgs.yubikey-personalization];
-#
-    #services.yubikey-agent.enable = true;
-#
-    #security.pam = {
-    #  sshAgentAuth.enable = true;
-    #  u2f = {
-    #    enable = true;
-    #    settings = {
-    #      cue = false;
-    #      authfile = "${config.home.homeDirectory}/.config/yubikeys/u2f_keys";
-    #      # debug = true;
-    #    };
-    #  };
-    #  services = {
-    #    login.u2fAuth = true;
-    #    sudo = {
-    #      u2fAuth = true;
-    #      sshAgentAuth = true;
-    #    };
-    #  };
-    #};
+
+    programs.gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
   };
 }
