@@ -18,8 +18,7 @@
       conda
       jetbrains.pycharm-professional
       dotnet-sdk_8
-      nodejs
-      pnpm
+      git-ignore
     ];
 
     nixpkgs.config.allowUnfreePredicate = pkg:

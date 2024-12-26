@@ -18,7 +18,6 @@
       jp2a
       yt-dlp
       nvtopPackages.full
-      neofetch
       wget
       curl
       fzf

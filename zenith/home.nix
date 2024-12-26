@@ -15,7 +15,14 @@
   desktop.gnome.enable = false;
 
   # Shell management
+  sh.oh-my-posh.enable = true;
+
   sh.bash = {
+    enable = true;
+    oh-my-posh.enable = true;
+  };
+
+  sh.zsh = {
     enable = true;
     oh-my-posh.enable = true;
   };
@@ -51,7 +58,7 @@
 
       themes.enable = false;
     };
-    
+
     git.enable = true;
     neovim.enable = true;
 
