@@ -11,7 +11,7 @@
 
   # Desktop management
   desktop.hyprland.enable = true;
-  desktop.kde.enable = true;
+  desktop.kde.enable = false;
   desktop.gnome.enable = false;
 
   # Shell management

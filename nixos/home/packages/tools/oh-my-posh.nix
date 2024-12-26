@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  userSettings,
   ...
 }: {
   options = {
@@ -21,8 +22,14 @@
   config = lib.mkIf config.sh.oh-my-posh.enable {
     programs.oh-my-posh = {
       enable = true;
-      enableBashIntegration = if config.sh.bash.enable == true then true else false;
-      enableZshIntegration = if config.sh.zsh.enable == true then true else false;
+      enableBashIntegration =
+        if config.sh.bash.enable == true
+        then true
+        else false;
+      enableZshIntegration =
+        if config.sh.zsh.enable == true
+        then true
+        else false;
       settings = {
         "$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json";
         "blocks" = [
@@ -83,7 +90,7 @@
                   "style" = "full";
                 };
                 "style" = "plain";
-                "template" = "<{{ if .Root }}lightBlue{{ else }}green{{ end }}>-[</>{{if eq .Folder \"foglar\"}}~{{else}}{{ .Folder }}{{end}}<{{ if .Root }}lightBlue{{ else }}green{{ end }}>]</>";
+                "template" = "<{{ if .Root }}lightBlue{{ else }}green{{ end }}>-[</>{{if eq .Folder \"${userSettings.username}\"}}~{{else}}{{ .Folder }}{{end}}<{{ if .Root }}lightBlue{{ else }}green{{ end }}>]</>";
               }
               {
                 "type" = "git";

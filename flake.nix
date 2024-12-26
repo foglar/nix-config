@@ -54,11 +54,11 @@
     ...
   } @ inputs: let
     userSettings = {
-      username = "foglar"; # konsta or shinya (else defaulting to shinya or none)
+      username = "shinya"; # konsta or shinya (else defaulting to shinya or none)
       hostname = "kogami"; # kogami or ginoza
 
       shell = "zsh"; # bash, zsh, none
-      terminal = "kitty"; # kitty, alacritty
+      terminal = "kitty"; # kitty, alacritty, gnome-terminal
       browser = "librewolf"; # firefox, librewolf, qutebrowser
       editor = "neovim"; # neovim, vscode
 
