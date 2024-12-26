@@ -54,6 +54,7 @@
       gdm.enable = true;
     };
     style.enable = true;
+    security.sops.enable = true;
   };
 
   # Configured programs to enable
