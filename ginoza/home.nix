@@ -62,7 +62,6 @@
     gimp
     mpv
     loupe
-    firefox
     distrobox
   ];
 

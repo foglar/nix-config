@@ -37,11 +37,11 @@
     nvidiaRTX.enable =
       if config.sys.nvidia.enable == true
       then lib.mkDefault true
-      else false;
+      else lib.mkDefault false;
     nvidiaRTX.disable =
       if config.sys.nvidia.enable == true
       then lib.mkDefault false
-      else true;
+      else lib.mkDefault true;
 
     printing.enable = lib.mkDefault true;
     login = {
