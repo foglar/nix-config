@@ -17,8 +17,14 @@
   desktop.gnome.enable = true;
 
   # Shell management
+  sh.oh-my-posh.enable = false;
   sh.bash = {
     enable = true;
+    oh-my-posh.enable = false;
+  };
+
+  sh.zsh = {
+    enable = false;
     oh-my-posh.enable = false;
   };
 
@@ -38,7 +44,7 @@
     vscode.enable = false;
     git.enable = false;
     neovim.enable = false;
-    firefox.enable = false;
+    firefox.enable = true;
     spotify.enable = false;
   };
 

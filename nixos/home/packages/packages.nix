@@ -26,9 +26,28 @@
   ];
 
   sh.bash = {
-    enable = lib.mkDefault true;
-    oh-my-posh.enable = lib.mkDefault true;
+    enable =
+      if userSettings.shell == "bash"
+      then lib.mkDefault true
+      else lib.mkDefault false;
+    oh-my-posh.enable =
+      if userSettings.shell == "bash"
+      then lib.mkDefault true
+      else lib.mkDefault false;
   };
+
+  sh.zsh = {
+    enable =
+      if userSettings.shell == "zsh"
+      then lib.mkDefault true
+      else lib.mkDefault false;
+    oh-my-posh.enable =
+      if userSettings.shell == "zsh"
+      then lib.mkDefault true
+      else lib.mkDefault false;
+  };
+
+  sh.oh-my-posh.enable = lib.mkDefault true;
 
   program = {
     kitty.enable =

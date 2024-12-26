@@ -46,5 +46,14 @@
       "image/jpeg" = "org.gnome.Loupe.desktop";
       "image/png" = "org.gnome.Loupe.desktop";
     };
+
+    programs.zsh.enable =
+      if userSettings.shell == "zsh"
+      then lib.mkDefault true
+      else lib.mkDefault false;
+    users.defaultUserShell =
+      if userSettings.shell == "zsh"
+      then pkgs.zsh
+      else pkgs.bash;
   };
 }

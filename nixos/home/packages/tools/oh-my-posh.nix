@@ -5,13 +5,24 @@
   ...
 }: {
   options = {
-    sh.bash.oh-my-posh.enable = lib.mkEnableOption "enable oh-my-posh";
+    sh.oh-my-posh.enable = lib.mkEnableOption "enable oh-my-posh";
+    sh.bash.oh-my-posh.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "enable oh-my-posh for bash";
+    };
+    sh.zsh.oh-my-posh.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "enable oh-my-posh for zsh";
+    };
   };
 
-  config = lib.mkIf config.sh.bash.oh-my-posh.enable {
+  config = lib.mkIf config.sh.oh-my-posh.enable {
     programs.oh-my-posh = {
       enable = true;
-      enableBashIntegration = true;
+      enableBashIntegration = if config.sh.bash.enable == true then true else false;
+      enableZshIntegration = if config.sh.zsh.enable == true then true else false;
       settings = {
         "$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json";
         "blocks" = [
