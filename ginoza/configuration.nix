@@ -62,6 +62,11 @@
     tor.enable = false;
     virt-manager.enable = false;
     virtualbox.enable = false;
+    yubikey = {
+      enable = false;
+      lock-on-remove = false;
+      notify = false;
+    };
   };
 
   # Basic programs to enable

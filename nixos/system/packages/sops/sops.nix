@@ -18,6 +18,15 @@
       neededForUsers = true;
     };
 
+    # SSH private keys
+    sops.secrets = {
+      "ssh_keys/masaoka" = {
+        path = "/home/${userSettings.username}/.ssh/id_masaoka";
+        owner = userSettings.username;
+        group = "users";
+      };
+    };
+
     users.users.${userSettings.username}.hashedPasswordFile = "${config.sops.secrets."${userSettings.hostname}/password-hash".path}";
     security.pam.yubico.id =
       []

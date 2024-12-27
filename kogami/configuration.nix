@@ -66,13 +66,24 @@
     tor.enable = true;
     virt-manager.enable = true;
     virtualbox.enable = false;
-    yubikey.enable = true;
+    yubikey = {
+      enable = true;
+      lock-on-remove = false;
+      notify = true;
+    };
   };
 
   # Basic programs to enable
   programs.kdeconnect.enable = true;
   programs.wireshark.enable = true;
   programs.auto-cpufreq.enable = true;
+
+  programs.ssh.extraConfig = ''
+    Host masaoka
+      HostName 192.168.8.140
+      User foglar
+      IdentityFile ~/.ssh/id_masaoka
+  '';
 
   #services.twingate.enable = true;
 

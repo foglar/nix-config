@@ -27,7 +27,7 @@
           respawn = "clear; ${pkgs.pfetch}/bin/pfetch";
           mkdir = "mkdir -p";
           cat = "${pkgs.bat}/bin/bat --style plain";
-          rasp = "s foglar@192.168.8.140";
+          rasp = "s masaoka";
           hist = "history | awk '{for (i=2; i<=NF; i++) printf \$i\" \"; print \"\"}' | fzf | wl-copy";
           cdx = "${pkgs.zoxide}/bin/zoxide query --interactive";
 

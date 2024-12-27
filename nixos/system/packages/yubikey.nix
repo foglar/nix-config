@@ -7,9 +7,8 @@
   options = {
     program.yubikey = {
       enable = lib.mkEnableOption "Enable YubiKey authentication";
-    };
-    program.yubikey = {
       lock-on-remove = lib.mkEnableOption "Lock the session when the YubiKey is removed";
+      notify = lib.mkEnableOption "Notify when the YubiKey is touched";
     };
   };
 
@@ -45,6 +44,12 @@
       programs.gnupg.agent = {
         enable = true;
         enableSSHSupport = true;
+      };
+    })
+    (lib.mkIf config.program.yubikey.notify {
+      programs.yubikey-touch-detector = {
+        enable = true;
+        libnotify = true;
       };
     })
     (lib.mkIf config.program.yubikey.lock-on-remove {

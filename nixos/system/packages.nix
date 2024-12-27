@@ -1,7 +1,4 @@
-{
-  lib,
-  ...
-}: {
+{lib, ...}: {
   imports = [
     ./packages/docker.nix
     ./packages/podman.nix
@@ -20,7 +17,11 @@
     tor.enable = lib.mkDefault true;
     virt-manager.enable = lib.mkDefault true;
     virtualbox.enable = lib.mkDefault true;
-    yubikey.enable = lib.mkDefault false;
+    yubikey = {
+      enable = lib.mkDefault false;
+      lock-on-remove = lib.mkDefault false;
+      notify = lib.mkDefault false;
+    };
   };
   sys.desktop.steamdeck.enable = lib.mkDefault false;
   sys.security.sops.enable = lib.mkDefault true;

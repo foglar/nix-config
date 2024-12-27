@@ -7,18 +7,26 @@
 - [x] cliphist manager fix
 - [x] stylix theming to each module
 - [x] rofi theme and other themes, where are colors setup declaratively
-- [ ] enabling nvidia graphics and disabling it
-- [ ] modularity connected via configuration.nix file with home manager (disable gnome, gnome configuration will be disabled too)
+- [x] enabling nvidia graphics and disabling it
+- [x] add zsh to my config
 - [x] custom if else statements
+- [x] move sops
+- [x] figure out yubico authentication
+- [x] options for YUBIKEY to make more sense and control
+- [x] power profiles solution in waybar
+- [x] auto-cpufreq
+- [ ] modularity connected via configuration.nix file with home manager (disable gnome, gnome configuration will be disabled too)
 - [ ] neovim
 - [ ] librewolf and firefox fix
-- [ ] fix kde theme in stylix
-- [x] move sops
-- [ ] figure out yubico authentication
 - [ ] graph of my system structure
-- [x] add zsh to my config
-- [ ] ?tryout starship?
 - [ ] cleanup hyprland subtools (rofi, hyprlock, waybar)
-- [ ] auto-cpufreq
 - [ ] modularize hyprland config into multiple files
 - [ ] consider moving nh config helper into module
+- [ ] make static background folder and figure out how to simply manage backgrounds across my devices
+- [ ] NVIDIA options
+- [ ] fix plasma manager and extend gnome configuration
+- [ ] merge shell aliases
+
+- [ ] update my home page and create new web
+- [ ] fix kde theme in stylix
+- [ ] ?tryout starship?
