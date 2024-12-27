@@ -19,6 +19,12 @@
     };
 
     users.users.${userSettings.username}.hashedPasswordFile = "${config.sops.secrets."${userSettings.hostname}/password-hash".path}";
-    security.pam.yubico.id = ["${config.sops.secrets.yubikey_id}".value];
+    security.pam.yubico.id =
+      []
+      ++ (
+        if config.program.yubikey.enable
+        then ["${config.sops.secrets.yubikey_id}".value]
+        else []
+      );
   };
 }

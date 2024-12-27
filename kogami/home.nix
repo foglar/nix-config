@@ -1,4 +1,7 @@
-{userSettings, ...}: {
+{
+  userSettings,
+  ...
+}: {
   # Home manager configuration
   home.username = "${userSettings.username}";
   home.homeDirectory = "/home/${userSettings.username}";
@@ -83,6 +86,7 @@
       }
     '';
   };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

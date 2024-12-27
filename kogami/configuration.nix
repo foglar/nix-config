@@ -72,22 +72,15 @@
   # Basic programs to enable
   programs.kdeconnect.enable = true;
   programs.wireshark.enable = true;
+  programs.auto-cpufreq.enable = true;
 
-  services.twingate.enable = true;
+  #services.twingate.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   # List services that you want to enable:
 
