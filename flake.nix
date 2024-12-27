@@ -45,6 +45,11 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    auto-cpufreq = {
+      url = "github:AdnanHodzic/auto-cpufreq";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -98,6 +103,7 @@
           inputs.stylix.nixosModules.stylix
           inputs.nix-ld.nixosModules.nix-ld
           inputs.sops-nix.nixosModules.sops
+          inputs.auto-cpufreq.nixosModules.default
         ];
       };
       ginoza = nixpkgs.lib.nixosSystem {
