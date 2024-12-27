@@ -67,6 +67,7 @@
       lock-on-remove = false;
       notify = false;
     };
+    ssh.client.enable = false;
   };
 
   # Basic programs to enable

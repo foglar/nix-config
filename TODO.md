@@ -15,9 +15,10 @@
 - [x] options for YUBIKEY to make more sense and control
 - [x] power profiles solution in waybar
 - [x] auto-cpufreq
+- [x] ssh config module
 - [ ] modularity connected via configuration.nix file with home manager (disable gnome, gnome configuration will be disabled too)
 - [ ] neovim
-- [ ] librewolf and firefox fix
+- [ ] librewolf and firefox fix, extensions and bookmarks in librewolf
 - [ ] graph of my system structure
 - [ ] cleanup hyprland subtools (rofi, hyprlock, waybar)
 - [ ] modularize hyprland config into multiple files
@@ -25,7 +26,7 @@
 - [ ] make static background folder and figure out how to simply manage backgrounds across my devices
 - [ ] NVIDIA options
 - [ ] fix plasma manager and extend gnome configuration
-- [ ] merge shell aliases
+- [ ] nix-on-droid
 
 - [ ] update my home page and create new web
 - [ ] fix kde theme in stylix
