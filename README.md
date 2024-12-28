@@ -1,10 +1,3 @@
-<div align="center">
-<h1>
-<img width="100" src="./logo.svg" /> <br>
-</h1>
-</div>
-
-
 # dotfiles
 
 - best NixOS starter dotfiles in the **flake** setup
