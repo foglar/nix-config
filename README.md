@@ -1,13 +1,22 @@
 
 <div align="center">
 <h1>
-<img width="100" src="./logo.svg" /> <br>
+<img width="100" src="./docs/logo.svg" /> <br>
 </h1>
 </div>
 
 # dotfiles
 
 - best NixOS starter dotfiles in the **flake** setup
+
+## Showcase
+
+![Screenshot1](./docs/screenshot1.png)
+![Screenshot2](./docs/screenshot2.png)
+![Screenshot3](./docs/screenshot3.png)
+![Screenshot4](./docs/screenshot4.png)
+![Screenshot5](./docs/screenshot5.png)
+![Screenshot6](./docs/screenshot6.png)
 
 ## Build and deploy
 
