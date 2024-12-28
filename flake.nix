@@ -62,14 +62,18 @@
       username = "shinya"; # konsta or shinya (else defaulting to shinya or none)
       hostname = "kogami"; # kogami or ginoza
 
-      shell = "zsh"; # bash, zsh, none
+      shell = "zsh"; # bash, zsh
       terminal = "kitty"; # kitty, alacritty, gnome-terminal
       browser = "librewolf"; # firefox, librewolf, qutebrowser
       editor = "neovim"; # neovim, vscode
 
       # List all themes: $ nix build nixpkgs#base16-schemes && ls result/share/themes
-      theme = "catppuccin-mocha"; #tokyo-night-dark, one-dark
+      theme = "catppuccin-mocha"; # tokyo-night-dark, one-dark
       background = "aurora_borealis.png";
+
+      plasma = false;
+      gnome = false;
+      hyprland = true;
     };
 
     system = "x86_64-linux";

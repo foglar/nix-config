@@ -36,9 +36,6 @@
   sys = {
     audio.enable = true;
     desktop = {
-      plasma.enable = false;
-      gnome.enable = false;
-      hyprland.enable = true;
       steamdeck.enable = true;
     };
     fonts.packages = true;

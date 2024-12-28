@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  userSettings,
   ...
 }: {
   imports = [
@@ -21,9 +22,18 @@
   sys = {
     audio.enable = lib.mkDefault true;
     desktop = {
-      plasma.enable = lib.mkDefault true;
-      gnome.enable = lib.mkDefault false;
-      hyprland.enable = lib.mkDefault true;
+      plasma.enable =
+        if userSettings.plasma == true
+        then lib.mkDefault true
+        else lib.mkDefault false;
+      gnome.enable =
+        if userSettings.gnome == true
+        then lib.mkDefault true
+        else lib.mkDefault false;
+      hyprland.enable =
+        if userSettings.hyprland == true
+        then lib.mkDefault true
+        else lib.mkDefault false;
     };
     fonts.packages = lib.mkDefault true;
     locales.enable = lib.mkDefault true;
