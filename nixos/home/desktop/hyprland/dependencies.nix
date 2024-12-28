@@ -67,7 +67,7 @@
       '')
 
       (writeShellScriptBin "background-switch-random" ''
-        directory=$HOME/dotfiles/config/backgrounds/
+        directory=$HOME/Pictures/backgrounds/
         monitor=$(hyprctl monitors | grep Monitor | awk '{print $2}')
 
         if [ -d "$directory" ]; then

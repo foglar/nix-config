@@ -2,6 +2,9 @@
 
 - This is my daily driver profile and template configuration for most people
 
+> [!IMPORTANT]
+> Don't forget that some configuration decisions should be set in [flake.nix](../flake.nix) file
+
 ## Configuration
 
 - In [configuration.nix](./configuration.nix) you have system configuration settings.

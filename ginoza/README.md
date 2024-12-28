@@ -1,6 +1,11 @@
 # Ginoza System Profile
 
 - This is configuration profile for my old notebook that have only 32GB of space so it is pretty limited only to basic stuff
+- It is usefull for experimenting, I am using it as a simple VM or testing lab
+- I am only importing GNOME to this profile
+
+> [!IMPORTANT]
+> Don't forget that some configuration decisions should be set in [flake.nix](../flake.nix) file
 
 ## Configuration
 

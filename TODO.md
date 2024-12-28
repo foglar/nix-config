@@ -27,6 +27,8 @@
 - [ ] NVIDIA options
 - [ ] fix plasma manager and extend gnome configuration
 - [ ] nix-on-droid
+- [ ] ssh public key deployment
+- [ ] consider moving userSettings from flake.nix to each profile
 
 - [ ] update my home page and create new web
 - [ ] fix kde theme in stylix
