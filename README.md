@@ -11,10 +11,12 @@
 
 ## Showcase
 
-![Screenshot1](./docs/screenshot1.png)
-![Screenshot2](./docs/screenshot2.png)
-![Screenshot4](./docs/screenshot4.png)
-![Screenshot6](./docs/screenshot6.png)
+<div>
+<img width="300" src="./docs/screenshot1.png" />
+<img width="300" src="./docs/screenshot2.png" />
+<img width="300" src="./docs/screenshot4.png" />
+<img width="300" src="./docs/screenshot6.png" />
+</div>
 
 ## Build and deploy
 
