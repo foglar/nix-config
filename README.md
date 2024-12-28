@@ -15,7 +15,7 @@
 
 ```bash
 git clone https://git.foglar.tech/foglar/dotfiles.git $HOME/.dotfiles
-sudo nixos-rebuild switch --flake ~/.dotfiles#kogami
+sudo nixos-rebuild switch --flake ~/.dotfiles#kogami --update # To update flake.lock file
 ```
 
 - generate a vm of the flake with this command

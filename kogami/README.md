@@ -44,6 +44,7 @@
 
 - In [home.nix](./home.nix) you have user/home-manager configuration.
 - Also I am using custom application lists in [apps](../nixos/home/apps/)
+- In this configuration I am using [NixOS helper](https://github.com/viperML/nh) for rebulding my system `nh os switch`
 
 | Home configuration |
 | ------------------ |
