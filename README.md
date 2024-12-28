@@ -35,8 +35,8 @@ sudo nixos-rebuild switch --flake ~/.dotfiles#kogami
 ## Profiles
 
 - The system consists currently from 2 profiles:
-  - [Kogami](./kogami/configuration.nix) - My daily driver notebook
-  - [Ginoza](./ginoza/configuration.nix) - Old notebook, only essentials installed
+  - [Kogami](./kogami/) - My daily driver notebook
+  - [Ginoza](./ginoza/) - Old notebook, only essentials installed
 
 ### Custom setup
 
