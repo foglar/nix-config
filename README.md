@@ -13,9 +13,7 @@
 
 ![Screenshot1](./docs/screenshot1.png)
 ![Screenshot2](./docs/screenshot2.png)
-![Screenshot3](./docs/screenshot3.png)
 ![Screenshot4](./docs/screenshot4.png)
-![Screenshot5](./docs/screenshot5.png)
 ![Screenshot6](./docs/screenshot6.png)
 
 ## Build and deploy
