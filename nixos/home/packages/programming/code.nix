@@ -192,7 +192,7 @@
     (lib.mkIf config.program.vscode.markdown.enable {
       programs.vscode.userSettings = {
         "[markdown]" = {
-          "editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
+          "editor.defaultFormatter" = "yzhang.markdown-all-in-one";
         };
       };
 

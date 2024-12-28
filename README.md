@@ -37,10 +37,6 @@ sudo nixos-rebuild switch --flake ~/.dotfiles#kogami
 - The system consists currently from 2 profiles:
   - [Kogami](./kogami/configuration.nix) - My daily driver notebook
   - [Ginoza](./ginoza/configuration.nix) - Old notebook, only essentials installed
-  - Nix-On-Droid - in future
-  - Nix on not nix-distro - in future
-  - Nix server - in future
-  - Nix in WSL - in future
 
 ### Custom setup
 
@@ -50,6 +46,7 @@ sudo nixos-rebuild switch --flake ~/.dotfiles#kogami
   - for system packages in [packages.nix](./nixos/system/packages.nix)
   - for home-manager or user configuration in [home.nix](./nixos/home/packages/packages.nix)
 - Many options are by default set to true, so you should disable them in your own configuration
+
 > [!IMPORTANT]
 > Don't forget to edit your username in [flake.nix](./flake.nix) and other settings like preffered shell and browser etc...
 
@@ -74,13 +71,15 @@ sudo nixos-rebuild switch --flake ~/.dotfiles#kogami
 
 > [!TIP]
 > Whole system is very configurable and customizable.
-> You can change default applications right in [flake.nix](./flake.nix) under userSettings
+> You can change default applications right in [flake.nix](./flake.nix) under userSettings.
+> You can change your default system from Hyprland to GNOME or KDE, or maybe have all of them at the same time
 
-- you can change your default system from Hyprland to GNOME or KDE, or maybe have all of them at the same time
+- To explore what you can configure look into [packages](./nixos/home/packages/) for home-manager options, or into [system](./nixos/system/) for system configuration and packages
+- In directory [apps](./nixos/home/apps/) are application lists, that can be installed, think of them as lists of applications
 
 ### Secure Operations
 
-- private key for sops is in **~/.config/sops/ags/keys.txt**
+- Private key for sops is in **~/.config/sops/ags/keys.txt**
 
 - Generate your key using this command:
 
@@ -88,8 +87,8 @@ sudo nixos-rebuild switch --flake ~/.dotfiles#kogami
 nix-shell nixpkgs#age -c age-keygen -o ~/.config/sops/age/keys.txt
 ```
 
-- secrets are managed in yaml file [secrets.yaml](./nixos/system/packages/sops/secrets/secrets.yaml)
-- things that are actually managed in sops configuration:
+- Secrets are managed in yaml file [secrets.yaml](./nixos/system/packages/sops/secrets/secrets.yaml)
+- Things that are actually managed in sops configuration:
   - SSH keys
   - Passwords
   - Yubikey ID
@@ -97,12 +96,12 @@ nix-shell nixpkgs#age -c age-keygen -o ~/.config/sops/age/keys.txt
 > [!NOTE]
 > This configuration will work fine even without SOPS configuration, if you don't need it justs ignore it.
 
-- for more information about SOPS and NixOS look at [Vimjoyer's](https://www.youtube.com/@vimjoyer/featured) [video on youtube](https://www.youtube.com/watch?v=G5f6GC7SnhU) or in [sops-nix repository](https://github.com/Mic92/sops-nix)
+- For more information about SOPS and NixOS look at [Vimjoyer's](https://www.youtube.com/@vimjoyer/featured) [video on youtube](https://www.youtube.com/watch?v=G5f6GC7SnhU) or in [sops-nix repository](https://github.com/Mic92/sops-nix)
 
 ### Yubikey
 
-- setup your Yubikey to work with current user
-- change your Yubikey ID in [yubikey.nix](./nixos/system/packages/yubikey.nix) or in [sops.nix](./nixos/system/packages/sops/sops.nix), you can add multiple IDs.
+- Setup your Yubikey to work with current user.
+- Change your Yubikey ID in [yubikey.nix](./nixos/system/packages/yubikey.nix) or in [sops.nix](./nixos/system/packages/sops/sops.nix), you can add multiple IDs.
 - If you have multiple Yubikeys, run this for each of them.
 
 ```bash
@@ -147,7 +146,7 @@ nvim /nixos/system/packages/ssh-client.nix
 
 ## Sources of inspiration
 
-- [EmergentMind's Nix-Config](https://github.com/EmergentMind/nix-config) - explanation of yubikey setup and declarative configuration of SSH keys
+- [EmergentMind's Nix-Config](https://github.com/EmergentMind/nix-config) - explanation of Yubikey setup and declarative configuration of SSH keys
   - [YT video](https://www.youtube.com/watch?v=3CeXbONjIgE)
 - [LibrePhoenix's Nix-Config](https://github.com/librephoenix/nixos-config) - if else options and modular control center
   - [YT video about modular control center](https://www.youtube.com/watch?v=H_Qct7TVB6o)
