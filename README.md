@@ -14,7 +14,9 @@
 <div>
 <img width="300" src="./docs/screenshot1.png" />
 <img width="300" src="./docs/screenshot2.png" />
+<img width="100" src="./docs/screenshot3.png" />
 <img width="300" src="./docs/screenshot4.png" />
+<img width="100" src="./docs/screenshot5.png" />
 <img width="300" src="./docs/screenshot6.png" />
 </div>
 
