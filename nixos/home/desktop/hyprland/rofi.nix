@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  userSettings,
   ...
 }: {
   options = {
@@ -58,7 +59,7 @@
           orientation = mkLiteral "vertical";
           children = ["inputbar" "listbox"];
           background-color = mkLiteral "transparent";
-          background-image = mkLiteral "url(\"~/.dotfiles/config/backgrounds/aurora_borealis.png\", HEIGHT)";
+          background-image = mkLiteral "url(\"~/.dotfiles/config/backgrounds/${userSettings.background}\", HEIGHT)";
         };
 
         # Input bar settings
@@ -68,7 +69,7 @@
           padding = mkLiteral "5em";
           children = ["entry"];
           background-color = mkLiteral "transparent";
-          background-image = mkLiteral "url(\"~/.dotfiles/config/backgrounds/aurora_borealis.png\", WIDTH)";
+          background-image = mkLiteral "url(\"~/.dotfiles/config/backgrounds/${userSettings.background}\", WIDTH)";
         };
 
         # Entry field settings
