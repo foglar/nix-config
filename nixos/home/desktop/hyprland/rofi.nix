@@ -9,7 +9,7 @@
   };
 
   imports = [
-      ./clipboard-rofi.nix
+    ./clipboard-rofi.nix
   ];
 
   config = lib.mkIf config.desktop.hyprland.rofi.enable {
@@ -35,7 +35,7 @@
           font = "JetBrainsMono Nerd Font 10";
           icon-theme = "Tela-circle-dracula";
         };
-      
+
         # Main window settings
         "window" = {
           height = mkLiteral "35em";
@@ -49,7 +49,7 @@
           #border-color = mkLiteral "@main-br"; # replace with actual color hex if needed
           #background-color = mkLiteral "@main-bg";
         };
-      
+
         # Mainbox settings
         "mainbox" = {
           enabled = true;
@@ -58,9 +58,9 @@
           orientation = mkLiteral "vertical";
           children = ["inputbar" "listbox"];
           background-color = mkLiteral "transparent";
-          background-image = mkLiteral "url(\"~/.dotfiles/config/backgrounds/aurora_borealis.png\", height)";
+          background-image = mkLiteral "url(\"~/.dotfiles/config/backgrounds/aurora_borealis.png\", HEIGHT)";
         };
-      
+
         # Input bar settings
         "inputbar" = {
           enabled = true;
@@ -68,9 +68,9 @@
           padding = mkLiteral "5em";
           children = ["entry"];
           background-color = mkLiteral "transparent";
-          background-image = mkLiteral "url(\"~/.dotfiles/config/backgrounds/aurora_borealis.png\", width)";
+          background-image = mkLiteral "url(\"~/.dotfiles/config/backgrounds/aurora_borealis.png\", WIDTH)";
         };
-      
+
         # Entry field settings
         "entry" = {
           border-radius = mkLiteral "2em";
@@ -80,7 +80,7 @@
           #text-color = mkLiteral "@main-fg";
           #background-color = mkLiteral "@main-bg";
         };
-      
+
         # Listbox settings
         "listbox" = {
           padding = mkLiteral "0em";
@@ -89,7 +89,7 @@
           children = ["listview" "mode-switcher"];
           #background-color = mkLiteral "@main-bg";
         };
-      
+
         # List view settings
         "listview" = {
           padding = mkLiteral "1.5em";
@@ -108,7 +108,7 @@
           background-color = mkLiteral "transparent";
           #text-color = mkLiteral "@main-fg";
         };
-      
+
         # Mode switcher settings
         "mode-switcher" = {
           orientation = mkLiteral "vertical";
@@ -118,7 +118,7 @@
           spacing = mkLiteral "1.5em";
           background-color = mkLiteral "transparent";
         };
-      
+
         # Button settings
         "button" = {
           cursor = "pointer";
@@ -130,7 +130,7 @@
           #background-color = mkLiteral "@main-fg";
           #text-color = mkLiteral "@main-bg";
         };
-      
+
         # Element settings
         "element" = {
           enabled = true;
@@ -144,7 +144,7 @@
           #background-color = mkLiteral "@select-bg";
           #text-color = mkLiteral "@select-fg";
         };
-      
+
         # Icon element settings
         "element-icon" = {
           size = mkLiteral "3em";
@@ -152,7 +152,7 @@
           #background-color = mkLiteral "transparent";
           #text-color = mkLiteral "inherit";
         };
-      
+
         # Text element settings
         "element-text" = {
           vertical-align = mkLiteral "0.5";
@@ -161,7 +161,7 @@
           #background-color = mkLiteral "transparent";
           #text-color = mkLiteral "inherit";
         };
-      
+
         # Error message settings
         "error-message" = {
           #text-color = mkLiteral "@main-fg";
@@ -169,7 +169,7 @@
           text-transform = mkLiteral "capitalize";
           children = ["textbox"];
         };
-      
+
         # Textbox settings
         "textbox" = {
           #text-color = mkLiteral "inherit";
@@ -178,6 +178,6 @@
           horizontal-align = mkLiteral "0.5";
         };
       };
-    };  
+    };
   };
 }

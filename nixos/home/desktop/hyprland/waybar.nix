@@ -225,9 +225,9 @@
             format = "{}";
             rotate = 0;
             exec = "echo ; echo 󰅇 clipboard history";
-            on-click = "sleep 0.1 && cliphist.sh c";
-            on-click-right = "sleep 0.1 && cliphist.sh d";
-            on-click-middle = "sleep 0.1 && cliphist.sh w";
+            on-click = "sleep 0.1 && clipboard d";
+            on-click-right = "sleep 0.1 && clipboard";
+            on-click-middle = "sleep 0.1 && clipboard";
             interval = 86400; # once every day;
             tooltip = true;
           };

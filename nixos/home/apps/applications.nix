@@ -21,7 +21,7 @@
         libreoffice
         localsend
         kdePackages.kdeconnect-kde
-        vlc
+        mpv
         openrocket
         spotube
         inkscape

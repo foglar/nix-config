@@ -246,7 +246,7 @@
           "$mod, Tab, exec, ${pkgs.toybox}/bin/pkill -x rofi || ${pkgs.rofi-wayland}/bin/rofi -show window"
           "$mod+Shift, E, exec, ${pkgs.toybox}/bin/pkill -x rofi || ${pkgs.rofi-wayland}/bin/rofi -show emoji"
           # Clipboard manager
-          "$mod, V, exec, ${pkgs.toybox}/bin/pkill -x rofi || clipboard"
+          "$mod, V, exec, ${pkgs.toybox}/bin/pkill -x rofi || clipboard d"
 
           # Grouped Windows
           "$mod CTRL, H, changegroupactive, b"
