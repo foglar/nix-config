@@ -19,7 +19,7 @@
       cliphist
       (writeShellScriptBin "clipboard" ''
       export confDir="''${XDG_CONFIG_HOME:-$HOME/.config}"
-      roconf="''${confDir}/rofi/clipboard.rasi"
+      roconf="''${confDir}/rofi/cliboard.rasi"
       favoritesFile="''${HOME}/.cliphist_favorites"
       
       if printenv HYPRLAND_INSTANCE_SIGNATURE &> /dev/null; then
