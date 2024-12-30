@@ -3,6 +3,11 @@
   pkgs-stable,
   ...
 }: {
+  # Keyboard image for keyboard switch layout
+  home.file = {
+    ".local/share/icons/kogami/keyboard.svg".source = ../../../../config/icons/keyboard.svg;
+  };
+
   home.packages =
     (with pkgs; [
       hypridle
@@ -63,7 +68,7 @@
       (writeShellScriptBin "keyboardswitch" ''
         hyprctl switchxkblayout all next
         layMain=$(hyprctl -j devices | ${pkgs.jq}/bin/jq '.keyboards' | ${pkgs.jq}/bin/jq '.[] | select (.main == true)' | awk -F '"' '{if ($2=="active_keymap") print $4}')
-        ${libnotify}/bin/notify-send -a "t1" -r 91190 -t 800 "$layMain" -i ~/dotfiles/config/icons/keyboard.svg
+        ${libnotify}/bin/notify-send -a "t1" -r 91190 -t 800 "$layMain" -i ~/.local/share/icons/kogami/keyboard.svg
       '')
 
       (writeShellScriptBin "background-switch-random" ''
