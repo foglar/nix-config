@@ -11,6 +11,8 @@
 
 ## Showcase
 
+[![Watch the video](https://raw.githubusercontent.com/foglar/nixos-config/refs/heads/master/docs/screenshot4.png)](https://github.com/foglar/nixos-config/raw/refs/heads/master/docs/demo.mp4)
+
 <div>
 <img width="300" src="./docs/screenshot1.png" />
 <img width="300" src="./docs/screenshot2.png" />
