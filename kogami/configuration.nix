@@ -45,7 +45,10 @@
       enable = true;
       blueman.enable = true;
     };
-    nvidia.enable = true;
+    nvidia = {
+      enable = true;
+      mode = "offload";
+    };
     printing.enable = true;
     login = {
       sddm.enable = true;

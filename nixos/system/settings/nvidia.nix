@@ -4,22 +4,23 @@
   ...
 }: {
   options = {
-    sys.nvidia = lib.mkOption {
-      type = lib.types.attrs;
-      default = {
-        enable = false;
-        disable = false;
-      };
+    sys.nvidia.enable = lib.mkEnableOption "Enable NVIDIA graphics support";
+
+    sys.nvidia.mode = lib.mkOption {
+      type = lib.types.enum ["offload" "sync" "reverse" "disable" "none"];
+      default = "none";
       description = ''
-        NVIDIA graphics support.
+        NVIDIA graphics mode.
       '';
     };
-    sys.nvidiaRTX.enable = lib.mkEnableOption "Enable NVIDIA Prime graphics support";
-    sys.nvidiaRTX.disable = lib.mkEnableOption "Disable NVIDIA graphics completely";
+    sys.nvidia.optimus.offload = lib.mkEnableOption "Enable NVIDIA Prime graphics support";
+    sys.nvidia.optimus.sync = lib.mkEnableOption "Enable NVIDIA Prime sync";
+    sys.nvidia.optimus.reverse = lib.mkEnableOption "Enable NVIDIA Prime reverse sync";
+    sys.nvidia.disable = lib.mkEnableOption "Disable NVIDIA graphics completely";
   };
 
   config = lib.mkMerge [
-    (lib.mkIf config.sys.nvidiaRTX.enable {
+    (lib.mkIf config.sys.nvidia.enable {
       hardware = {
         graphics.enable = true;
       };
@@ -54,17 +55,27 @@
         nvidiaSettings = true;
         prime.amdgpuBusId = "pci@000:04:0";
         prime.nvidiaBusId = "pci@000:01:0";
-
-        prime.offload = {
-          enable = true;
-          enableOffloadCmd = true;
-        };
-
         # Optionally, you may need to select the appropriate driver version for your specific GPU.
         package = config.boot.kernelPackages.nvidiaPackages.stable;
       };
     })
-    (lib.mkIf config.sys.nvidiaRTX.disable {
+    (lib.mkIf config.sys.nvidia.optimus.offload {
+      hardware.nvidia.prime.offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+    })
+    (lib.mkIf config.sys.nvidia.optimus.sync {
+      hardware.nvidia.prime.sync.enable = true;
+    })
+    (lib.mkIf config.sys.nvidia.optimus.reverse {
+      hardware.nvidia.prime = {
+        reverseSync.enable = true;
+        # Enable if using an external GPU
+        allowExternalGpu = false;
+      };
+    })
+    (lib.mkIf config.sys.nvidia.disable {
       boot.extraModprobeConfig = ''
         blacklist nouveau
         options nouveau modeset=0

@@ -28,6 +28,7 @@
       wlogout.enable = lib.mkDefault true;
     };
 
+    # XDG Portals configuration
     xdg.portal.enable = true;
     xdg.portal.config = {
       common = {
@@ -36,11 +37,11 @@
     };
     xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland];
 
+    # Services for the Hyprland module
     services.network-manager-applet.enable = true;
     services.dunst.enable = true;
 
-    programs.hyprlock.enable = true;
-
+    # Home session variables
     home.sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";

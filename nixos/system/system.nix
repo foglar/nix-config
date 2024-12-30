@@ -42,16 +42,29 @@
       enable = lib.mkDefault true;
       blueman.enable = lib.mkDefault true;
     };
-    nvidia.enable = lib.mkDefault false;
 
-    nvidiaRTX.enable =
-      if config.sys.nvidia.enable == true
-      then lib.mkDefault true
-      else lib.mkDefault false;
-    nvidiaRTX.disable =
-      if config.sys.nvidia.enable == true
-      then lib.mkDefault false
-      else lib.mkDefault true;
+    nvidia = {
+      enable = lib.mkDefault false;
+      mode = lib.mkDefault "none";
+      optimus = {
+        offload =
+          if config.sys.nvidia.mode == "offload"
+          then true
+          else false;
+        sync =
+          if config.sys.nvidia.mode == "sync"
+          then true
+          else false;
+        reverse =
+          if config.sys.nvidia.mode == "reverse"
+          then true
+          else false;
+      };
+      disable =
+        if config.sys.nvidia.mode == "disable"
+        then true
+        else false;
+    };
 
     printing.enable = lib.mkDefault true;
     login = {

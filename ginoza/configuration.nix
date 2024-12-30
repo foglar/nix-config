@@ -42,8 +42,9 @@
       enable = true;
       blueman.enable = false;
     };
-    nvidiaRTX.enable = false;
-    nvidiaRTX.disable = false;
+    nvidia = {
+      enable = false;
+    };
     printing.enable = true;
     login = {
       sddm.enable = false;
