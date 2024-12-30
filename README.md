@@ -11,8 +11,6 @@
 
 ## Showcase
 
-[![Watch the video](https://github.com/foglar/nix-config/raw/refs/heads/master/docs/demo.mp4)
-
 <div>
 <img width="300" src="./docs/screenshot1.png" />
 <img width="300" src="./docs/screenshot2.png" />

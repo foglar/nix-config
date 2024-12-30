@@ -29,6 +29,8 @@
 - [ ] nix-on-droid
 - [ ] ssh public key deployment
 - [ ] consider moving userSettings from flake.nix to each profile
+- [ ] fix colors in waybar
+- [ ] fix wlogout
 
 - [ ] update my home page and create new web
 - [ ] fix kde theme in stylix

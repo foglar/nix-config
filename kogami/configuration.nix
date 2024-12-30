@@ -76,7 +76,7 @@
   programs.wireshark.enable = true;
   programs.auto-cpufreq.enable = true;
 
-  environment.systemPackages = [inputs.ghostty];
+  environment.systemPackages = [inputs.ghostty.packages.x86_64-linux.default];
 
   #services.twingate.enable = true;
 
