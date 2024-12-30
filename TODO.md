@@ -16,7 +16,8 @@
 - [x] power profiles solution in waybar
 - [x] auto-cpufreq
 - [x] ssh config module
-- [ ] modularity connected via configuration.nix file with home manager (disable gnome, gnome configuration will be disabled too)
+- [x] fix colors in waybar
+- [x] modularity connected via configuration.nix file with home manager (disable gnome, gnome configuration will be disabled too)
 - [ ] neovim
 - [ ] librewolf and firefox fix, extensions and bookmarks in librewolf
 - [ ] graph of my system structure
@@ -29,7 +30,6 @@
 - [ ] nix-on-droid
 - [ ] ssh public key deployment
 - [ ] consider moving userSettings from flake.nix to each profile
-- [ ] fix colors in waybar
 - [ ] fix wlogout
 
 - [ ] update my home page and create new web

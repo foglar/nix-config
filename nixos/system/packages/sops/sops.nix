@@ -2,6 +2,7 @@
   lib,
   config,
   userSettings,
+  pkgs,
   ...
 }: {
   options = {
@@ -18,9 +19,13 @@
       neededForUsers = true;
     };
 
+    environment.systemPackages = with pkgs; [
+      sops
+    ];
+
     # SSH private keys
     sops.secrets = {
-      "ssh_keys/masaoka" = {
+      "ssh_keys/masaoka_private" = {
         path = "/home/${userSettings.username}/.ssh/id_masaoka";
         owner = userSettings.username;
         group = "users";

@@ -98,6 +98,7 @@ sudo nixos-rebuild switch --flake ~/.dotfiles#kogami
 ### Secure Operations
 
 - Private key for sops is in **~/.config/sops/ags/keys.txt**
+- You should change your public key after generation in [.sops.yaml](./nixos/system/packages/sops/.sops.yaml)
 
 - Generate your key using this command:
 
