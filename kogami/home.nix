@@ -68,17 +68,6 @@
     fzf.enable = true;
   };
 
-  home.file = {
-    ".config/hypr/mocha.conf".source = ../config/mocha.conf;
-    ".config/hypr/hypridle.conf".source = ../config/hypridle.conf;
-    ".prettierrc".text = ''
-      {
-        "tabWidth": 4,
-        "useTabs": true
-      }
-    '';
-  };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

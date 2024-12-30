@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   userSettings,
   ...
 }: {
@@ -101,7 +102,6 @@
     bat.enable = lib.mkDefault true;
     btop.enable = lib.mkDefault true;
     fzf.enable = lib.mkDefault true;
-    neovim.enable = lib.mkDefault true;
   };
 
   home.packages = with pkgs; [
@@ -109,4 +109,13 @@
     nh
     nixd
   ];
+
+  home.file = {
+    ".prettierrc".text = ''
+      {
+        "tabWidth": 4,
+        "useTabs": true
+      }
+    '';
+  };
 }

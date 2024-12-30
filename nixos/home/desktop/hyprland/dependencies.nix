@@ -6,6 +6,7 @@
   # Keyboard image for keyboard switch layout
   home.file = {
     ".local/share/icons/kogami/keyboard.svg".source = ../../../../config/icons/keyboard.svg;
+    ".config/hypr/hypridle.conf".source = ./hypridle.conf;
   };
 
   home.packages =
