@@ -9,7 +9,6 @@
   };
 
   config = lib.mkIf config.program.tmux.enable {
-          
     stylix.targets.tmux.enable = true;
 
     programs.tmux = {
@@ -53,7 +52,6 @@
         set -g base-index 1
         set -g pane-base-index 1
         set-window-option -g pane-base-index 1
-        set-option -g renumber-windows only
 
         bind -n M-H previous-window
         bind -n M-L next-window

@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  userSettings,
   ...
 }: {
   options = {
@@ -287,13 +288,20 @@
       };
 
       style = ''
-        @define-color bar-bg rgba(0, 0, 0, 0);
-        @define-color main-bg #11111b;
-        @define-color main-fg #cdd6f4;
-        @define-color wb-act-bg #a6adc8;
-        @define-color wb-act-fg #313244;
-        @define-color wb-hvr-bg #f5c2e7;
-        @define-color wb-hvr-fg #313;
+        ${
+          if
+            (
+              userSettings.theme == "catppuccin-mocha" || userSettings.theme == "tokyo-night-dark"
+            )
+          then "@define-color bar-bg rgba(0, 0, 0, 0);
+          @define-color main-bg #11111b;
+          @define-color main-fg #cdd6f4;
+          @define-color wb-act-bg #a6adc8;
+          @define-color wb-act-fg #313244;
+          @define-color wb-hvr-bg #f5c2e7;
+          @define-color wb-hvr-fg #313;"
+          else ""
+        }
         * {
           border: none;
           border-radius: 0px;
