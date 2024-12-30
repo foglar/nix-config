@@ -113,7 +113,7 @@ nix-shell nixpkgs#age -c age-keygen -o ~/.config/sops/age/keys.txt
   - Yubikey ID
 
 > [!NOTE]
-> This configuration will work fine even without SOPS configuration, if you don't need it justs ignore it.
+> This configuration will work fine even without SOPS configuration, if you don't need it just ignore it.
 
 - For more information about SOPS and NixOS look at [Vimjoyer's](https://www.youtube.com/@vimjoyer/featured) [video on youtube](https://www.youtube.com/watch?v=G5f6GC7SnhU) or in [sops-nix repository](https://github.com/Mic92/sops-nix)
 
@@ -129,7 +129,7 @@ ykman otp chalresp --touch --generate 2
 ykpamcfg -2 -v
 ```
 
-- test your Yubikey with commands
+- Test your Yubikey with commands
 
 ```bash
 nix-shell -p pamtester
@@ -137,12 +137,12 @@ pamtester login <username> authenticate
 pamtester sudo <username> authenticate
 ```
 
-- for more information about Yubikeys and NixOS look at the [nixos wiki](https://nixos.wiki/wiki/Yubikey) or [EmergentMind's](https://github.com/EmergentMind) [video on youtube](https://www.youtube.com/watch?v=3CeXbONjIgE)
+- For more information about Yubikeys and NixOS look at the [nixos wiki](https://nixos.wiki/wiki/Yubikey) or [EmergentMind's](https://github.com/EmergentMind) [video on youtube](https://www.youtube.com/watch?v=3CeXbONjIgE)
 
 ### SSH configuration
 
-- declarative ssh keys configuration
-- will be simplified in near future
+- Declarative ssh keys configuration
+- Will be simplified in near future
 
 ```bash
 nix-shell -p sops neovim

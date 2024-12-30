@@ -18,6 +18,8 @@
 - [x] ssh config module
 - [x] fix colors in waybar
 - [x] modularity connected via configuration.nix file with home manager (disable gnome, gnome configuration will be disabled too)
+- [x] NVIDIA options
+- [x] fix wlogout
 - [ ] neovim
 - [ ] librewolf and firefox fix, extensions and bookmarks in librewolf
 - [ ] graph of my system structure
@@ -25,12 +27,11 @@
 - [ ] modularize hyprland config into multiple files
 - [ ] consider moving nh config helper into module
 - [ ] make static background folder and figure out how to simply manage backgrounds across my devices
-- [ ] NVIDIA options
 - [ ] fix plasma manager and extend gnome configuration
 - [ ] nix-on-droid
 - [ ] ssh public key deployment
 - [ ] consider moving userSettings from flake.nix to each profile
-- [ ] fix wlogout
+- [ ] fix rofi cliboard manager by moving it into separate file managed by nix
 
 - [ ] update my home page and create new web
 - [ ] fix kde theme in stylix
