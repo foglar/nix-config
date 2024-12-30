@@ -76,6 +76,8 @@
   programs.wireshark.enable = true;
   programs.auto-cpufreq.enable = true;
 
+  environment.systemPackages = [inputs.ghostty];
+
   #services.twingate.enable = true;
 
   # Allow unfree packages
