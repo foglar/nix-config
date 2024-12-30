@@ -8,6 +8,7 @@
 # dotfiles
 
 - best NixOS starter dotfiles in the **flake** setup
+- for latest changes look [here](https://git.foglar.tech/foglar/dotfiles.git)
 
 ## Showcase
 
