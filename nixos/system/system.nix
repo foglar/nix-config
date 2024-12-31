@@ -15,12 +15,14 @@
     ./settings/loginManager.nix
     ./settings/style.nix
     ./settings/default-applications.nix
+    ./settings/bootloader.nix
 
     ./settings/user.nix
   ];
 
   sys = {
     audio.enable = lib.mkDefault true;
+    bootloader.systemd-boot.enable = lib.mkDefault true;
     desktop = {
       plasma.enable =
         if userSettings.plasma == true

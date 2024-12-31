@@ -23,12 +23,10 @@
     };
   };
 
-  # Bootloader
-  boot.loader.systemd-boot.enable = true;
-
   # System level configuration
   sys = {
     audio.enable = true;
+    bootloader.systemd-boot.enable = true;
     desktop = {
       plasma.enable = false;
       gnome.enable = true;
