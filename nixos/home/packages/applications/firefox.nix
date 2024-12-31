@@ -136,15 +136,18 @@
         extensions = with inputs.firefox-addons.packages."x86_64-linux";
           [
             ublock-origin
+            # Lists all possible extensions $ nix-env -f '<nixpkgs>' -qaP -A nur.repos.rycee.firefox-addons
           ]
           ++ (
             if (userSettings.username == "shinya")
-            then [
-              inputs.firefox-addons.packages."x86_64-linux".simple-translate
-              inputs.firefox-addons.packages."x86_64-linux".duckduckgo-privacy-essentials
-              inputs.firefox-addons.packages."x86_64-linux".return-youtube-dislikes
-              inputs.firefox-addons.packages."x86_64-linux".user-agent-string-switcher
-            ]
+            then
+              with inputs.firefox-addons.packages."x86_64-linux"; [
+                #enhancer-for-youtube
+                simple-translate
+                duckduckgo-privacy-essentials
+                return-youtube-dislikes
+                user-agent-string-switcher
+              ]
             else []
           );
       };
