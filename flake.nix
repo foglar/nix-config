@@ -144,12 +144,13 @@
     nixOnDroidConfigurations = {
       tsunemori = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
         pkgs = import inputs.nixpkgs-droid {system = "aarch64-linux";};
+        system = "aarch64-linux";
         modules = [
           ./tsunemori/configuration.nix
         ];
 
         extraSpecialArgs = {
-          inherit inputs pkgs pkgs-stable userSettings;
+          inherit inputs userSettings;
         };
       };
     };

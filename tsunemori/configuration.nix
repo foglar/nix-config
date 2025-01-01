@@ -1,7 +1,6 @@
 {
   inputs,
   pkgs,
-  pkgs-stable,
   userSettings,
   ...
 }: {
@@ -14,7 +13,7 @@
     backupFileExtension = "hm-bak";
     useGlobalPkgs = true;
 
-    extraSpecialArgs = {inherit inputs pkgs pkgs-stable userSettings;};
+    extraSpecialArgs = {inherit inputs userSettings;};
   };
 
   # Simply install just the packages
