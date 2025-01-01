@@ -148,7 +148,7 @@
           ./tsunemori/configuration.nix
         ];
 
-        specialArgs = {
+        extraSpecialArgs = {
           inherit inputs system pkgs pkgs-stable userSettings;
         };
       };
