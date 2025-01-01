@@ -17,7 +17,7 @@
       figlet
       jp2a
       yt-dlp
-      nvtopPackages.full
+      #nvtopPackages.full
       wget
       curl
       fzf
