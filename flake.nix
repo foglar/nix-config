@@ -174,7 +174,7 @@
 
       install = pkgs.writeShellApplication {
         name = "install";
-        runtimeInputs = with pkgs; [git busybox gum];
+        runtimeInputs = with pkgs; [git gum];
         text = ''
           #!/bin/sh
 
