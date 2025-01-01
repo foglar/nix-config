@@ -149,7 +149,7 @@
         ];
 
         extraSpecialArgs = {
-          inherit inputs system pkgs pkgs-stable userSettings;
+          inherit inputs pkgs pkgs-stable userSettings;
         };
       };
     };
