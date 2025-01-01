@@ -3,7 +3,13 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs-droid = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+
+    home-manager-droid = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs-droid";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -53,6 +59,12 @@
 
     ghostty = {
       url = "github:ghostty-org/ghostty";
+    };
+
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs-droid";
+      inputs.home-manager.follows = "home-manager-droid";
     };
   };
 
@@ -124,6 +136,14 @@
           ./ginoza/configuration.nix
           inputs.stylix.nixosModules.stylix
           inputs.sops-nix.nixosModules.sops
+        ];
+      };
+    };
+    nixOnDroidConfigurations = {
+      tsunemori = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+        pkgs = import inputs.nixpkgs-droid {system = "aarch64-linux";};
+        modules = [
+          ./tsunemori/configuration.nix
         ];
       };
     };
