@@ -16,7 +16,6 @@
     extraSpecialArgs = {inherit inputs userSettings;};
   };
 
-  user.userName = "${userSettings.username}";
   terminal.font = "${pkgs.nerd-fonts.terminess-ttf}share/fonts/truetype/NerdFonts/Terminess/TerminessNerdFont-Regular.ttf";
 
   # Simply install just the packages
