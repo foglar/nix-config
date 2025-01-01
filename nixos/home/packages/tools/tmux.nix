@@ -9,7 +9,7 @@
   };
 
   config = lib.mkIf config.program.tmux.enable {
-    stylix.targets.tmux.enable = true;
+    #stylix.targets.tmux.enable = true;
 
     programs.tmux = {
       enable = true;
