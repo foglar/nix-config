@@ -1,8 +1,8 @@
 {pkgs, ...}: {
-  #imports = [
-  #  ../nixos/system/packages.nix
-  #  ../nixos/system/system.nix
-  #];
+  imports = [
+    ../nixos/system/packages.nix
+    #  ../nixos/system/system.nix
+  ];
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -38,22 +38,22 @@
   #  };
   #  style.enable = false;
   #};
-#
-  #program = {
-  #  docker.enable = true;
-  #  podman.enable = false;
-  #  steam.enable = false;
-  #  proxychains.enable = false;
-  #  tor.enable = false;
-  #  virt-manager.enable = false;
-  #  virtualbox.enable = false;
-  #  yubikey = {
-  #    enable = false;
-  #    lock-on-remove = false;
-  #    notify = false;
-  #  };
-  #  ssh.client.enable = false;
-  #};
+  
+  program = {
+    docker.enable = true;
+    podman.enable = false;
+    steam.enable = false;
+    proxychains.enable = false;
+    tor.enable = false;
+    virt-manager.enable = false;
+    virtualbox.enable = false;
+    yubikey = {
+      enable = false;
+      lock-on-remove = false;
+      notify = false;
+    };
+    ssh.client.enable = false;
+  };
 
   #nixpkgs.config.allowUnfree = true;
 
@@ -62,6 +62,7 @@
     # User-facing stuff that you really really want to have
     neovim
     git
+    neofetch
 
     # Some common stuff that people expect to have
     #procps
