@@ -10,21 +10,28 @@
   };
 
   config = lib.mkIf config.app_list.terminal_tools.enable {
-    home.packages = with pkgs; [
-      btop
-      cmatrix
-      entr
-      figlet
-      jp2a
-      yt-dlp
-      #nvtopPackages.full
-      wget
-      curl
-      fzf
-      tldr
-      ranger
-      unzip
-    ];
+    home.packages = with pkgs;
+      [
+        btop
+        cmatrix
+        entr
+        figlet
+        jp2a
+        yt-dlp
+        wget
+        curl
+        fzf
+        tldr
+        ranger
+        unzip
+      ]
+      ++ (
+        if pkgs.system == "x86_64-linux"
+        then [
+          nvtopPackages.full
+        ]
+        else []
+      );
 
     nixpkgs.config.allowUnfreePredicate = pkg:
       builtins.elem (lib.getName pkg) [

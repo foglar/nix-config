@@ -16,15 +16,20 @@
       userEmail = "kohout.fi.2023@skola.ssps.cz";
     };
 
-    home.packages = with pkgs; [
-      git
-      github-cli
-      #gitkraken
-    ];
+    home.packages = with pkgs;
+      [
+        git
+        github-cli
+      ]
+      ++ (
+        if pkgs.system == "x86_64-linux"
+        then [gitkraken]
+        else []
+      );
 
-     nixpkgs.config.allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [
-          "gitkraken"
-        ];
+    nixpkgs.config.allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) [
+        "gitkraken"
+      ];
   };
 }
