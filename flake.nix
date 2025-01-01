@@ -150,6 +150,7 @@
 
         specialArgs = {
           inherit inputs system pkgs pkgs-stable userSettings;
+        };
       };
     };
   };
