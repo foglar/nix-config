@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "Running script"
+
 if [ $# -gt 0 ]; then
     SCRIPT_DIR=$1
 else
@@ -18,7 +20,7 @@ fi
 $EDITOR $SCRIPT_DIR/flake.nix
 
 profile=$(gum choose kogami ginoza)
-sudo nixos-rebuild build --flake $SCRIPT_DIR#"${profile}" --update 
+sudo nixos-rebuild build --flake $SCRIPT_DIR#"${profile}" --update
 
 gum confirm "Do you want to switch to the new configuration?" && sudo nixos-rebuild switch --flake $SCRIPT_DIR#"${profile}"
-gum confirm "Do you want to reboot now?" && sudo reboot
+gum confirm "Do you want to reboot now?" && systemctl reboot || echo "Please reboot later, to switch to the new configuration"
