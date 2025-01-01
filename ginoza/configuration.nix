@@ -26,7 +26,7 @@
   boot.loader.systemd-boot.enable = true;
   sys = {
     audio.enable = true;
-    bootloader.systemd-boot.enable = true;
+    #bootloader.systemd-boot.enable = true;
     desktop = {
       plasma.enable = false;
       gnome.enable = true;

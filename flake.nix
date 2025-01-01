@@ -111,7 +111,18 @@
         allowUnfree = true;
       };
     };
+
+    # Systems that can run tests:
+    supportedSystems = ["aarch64-linux" "i686-linux" "x86_64-linux"];
+
+    # Function to generate a set based on supported systems:
+    forAllSystems = inputs.nixpkgs.lib.genAttrs supportedSystems;
+
+    # Attribute set of nixpkgs for each system:
+    nixpkgsFor =
+      forAllSystems (system: import inputs.nixpkgs {inherit system;});
   in {
+    # NixOS Configurations
     nixosConfigurations = {
       kogami = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -141,6 +152,7 @@
         ];
       };
     };
+    # Phone Configurations
     nixOnDroidConfigurations = {
       tsunemori = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
         pkgs = import inputs.nixpkgs-droid {system = "aarch64-linux";};
@@ -153,5 +165,27 @@
         };
       };
     };
+
+    # Install script
+    packages = forAllSystems (system: let
+      pkgs = nixpkgsFor.${system};
+    in {
+      default = self.packages.${system}.install;
+
+      install = pkgs.writeShellApplication {
+        name = "install";
+        runtimeInputs = with pkgs; [git busybox gum ];
+        text = ''${./install.sh} "$@"'';
+      };
+    });
+
+    apps = forAllSystems (system: {
+      default = self.apps.${system}.install;
+
+      install = {
+        type = "app";
+        program = "${self.packages.${system}.install}/bin/install";
+      };
+    });
   };
 }
