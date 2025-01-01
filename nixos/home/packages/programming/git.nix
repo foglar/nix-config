@@ -19,7 +19,7 @@
     home.packages = with pkgs; [
       git
       github-cli
-      gitkraken
+      #gitkraken
     ];
 
      nixpkgs.config.allowUnfreePredicate = pkg:
