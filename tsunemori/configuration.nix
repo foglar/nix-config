@@ -60,7 +60,8 @@
   # Simply install just the packages
   environment.packages = with pkgs; [
     # User-facing stuff that you really really want to have
-    vim # or some other editor, e.g. nano or neovim
+    neovim
+    git
 
     # Some common stuff that people expect to have
     #procps
