@@ -77,6 +77,8 @@
 
           github.codespaces
 
+          nefrob.vscode-just-syntax
+
           # Remote
           ms-vscode-remote.remote-ssh
           ms-vscode-remote.remote-ssh-edit

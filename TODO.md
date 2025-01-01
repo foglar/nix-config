@@ -20,10 +20,10 @@
 - [x] modularity connected via configuration.nix file with home manager (disable gnome, gnome configuration will be disabled too)
 - [x] NVIDIA options
 - [x] fix wlogout
+- [x] cleanup hyprland subtools (rofi, hyprlock, waybar)
+- [x] fix rofi cliboard manager by moving it into separate file managed by nix
 - [ ] neovim
 - [ ] librewolf and firefox fix, extensions and bookmarks in librewolf
-- [ ] graph of my system structure
-- [ ] cleanup hyprland subtools (rofi, hyprlock, waybar)
 - [ ] modularize hyprland config into multiple files
 - [ ] consider moving nh config helper into module
 - [ ] make static background folder and figure out how to simply manage backgrounds across my devices
@@ -31,8 +31,12 @@
 - [ ] nix-on-droid
 - [ ] ssh public key deployment
 - [ ] consider moving userSettings from flake.nix to each profile
-- [ ] fix rofi cliboard manager by moving it into separate file managed by nix
+- [ ] add grub bootloader to configuration
+- [ ] stylix make in one place and check for each program if it is enabled (tmux)
+- [ ] distinguish between profiles and decide which version of nixpkgs it should use (my notebook unstable, server stable ...)
+- [ ] check nvtop if nvidia is enabled
 
 - [ ] update my home page and create new web
 - [ ] fix kde theme in stylix
+- [ ] graph of my system structure
 - [ ] ?tryout starship?
