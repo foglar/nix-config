@@ -29,10 +29,10 @@
     ];
   };
 
-  # System level configuration
+  boot.loader.systemd-boot.enable = true;
   sys = {
     audio.enable = true;
-    bootloader.systemd-boot.enable = true;
+    #bootloader.systemd-boot.enable = true;
     desktop = {
       steamdeck.enable = true;
     };
