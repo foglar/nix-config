@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  pkgs-stable,
+  userSettings,
+  ...
+}: {
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
@@ -7,6 +13,8 @@
     config = ./home.nix;
     backupFileExtension = "hm-bak";
     useGlobalPkgs = true;
+
+    extraSpecialArgs = {inherit inputs pkgs pkgs-stable userSettings;};
   };
 
   # Simply install just the packages
