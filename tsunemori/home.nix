@@ -1,6 +1,6 @@
 {...}: {
-  home.username = "tsunemori";
-  home.homeDirectory = "/home/tsunemori";
+  #home.username = "tsunemori";
+  #home.homeDirectory = "/home/tsunemori";
   home.stateVersion = "24.05";
 
   imports = [
@@ -66,6 +66,4 @@
     btop.enable = true;
     fzf.enable = true;
   };
-
-  programs.home-manager.enable = true;
 }
