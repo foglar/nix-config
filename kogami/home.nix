@@ -1,4 +1,8 @@
-{userSettings, ...}: {
+{
+  userSettings,
+  pkgs,
+  ...
+}: {
   # Home manager configuration
   home.username = "${userSettings.username}";
   home.homeDirectory = "/home/${userSettings.username}";
