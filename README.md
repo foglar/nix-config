@@ -23,6 +23,23 @@
 
 ## Build and deploy
 
+### Automatic installation
+
+- Use this one command on system with NixOS installed
+- This will download script with installation commands
+
+```bash
+nix-shell -p git --command "nix run --experimental-features 'nix-command flakes' git+https://git.foglar.tech/foglar/dotfiles"
+```
+
+### Manual installation
+
+- Build and install with ssmple command:
+
+```bash
+nix run git+https://git.foglar.tech/foglar/dotfiles.git 
+```
+
 - simple build command for system using kogami profile
 
 ```bash
@@ -172,4 +189,5 @@ nvim /nixos/system/packages/ssh-client.nix
 - [LibrePhoenix's Nix-Config](https://github.com/librephoenix/nixos-config) - if else options and modular control center
   - [YT video about modular control center](https://www.youtube.com/watch?v=H_Qct7TVB6o)
   - [YT video about if else options](https://www.youtube.com/watch?v=Qull6TMQm4Q)
+  - [YT video about install with one command](https://www.youtube.com/watch?v=20BN4gqHwaQ&t=2025s)
 - [Vimjoyer's videos](https://www.youtube.com/@vimjoyer) - all videos

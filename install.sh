@@ -20,7 +20,7 @@ fi
 $EDITOR $SCRIPT_DIR/flake.nix
 
 profile=$(gum choose kogami ginoza)
-sudo nixos-rebuild build --flake $SCRIPT_DIR#"''${profile}" --update
+sudo nixos-rebuild build --flake $SCRIPT_DIR#"''${profile}"
 
 gum confirm "Do you want to switch to the new configuration?" && sudo nixos-rebuild switch --flake $SCRIPT_DIR#"${profile}"
 gum confirm "Do you want to reboot now?" && systemctl reboot || echo "Please reboot later, to switch to the new configuration"
