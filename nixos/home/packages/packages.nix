@@ -12,7 +12,7 @@
     ../apps/hacking.nix
     ../apps/games.nix
     ../apps/applications.nix
-    ../apps/terminal_tools.nix
+    ../apps/cli_tools.nix
     ../apps/programming.nix
 
     ./applications/firefox.nix

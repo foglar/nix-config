@@ -24,6 +24,7 @@
         tldr
         ranger
         unzip
+        fd
       ]
       ++ (
         if pkgs.system == "x86_64-linux"
