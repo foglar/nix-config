@@ -10,7 +10,7 @@ if [ -d $SCRIPT_DIR ]; then
     gum confirm "The directory $SCRIPT_DIR already exists. Do you want to delete it?" && yes | rm -rv $SCRIPT_DIR
 fi
 
-nixos_profile=$(gum choose kogami ginoza tsunemori)
+nixos_profile=$(gum choose kogami ginoza)
 download_wallpapers=$(gum confirm "Do you want to download wallpapers (it may take longer)?" && echo true || echo false)
 
 if [ -d $SCRIPT_DIR ]; then
@@ -42,5 +42,11 @@ $EDITOR $SCRIPT_DIR/flake.nix
 
 gum log --structured --level info "Building configuration for $profile..." profile $profile
 sudo nixos-rebuild build --flake $SCRIPT_DIR#"${profile}"
+
+# Wallpapers
+if [ $download_wallpapers = true ]; then
+    gum log --structured --level info "Downloading wallpapers..." profile $profile
+    nix-shell -p git --command "git clone https://git.foglar.tech/foglar/wallpapers.git ~/Pictures/wallpapers"
+fi
 
 gum confirm "Do you want to reboot now?" && systemctl reboot || gum log "Please reboot later, to switch to the new configuration"
