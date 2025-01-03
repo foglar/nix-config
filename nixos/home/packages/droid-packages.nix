@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   userSettings,
   ...
@@ -8,7 +7,7 @@
     ./programming/git.nix
     ./programming/neovim.nix
 
-    ../apps/terminal_tools.nix
+    ../apps/cli_tools.nix
 
     ./tools/oh-my-posh.nix
     ./tools/shell.nix
