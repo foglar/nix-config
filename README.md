@@ -23,7 +23,7 @@
 
 ## Build and deploy
 
-### Automatic installation
+### Automatic installation **Recommended**
 
 - Use this one command on system with NixOS installed
 - This will download script with installation commands
@@ -32,28 +32,25 @@
 nix-shell -p git --command "nix run --experimental-features 'nix-command flakes' git+https://git.foglar.tech/foglar/dotfiles"
 ```
 
+> [!IMPORTANT]
+> Ultimately, I can’t gaurantee this will work for anyone other than myself, so use this at your own discretion.
+
 ### Manual installation
 
-- Build and install with ssmple command:
-
-```bash
-nix run git+https://git.foglar.tech/foglar/dotfiles.git 
-```
-
-- simple build command for system using kogami profile
+- Simple build command using kogami profile
 
 ```bash
 git clone https://git.foglar.tech/foglar/dotfiles.git $HOME/.dotfiles
 sudo nixos-rebuild switch --flake ~/.dotfiles#kogami --update # To update flake.lock file
 ```
 
-- generate a vm of the flake with this command
+- Generate a vm of the flake with this command
 
 ```bash
 nix run github:nix-community/nixos-generators -- -c ./flake.nix --flake '#ginoza' -f vm --disk-size 20480 
 ```
 
-- deploy configuration on the new system
+- Deploy configuration on the new system
 
 ```bash
 # Copy my repository
@@ -126,7 +123,7 @@ nix-shell nixpkgs#age -c age-keygen -o ~/.config/sops/age/keys.txt
 ```
 
 - Secrets are managed in yaml file [secrets.yaml](./nixos/system/packages/sops/secrets/secrets.yaml)
-- Things that are actually managed in sops configuration:
+- Things that are managed in sops configuration:
   - SSH keys
   - Passwords
   - Yubikey ID
@@ -186,7 +183,7 @@ nvim /nixos/system/packages/ssh-client.nix
 
 - [EmergentMind's Nix-Config](https://github.com/EmergentMind/nix-config) - explanation of Yubikey setup and declarative configuration of SSH keys
   - [YT video](https://www.youtube.com/watch?v=3CeXbONjIgE)
-- [LibrePhoenix's Nix-Config](https://github.com/librephoenix/nixos-config) - if else options and modular control center
+- [LibrePhoenix's Nix-Config](https://github.com/librephoenix/nixos-config) - if else options, modular control center, one line installation
   - [YT video about modular control center](https://www.youtube.com/watch?v=H_Qct7TVB6o)
   - [YT video about if else options](https://www.youtube.com/watch?v=Qull6TMQm4Q)
   - [YT video about install with one command](https://www.youtube.com/watch?v=20BN4gqHwaQ&t=2025s)

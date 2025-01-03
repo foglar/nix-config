@@ -12,10 +12,8 @@
   };
 
   sh.zsh = {
-    enable =
-      true;
-    oh-my-posh.enable =
-      true;
+    enable = true;
+    oh-my-posh.enable = true;
   };
 
   sh.oh-my-posh.enable = true;
