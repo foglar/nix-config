@@ -19,6 +19,7 @@
       jetbrains.pycharm-professional
       dotnet-sdk_8
       git-ignore
+      lazygit
     ];
 
     nixpkgs.config.allowUnfreePredicate = pkg:

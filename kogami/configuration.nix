@@ -77,6 +77,11 @@
   programs.wireshark.enable = true;
   programs.auto-cpufreq.enable = true;
 
+  services.logind.extraConfig = ''
+    # don’t shutdown when power button is short-pressed
+    HandlePowerKey=ignore
+  '';
+
   environment.systemPackages = [inputs.ghostty.packages.x86_64-linux.default];
 
   #services.twingate.enable = true;
