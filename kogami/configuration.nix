@@ -14,7 +14,6 @@
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
-  programs.nix-ld.dev.enable = true;
 
   # Home manager
   home-manager = {
@@ -76,11 +75,7 @@
   programs.kdeconnect.enable = true;
   programs.wireshark.enable = true;
   programs.auto-cpufreq.enable = true;
-
-  services.logind.extraConfig = ''
-    # don’t shutdown when power button is short-pressed
-    HandlePowerKey=ignore
-  '';
+  programs.nix-ld.dev.enable = true;
 
   environment.systemPackages = [inputs.ghostty.packages.x86_64-linux.default];
 

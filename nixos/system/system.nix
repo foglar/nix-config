@@ -15,6 +15,7 @@
     ./settings/loginManager.nix
     ./settings/style.nix
     ./settings/default-applications.nix
+    ./settings/logind.nix
     #./settings/bootloader.nix
 
     ./settings/user.nix
