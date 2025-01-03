@@ -22,19 +22,22 @@
 - [x] fix wlogout
 - [x] cleanup hyprland subtools (rofi, hyprlock, waybar)
 - [x] fix rofi cliboard manager by moving it into separate file managed by nix
+- [x] nix-on-droid
+- [x] stylix make in one place and check for each program if it is enabled (tmux)
 - [ ] neovim
 - [ ] librewolf and firefox fix, extensions and bookmarks in librewolf
 - [ ] modularize hyprland config into multiple files
 - [ ] consider moving nh config helper into module
 - [ ] make static background folder and figure out how to simply manage backgrounds across my devices
 - [ ] fix plasma manager and extend gnome configuration
-- [ ] nix-on-droid
 - [ ] ssh public key deployment
 - [ ] consider moving userSettings from flake.nix to each profile
-- [ ] add grub bootloader to configuration
-- [ ] stylix make in one place and check for each program if it is enabled (tmux)
+- [ ] add grub bootloader to configuration (and theme)
 - [ ] distinguish between profiles and decide which version of nixpkgs it should use (my notebook unstable, server stable ...)
 - [ ] check nvtop if nvidia is enabled
+- [ ] add notification management for bluetooth etc...
+- [ ] add syncthing configuration
+- [ ] qutebrowser configuration
 
 - [ ] update my home page and create new web
 - [ ] fix kde theme in stylix
