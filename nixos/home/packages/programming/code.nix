@@ -161,6 +161,10 @@
       programs.vscode.extensions = with pkgs-stable.vscode-extensions; [
         jnoortheen.nix-ide
       ];
+      home.packages = with pkgs-stable; [
+        alejandra
+        nixd
+      ];
     })
 
     (lib.mkIf config.program.vscode.ide.web.enable {
@@ -189,6 +193,10 @@
         github.vscode-pull-request-github
         github.vscode-github-actions
       ];
+
+      programs.vscode.userSettings = {
+        "git.autofetch" = true;
+      };
     })
 
     (lib.mkIf config.program.vscode.markdown.enable {

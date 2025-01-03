@@ -14,12 +14,15 @@
       enable = true;
       userName = "${userSettings.username}";
       userEmail = "kohout.fi.2023@skola.ssps.cz";
+      lfs.enable = true;
     };
 
     home.packages = with pkgs;
       [
         git
         github-cli
+        git-lfs
+        git-credential-manager
       ]
       ++ (
         if pkgs.system == "x86_64-linux"

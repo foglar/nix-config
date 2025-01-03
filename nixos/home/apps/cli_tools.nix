@@ -25,6 +25,7 @@
         ranger
         unzip
         fd
+        imagemagick # convert images from formats like jpg, png, etc.
       ]
       ++ (
         if pkgs.system == "x86_64-linux"

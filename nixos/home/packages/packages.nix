@@ -23,7 +23,11 @@
     ./tools/kitty.nix
     ./tools/tmux.nix
     ./tools/zoxide.nix
+
+    ./style.nix
   ];
+
+  style.enable = true;
 
   sh.bash = {
     enable =
@@ -97,16 +101,8 @@
     fzf.enable = lib.mkDefault true;
   };
 
-  stylix.targets = {
-    bat.enable = lib.mkDefault true;
-    btop.enable = lib.mkDefault true;
-    fzf.enable = lib.mkDefault true;
-  };
-
   home.packages = with pkgs; [
-    alejandra
     nh
-    nixd
   ];
 
   home.file = {

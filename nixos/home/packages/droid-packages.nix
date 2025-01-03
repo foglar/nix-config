@@ -56,10 +56,4 @@
     btop.enable = lib.mkDefault true;
     fzf.enable = lib.mkDefault true;
   };
-
-  home.packages = with pkgs; [
-    alejandra
-    nh
-    nixd
-  ];
 }

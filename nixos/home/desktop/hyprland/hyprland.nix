@@ -47,25 +47,6 @@
       NIXOS_OZONE_WL = "1";
     };
 
-    stylix.iconTheme = {
-      enable = true;
-      package = pkgs.papirus-icon-theme;
-      dark = "Papirus-Dark";
-    };
-
-    stylix.targets = {
-      dunst.enable = true;
-      kde.enable = true;
-      gtk.enable = true;
-
-      waybar = {
-        enable = true;
-        enableCenterBackColors = false;
-        enableLeftBackColors = false;
-        enableRightBackColors = false;
-      };
-    };
-
     wayland.windowManager.hyprland = {
       enable = true;
 
