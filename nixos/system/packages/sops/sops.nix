@@ -32,7 +32,10 @@
       };
     };
 
+    # Password hash
     users.users.${userSettings.username}.hashedPasswordFile = "${config.sops.secrets."${userSettings.hostname}/password-hash".path}";
+
+    # YubiKey IDs
     security.pam.yubico.id =
       []
       ++ (
@@ -40,5 +43,8 @@
         then ["${config.sops.secrets.yubikey_id}".value]
         else []
       );
+
+    # Syncthing password
+    services.syncthing.settings.gui.password = "${config.sops.secrets."syncthing".value}";
   };
 }
