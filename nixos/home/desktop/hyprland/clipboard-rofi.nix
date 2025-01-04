@@ -64,7 +64,7 @@
             expand:                      false;
             orientation:                 horizontal;
             background-color:            transparent;
-            background-image:            url("~/.dotfiles/config/backgrounds/aurora_borealis.png", width);
+            background-image:            url("~/Pictures/backgrounds/aurora_borealis.png", width);
             children:                    [ "wallframe" , "inputbar" ];
         }
         wallframe {
@@ -73,7 +73,7 @@
             padding:                     0em;
             expand:                      false;
             background-color:            @main-bg;
-            background-image:            url("~/.dotfiles/config/backgrounds/aurora_borealis.png", height);
+            background-image:            url("~/Pictures/backgrounds/aurora_borealis.png", height);
         }
 
 

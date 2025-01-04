@@ -59,7 +59,7 @@
           orientation = mkLiteral "vertical";
           children = ["inputbar" "listbox"];
           background-color = mkLiteral "transparent";
-          background-image = mkLiteral "url(\"~/.dotfiles/config/backgrounds/${userSettings.background}\", HEIGHT)";
+          background-image = mkLiteral "url(\"~/Pictures/backgrounds/${userSettings.background}\", HEIGHT)";
         };
 
         # Input bar settings
@@ -69,7 +69,7 @@
           padding = mkLiteral "5em";
           children = ["entry"];
           background-color = mkLiteral "transparent";
-          background-image = mkLiteral "url(\"~/.dotfiles/config/backgrounds/${userSettings.background}\", WIDTH)";
+          background-image = mkLiteral "url(\"~/Pictures/config/backgrounds/${userSettings.background}\", WIDTH)";
         };
 
         # Entry field settings

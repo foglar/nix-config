@@ -12,7 +12,7 @@
   config = lib.mkIf config.app_list.applications.enable {
     home.packages =
       (with pkgs; [
-        librewolf
+        librewolf-wayland
         qutebrowser
         ferdium
 
