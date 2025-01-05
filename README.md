@@ -194,3 +194,4 @@ nvim /nixos/system/packages/ssh-client.nix
   - [YT video about if else options](https://www.youtube.com/watch?v=Qull6TMQm4Q)
   - [YT video about install with one command](https://www.youtube.com/watch?v=20BN4gqHwaQ&t=2025s)
 - [Vimjoyer's videos](https://www.youtube.com/@vimjoyer) - all videos
+- [Hyprdots for Arch](https://github.com/prasanthrangan/hyprdots) - inspiration for look

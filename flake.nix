@@ -2,6 +2,11 @@
   description = "My highly sofisticated and complicated flake";
 
   inputs = {
+    install-script = {
+      url = "git+https://git.foglar.tech/foglar/nix-flake-install-script";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
@@ -113,16 +118,6 @@
         allowUnfree = true;
       };
     };
-
-    # Systems that can run tests:
-    supportedSystems = ["aarch64-linux" "i686-linux" "x86_64-linux"];
-
-    # Function to generate a set based on supported systems:
-    forAllSystems = inputs.nixpkgs.lib.genAttrs supportedSystems;
-
-    # Attribute set of nixpkgs for each system:
-    nixpkgsFor =
-      forAllSystems (system: import inputs.nixpkgs {inherit system;});
   in {
     # NixOS Configurations
     nixosConfigurations = {
@@ -167,29 +162,5 @@
         };
       };
     };
-
-    # Install script
-    packages = forAllSystems (system: let
-      pkgs = nixpkgsFor.${system};
-    in {
-      default = self.packages.${system}.install;
-
-      install = pkgs.writeShellApplication {
-        name = "install";
-        runtimeInputs = with pkgs; [git busybox gum];
-        text = ''
-          ${./install.sh} "$@"
-        '';
-      };
-    });
-
-    apps = forAllSystems (system: {
-      default = self.apps.${system}.install;
-
-      install = {
-        type = "app";
-        program = "${self.packages.${system}.install}/bin/install";
-      };
-    });
   };
 }
