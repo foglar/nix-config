@@ -627,11 +627,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1735982777,
-        "narHash": "sha256-vRA4b/0ewtELCI36x50wAJjMFEP7xDu979gI45gjxe0=",
+        "lastModified": 1735984946,
+        "narHash": "sha256-j6ZDTw9w64yC7sf9T2uwNbJjNNno1PiVUb3eQUgv1X8=",
         "ref": "refs/heads/master",
-        "rev": "c0f162b4eaebce63ee08ffbe3c2106423c9ddfe7",
-        "revCount": 2,
+        "rev": "f75baa0990fce4fb51281e01b4a1ec2326231a47",
+        "revCount": 3,
         "type": "git",
         "url": "https://git.foglar.tech/foglar/nix-flake-install-script"
       },
