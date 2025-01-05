@@ -77,7 +77,7 @@
   programs.auto-cpufreq.enable = true;
   programs.nix-ld.dev.enable = true;
 
-  environment.systemPackages = [inputs.ghostty.packages.x86_64-linux.default];
+  environment.systemPackages = [inputs.install-script.packages.x86_64-linux.default];
 
   #services.twingate.enable = true;
 

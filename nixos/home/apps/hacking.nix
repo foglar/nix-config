@@ -21,6 +21,7 @@
       tcpdump
       sqlmap
       tor-browser
+      android-udev-rules
     ];
   };
 }

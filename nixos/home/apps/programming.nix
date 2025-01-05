@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }: {
   options = {
@@ -10,17 +11,23 @@
   };
 
   config = lib.mkIf config.app_list.programming.enable {
-    home.packages = with pkgs; [
-      arduino-ide
-      distrobox
-      go
-      jq
-      conda
-      jetbrains.pycharm-professional
-      dotnet-sdk_8
-      git-ignore
-      lazygit
-    ];
+    home.packages =
+      (with pkgs; [
+        arduino-ide
+        distrobox
+        go
+        jq
+        conda
+        jetbrains.pycharm-professional
+        dotnet-sdk_8
+        git-ignore
+        lazygit
+      ])
+      ++ (
+        with inputs.ghostty.packages.x86_64-linux; [
+          default
+        ]
+      );
 
     nixpkgs.config.allowUnfreePredicate = pkg:
       builtins.elem (lib.getName pkg) [
