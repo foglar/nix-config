@@ -139,7 +139,7 @@
         "$term" = "${pkgs.kitty}/bin/kitty";
         "$editor" = "${pkgs.vscode}/bin/code";
         "$file" = "${pkgs.nautilus}/bin/nautilus";
-        "$browser" = "${pkgs.librewolf}/bin/librewolf";
+        "$browser" = "${pkgs.librewolf-wayland}/bin/librewolf";
 
         animations = {
           "enabled" = "yes";

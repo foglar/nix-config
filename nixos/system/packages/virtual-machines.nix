@@ -14,6 +14,7 @@
       programs.virt-manager.enable = true;
     })
     (lib.mkIf config.program.virtualbox.enable {
+      virtualisation.libvirtd.enable = true;
       virtualisation.virtualbox = {
         host.enable = true;
         guest = {
