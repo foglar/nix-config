@@ -127,6 +127,7 @@
           "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store # clipboard store text data"
           "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store # clipboard store image data"
           "${pkgs.swayosd}/bin/swayosd-server"
+          "${pkgs.bitwarden}/bin/bitwarden"
 
           "systemctl --user start hyprpolkitagent"
 

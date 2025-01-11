@@ -25,13 +25,13 @@
         ranger
         unzip
         fd
-        imagemagick
-        toybox # convert images from formats like jpg, png, etc.
+        imagemagick # convert images from formats like jpg, png, etc.
       ]
       ++ (
         if pkgs.system == "x86_64-linux"
         then [
-          #nvtopPackages.full
+          nvtopPackages.full
+          toybox
         ]
         else []
       );

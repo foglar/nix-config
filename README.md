@@ -10,7 +10,7 @@
 - best NixOS starter dotfiles in the **flake** setup
 
 - [Mirror Github](https://github.com/foglar/nixos-config)
-- [Mirror Gitea](https://github.com/foglar/dotfiles)
+- [Mirror Gitea](https://git.foglar.tech/foglar/dotfiles)
 
 ## Showcase
 
