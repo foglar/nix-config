@@ -72,10 +72,12 @@
   };
 
   # Basic programs to enable
-  programs.kdeconnect.enable = true;
-  programs.wireshark.enable = true;
-  programs.auto-cpufreq.enable = true;
-  programs.nix-ld.dev.enable = true;
+  programs = {
+    kdeconnect.enable = true;
+    wireshark.enable = true;
+    auto-cpufreq.enable = true;
+    nix-ld.dev.enable = true;
+  };
 
   environment.systemPackages = [inputs.install-script.packages.x86_64-linux.default];
 

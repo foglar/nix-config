@@ -22,6 +22,7 @@
       # Enable networking
       networking.networkmanager.enable = true;
       users.users.${userSettings.username}.extraGroups = ["networkmanager"];
+      networking.nameservers = ["192.168.8.140" "1.1.1.1"];
     })
     (
       lib.mkIf config.sys.bluetooth.enable {

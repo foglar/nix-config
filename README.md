@@ -31,11 +31,7 @@
 - This will download script with installation commands
 
 ```bash
-nix-shell -p git --command "nix run --experimental-features 'nix-command flakes' git+https://git.foglar.tech/foglar/dotfiles.git"
-```
-
-```bash
-nix-shell -p git --command "nix run --experimental-features 'nix-command flakes' github:foglar/nixos-config"
+nix-shell -p git --command "nix run --experimental-features 'nix-command flakes' git+https://git.foglar.tech/foglar/psychonix-install.git"
 ```
 
 > [!IMPORTANT]

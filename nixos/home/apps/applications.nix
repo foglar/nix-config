@@ -16,6 +16,9 @@
         qutebrowser
         ferdium
 
+        bitwarden
+        bitwarden-cli
+
         file-roller
         stellarium
         libreoffice

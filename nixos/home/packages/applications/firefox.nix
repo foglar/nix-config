@@ -127,6 +127,12 @@
                     keyword = "git";
                     url = "https://git.foglar.tech";
                   }
+                  {
+                    name = "Vaultwarden";
+                    tags = ["vaultwarden"];
+                    keyword = "vault";
+                    url = "https://vault.foglar.duckdns.org";
+                  }
                 ];
               }
             ];
@@ -147,6 +153,7 @@
                 duckduckgo-privacy-essentials
                 return-youtube-dislikes
                 user-agent-string-switcher
+                privacy-badger
               ]
             else []
           );
