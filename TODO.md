@@ -37,6 +37,7 @@
 - [ ] add notification management for bluetooth etc...
 - [ ] add syncthing configuration
 - [ ] qutebrowser configuration
+- [ ] script dir set environment variable
 
 - [ ] update my home page and create new web
 - [ ] fix kde theme in stylix

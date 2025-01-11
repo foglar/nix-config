@@ -14,6 +14,7 @@
       defaultSopsFormat = "yaml";
 
       age.keyFile = "/home/${userSettings.username}/.config/sops/age/keys.txt";
+      age.generateKey = true;
 
       # SSH private keys
       secrets = {
@@ -32,9 +33,15 @@
           group = "users";
         };
 
-        templates = {
-          "${userSettings.hostname}/syncthing".content = ''${config.sops.placeholder."${userSettings.hostname}/syncthing"}'';
+        "yubikey_id" = {
+          owner = userSettings.username;
+          group = "users";
         };
+      };
+
+      templates = {
+        "syncthing-password".content = ''${config.sops.placeholder."${userSettings.hostname}/syncthing"}'';
+        "yubikey-id".content = ''${config.sops.placeholder.yubikey_id}'';
       };
     };
 
@@ -42,14 +49,15 @@
     users.users.${userSettings.username}.hashedPasswordFile = "${config.sops.secrets."${userSettings.hostname}/password-hash".path}";
 
     # YubiKey IDs
-    security.pam.yubico.id = [17032113];
-    #++ (
-    #  if config.program.yubikey.enable
-    #  then ["${config.sops.secrets.yubikey_id}".value]
-    #  else []
-    #);
+    security.pam.yubico.id =
+      []
+      ++ (
+        if config.program.yubikey.enable
+        then [config.sops.templates."yubikey-id".content]
+        else []
+      );
 
     # Syncthing password
-    #services.syncthing.settings.gui.password = config.sops.templates."${userSettings.hostname}/syncthing".content;
+    services.syncthing.settings.gui.password = config.sops.templates."syncthing-password".content;
   };
 }

@@ -8,6 +8,7 @@
     ./packages/yubikey.nix
     ./packages/sops/sops.nix
     ./packages/ssh-client.nix
+    ./packages/syncthing.nix
   ];
 
   program = {
@@ -24,6 +25,7 @@
       notify = lib.mkDefault false;
     };
     ssh.client.enable = lib.mkDefault true;
+    syncthing.enable = lib.mkDefault true;
   };
   sys.desktop.steamdeck.enable = lib.mkDefault false;
   sys.security.sops.enable = lib.mkDefault true;
