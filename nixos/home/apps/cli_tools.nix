@@ -30,7 +30,7 @@
       ++ (
         if pkgs.system == "x86_64-linux"
         then [
-          nvtopPackages.full
+          #nvtopPackages.full
           toybox
         ]
         else []

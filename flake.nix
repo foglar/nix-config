@@ -1,5 +1,5 @@
 {
-  description = "My highly sofisticated and complicated flake";
+  description = "My highly sophisticated and complicated flake";
 
   inputs = {
     install-script = {
@@ -59,6 +59,8 @@
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
+
+    nvf.url = "github:notashelf/nvf";
 
     # Nix on Droid Configuration
     nixpkgs-droid.url = "github:NixOS/nixpkgs/nixos-24.05";
@@ -162,5 +164,13 @@
         };
       };
     };
+    packages."x86_64-linux".default =
+      (inputs.nvf.lib.neovimConfiguration {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        modules = [
+          ./nixos/system/packages/nvf.nix
+        ];
+      })
+      .neovim;
   };
 }
