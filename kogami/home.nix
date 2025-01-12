@@ -58,7 +58,7 @@
     };
 
     git.enable = true;
-    neovim.enable = true;
+    neovim.enable = false;
 
     firefox.enable = true;
     spotify.enable = true;

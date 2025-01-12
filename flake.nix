@@ -2,7 +2,6 @@
   description = "My highly sophisticated and complicated flake";
 
   outputs = {
-    self,
     nixpkgs,
     nixpkgs-stable,
     ...
@@ -65,7 +64,6 @@
           inputs.nix-ld.nixosModules.nix-ld
           inputs.sops-nix.nixosModules.sops
           inputs.auto-cpufreq.nixosModules.default
-          inputs.nvf.nixosModules.default
         ];
       };
       ginoza = nixpkgs.lib.nixosSystem {
@@ -94,22 +92,9 @@
         };
       };
     };
-    packages."x86_64-linux".nvf =
-      (inputs.nvf.lib.neovimConfiguration {
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        modules = [
-          ./nixos/system/packages/nvf.nix
-        ];
-      })
-      .neovim;
   };
 
   inputs = {
-    install-script = {
-      url = "git+https://git.foglar.tech/foglar/nix-flake-install-script";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
@@ -163,7 +148,13 @@
       url = "github:ghostty-org/ghostty";
     };
 
-    nvf.url = "github:notashelf/nvf";
+    shinya-nvf.url = "git+https://git.foglar.tech/foglar/neovim-config";
+
+    # Nix Flake Install Script
+    install-script = {
+      url = "git+https://git.foglar.tech/foglar/psychonix-install";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Nix on Droid Configuration
     nixpkgs-droid.url = "github:NixOS/nixpkgs/nixos-24.05";

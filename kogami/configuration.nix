@@ -79,7 +79,10 @@
     nix-ld.dev.enable = true;
   };
 
-  environment.systemPackages = [inputs.install-script.packages.x86_64-linux.default];
+  environment.systemPackages = [
+    inputs.install-script.packages.x86_64-linux.default
+    inputs.shinya-nvf.packages.x86_64-linux.nvf
+  ];
 
   #services.twingate.enable = true;
 
