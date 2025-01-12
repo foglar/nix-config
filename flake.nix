@@ -1,6 +1,109 @@
 {
   description = "My highly sophisticated and complicated flake";
 
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-stable,
+    ...
+  } @ inputs: let
+    userSettings = rec {
+      username = "shinya"; # konsta or shinya (else defaulting to shinya or none)
+      hostname = "kogami"; # kogami or ginoza
+
+      shell = "zsh"; # bash, zsh
+      terminal = "kitty"; # kitty, alacritty, gnome-terminal
+      browser = "librewolf"; # firefox, librewolf, qutebrowser
+      editor = "neovim"; # neovim, vscode
+
+      # List all themes: $ nix build nixpkgs#base16-schemes && ls result/share/themes
+      theme = "catppuccin-mocha"; # catppuccin-mocha, tokyo-night-dark, one-dark
+      background = "aurora_borealis.png";
+
+      resolution = {
+        width = 1920;
+        height = 1080;
+      };
+
+      configuration_path = "/home/${username}/.dotfiles";
+
+      plasma = false;
+      gnome = false;
+      hyprland = true;
+    };
+
+    system = "x86_64-linux";
+
+    pkgs = import nixpkgs {
+      inherit system;
+
+      config = {
+        allowUnfree = true;
+      };
+    };
+
+    pkgs-stable = import nixpkgs-stable {
+      inherit system;
+
+      config = {
+        allowUnfree = true;
+      };
+    };
+  in {
+    # NixOS Configurations
+    nixosConfigurations = {
+      kogami = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs system pkgs pkgs-stable userSettings;
+        };
+
+        modules = [
+          ./kogami/configuration.nix
+
+          inputs.stylix.nixosModules.stylix
+          inputs.nix-ld.nixosModules.nix-ld
+          inputs.sops-nix.nixosModules.sops
+          inputs.auto-cpufreq.nixosModules.default
+          inputs.nvf.nixosModules.default
+        ];
+      };
+      ginoza = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs system pkgs pkgs-stable userSettings;
+        };
+
+        modules = [
+          ./ginoza/configuration.nix
+          inputs.stylix.nixosModules.stylix
+          inputs.sops-nix.nixosModules.sops
+        ];
+      };
+    };
+    # Phone Configurations
+    nixOnDroidConfigurations = {
+      tsunemori = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+        pkgs = import inputs.nixpkgs-droid {system = "aarch64-linux";};
+        modules = [
+          ./tsunemori/configuration.nix
+        ];
+
+        extraSpecialArgs = {
+          inherit inputs userSettings;
+        };
+      };
+    };
+    packages."x86_64-linux".nvf =
+      (inputs.nvf.lib.neovimConfiguration {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        modules = [
+          ./nixos/system/packages/nvf.nix
+        ];
+      })
+      .neovim;
+  };
+
   inputs = {
     install-script = {
       url = "git+https://git.foglar.tech/foglar/nix-flake-install-script";
@@ -75,102 +178,5 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs-droid";
     };
-  };
-
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-stable,
-    ...
-  } @ inputs: let
-    userSettings = rec {
-      username = "shinya"; # konsta or shinya (else defaulting to shinya or none)
-      hostname = "kogami"; # kogami or ginoza
-
-      shell = "zsh"; # bash, zsh
-      terminal = "kitty"; # kitty, alacritty, gnome-terminal
-      browser = "librewolf"; # firefox, librewolf, qutebrowser
-      editor = "neovim"; # neovim, vscode
-
-      # List all themes: $ nix build nixpkgs#base16-schemes && ls result/share/themes
-      theme = "catppuccin-mocha"; # catppuccin-mocha, tokyo-night-dark, one-dark
-      background = "aurora_borealis.png";
-
-      configuration_path = "/home/${username}/.dotfiles";
-
-      plasma = false;
-      gnome = false;
-      hyprland = true;
-    };
-
-    system = "x86_64-linux";
-
-    pkgs = import nixpkgs {
-      inherit system;
-
-      config = {
-        allowUnfree = true;
-      };
-    };
-
-    pkgs-stable = import nixpkgs-stable {
-      inherit system;
-
-      config = {
-        allowUnfree = true;
-      };
-    };
-  in {
-    # NixOS Configurations
-    nixosConfigurations = {
-      kogami = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs system pkgs pkgs-stable userSettings;
-        };
-
-        modules = [
-          ./kogami/configuration.nix
-
-          inputs.stylix.nixosModules.stylix
-          inputs.nix-ld.nixosModules.nix-ld
-          inputs.sops-nix.nixosModules.sops
-          inputs.auto-cpufreq.nixosModules.default
-        ];
-      };
-      ginoza = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs system pkgs pkgs-stable userSettings;
-        };
-
-        modules = [
-          ./ginoza/configuration.nix
-          inputs.stylix.nixosModules.stylix
-          inputs.sops-nix.nixosModules.sops
-        ];
-      };
-    };
-    # Phone Configurations
-    nixOnDroidConfigurations = {
-      tsunemori = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
-        pkgs = import inputs.nixpkgs-droid {system = "aarch64-linux";};
-        modules = [
-          ./tsunemori/configuration.nix
-        ];
-
-        extraSpecialArgs = {
-          inherit inputs userSettings;
-        };
-      };
-    };
-    packages."x86_64-linux".default =
-      (inputs.nvf.lib.neovimConfiguration {
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        modules = [
-          ./nixos/system/packages/nvf.nix
-        ];
-      })
-      .neovim;
   };
 }

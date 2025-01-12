@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  userSettings,
   ...
 }: {
   options = {
@@ -25,8 +26,8 @@
       environment.systemPackages = with pkgs; [
         (sddm-astronaut.override {
           themeConfig = {
-            ScreenWidth = 1920;
-            ScreenHeight = 1080;
+            ScreenWidth = userSettings.resolution.width;
+            ScreenHeight = userSettings.resolution.height;
             PartialBlur = false;
           };
         })
