@@ -26,6 +26,7 @@
         unzip
         fd
         imagemagick # convert images from formats like jpg, png, etc.
+        duf
       ]
       ++ (
         if pkgs.system == "x86_64-linux"
