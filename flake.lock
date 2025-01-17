@@ -732,17 +732,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1736415517,
-        "narHash": "sha256-qZlj9JUQIQErvifjOxjDdAUE66Je3qyH/yQiCOucZlc=",
+        "lastModified": 1736631925,
+        "narHash": "sha256-cQdPX/5onZHpT1wNC//Ot9Pph8JPAfQhrs/9TnM6xho=",
         "ref": "refs/heads/master",
-        "rev": "aa440d766064b7097140062b39e41df4a1af4251",
-        "revCount": 4,
+        "rev": "cf53c2fdad8101799847ff64b8aa3be9b01478fd",
+        "revCount": 5,
         "type": "git",
-        "url": "https://git.foglar.tech/foglar/nix-flake-install-script"
+        "url": "https://git.foglar.tech/foglar/psychonix-install"
       },
       "original": {
         "type": "git",
-        "url": "https://git.foglar.tech/foglar/nix-flake-install-script"
+        "url": "https://git.foglar.tech/foglar/psychonix-install"
       }
     },
     "mnw": {
@@ -763,10 +763,12 @@
     "nil": {
       "inputs": {
         "flake-utils": [
+          "shinya-nvf",
           "nvf",
           "flake-utils"
         ],
         "nixpkgs": [
+          "shinya-nvf",
           "nvf",
           "nixpkgs"
         ],
@@ -983,6 +985,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1736523798,
+        "narHash": "sha256-Xb8mke6UCYjge9kPR9o4P1nVrhk7QBbKv3xQ9cj7h2s=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "130595eba61081acde9001f43de3248d8888ac4a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1735523292,
         "narHash": "sha256-opBsbR/nrGxiiF6XzlVluiHYb6yN/hEwv+lBWTy9xoM=",
         "owner": "nixos",
@@ -1073,7 +1091,7 @@
         "flake-utils": "flake-utils_3",
         "mnw": "mnw",
         "nil": "nil",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "nmd": "nmd_3",
         "plugin-aerial-nvim": "plugin-aerial-nvim",
         "plugin-alpha-nvim": "plugin-alpha-nvim",
@@ -1200,11 +1218,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1736520152,
-        "narHash": "sha256-0TClUw4txxpRiCFvDdKwDlSpEeYETT9ySUJRAy0ibEk=",
+        "lastModified": 1736606161,
+        "narHash": "sha256-ucLvMRVMwpT//Ilaa1dohDXbFJ/4zX60vhn0/ZkN1cE=",
         "owner": "notashelf",
         "repo": "nvf",
-        "rev": "4df1cc3a7f161def084c6eca799e3a6c10dbf480",
+        "rev": "a5a5aba34aab206a8d562abff5a142f733dcb5c1",
         "type": "github"
       },
       "original": {
@@ -3227,8 +3245,8 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-droid": "nixpkgs-droid",
         "nixpkgs-stable": "nixpkgs-stable_2",
-        "nvf": "nvf",
         "plasma-manager": "plasma-manager",
+        "shinya-nvf": "shinya-nvf",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix"
@@ -3237,6 +3255,7 @@
     "rust-overlay": {
       "inputs": {
         "nixpkgs": [
+          "shinya-nvf",
           "nvf",
           "nil",
           "nixpkgs"
@@ -3270,6 +3289,25 @@
         "owner": "andreymatin",
         "repo": "scss-reset",
         "type": "github"
+      }
+    },
+    "shinya-nvf": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2",
+        "nvf": "nvf"
+      },
+      "locked": {
+        "lastModified": 1736691282,
+        "narHash": "sha256-LpW9TGz/NTCb2qp3jpEAVOgAa4AmR9NabOCTSEUBSHQ=",
+        "ref": "refs/heads/main",
+        "rev": "fe22f6476a0671b64b2106a95a541b997f86dd5e",
+        "revCount": 1,
+        "type": "git",
+        "url": "https://git.foglar.tech/foglar/neovim-config"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.foglar.tech/foglar/neovim-config"
       }
     },
     "sops-nix": {
