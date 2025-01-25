@@ -10,8 +10,6 @@
   };
 
   config = lib.mkIf config.app_list.applications.enable {
-    services.arrpc.enable = true;
-
     home.packages =
       (with pkgs; [
         librewolf-wayland
@@ -44,7 +42,6 @@
       ++ (with pkgs-stable; [
         loupe
         simple-scan
-        vesktop
         gnome-font-viewer
         gnome-characters
         evince

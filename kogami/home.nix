@@ -64,6 +64,7 @@
 
     firefox.enable = true;
     spotify.enable = true;
+    vencord.enable = true;
   };
 
   # Basic programs to enable

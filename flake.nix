@@ -144,6 +144,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixcord = {
+      url = "github:kaylorben/nixcord";
+    };
+
     shinya-nvf.url = "git+https://git.foglar.tech/foglar/neovim-config";
 
     # Nix Flake Install Script

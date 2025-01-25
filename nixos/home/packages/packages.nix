@@ -17,6 +17,7 @@
 
     ./applications/firefox.nix
     ./applications/spotify.nix
+    ./applications/vencord.nix
 
     ./tools/oh-my-posh.nix
     ./tools/shell.nix
@@ -69,6 +70,7 @@
       then lib.mkDefault true
       else lib.mkDefault false;
     spotify.enable = lib.mkDefault true;
+    vencord.enable = lib.mkDefault false;
 
     vscode = {
       enable = lib.mkDefault true;
