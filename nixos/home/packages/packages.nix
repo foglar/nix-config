@@ -23,8 +23,10 @@
     ./tools/kitty.nix
     ./tools/tmux.nix
     ./tools/zoxide.nix
+    ./tools/ranger.nix
 
     ./style.nix
+    ./applications/qutebrowser.nix
   ];
 
   style.enable = true;
@@ -60,6 +62,7 @@
       else lib.mkDefault false;
     tmux.enable = lib.mkDefault true;
     zoxide.enable = lib.mkDefault true;
+    ranger.enable = lib.mkDefault true;
 
     firefox.enable =
       if userSettings.browser == "firefox"

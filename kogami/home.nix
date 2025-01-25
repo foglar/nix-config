@@ -40,6 +40,7 @@
     kitty.enable = true;
     tmux.enable = true;
     zoxide.enable = true;
+    ranger.enable = true;
 
     vscode = {
       enable = true;

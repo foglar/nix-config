@@ -6,7 +6,7 @@
   options = {
     program.ranger.enable =
       lib.mkEnableOption "Enable ranger";
-  }
+  };
 
   config = lib.mkIf config.program.ranger.enable {
     programs.ranger = {

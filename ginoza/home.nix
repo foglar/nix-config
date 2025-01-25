@@ -41,6 +41,7 @@
     kitty.enable = false;
     tmux.enable = false;
     zoxide.enable = false;
+    ranger.enable = false;
     vscode.enable = false;
     git.enable = false;
     neovim.enable = false;
