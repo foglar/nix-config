@@ -22,9 +22,6 @@
       FLAKE = "/home/${userSettings.username}/.dotfiles";
     };
 
-    # Default applications configuration
-    xdg.mime.enable = true;
-
     xdg.da.browser =
       if userSettings.browser == "qutebrowser"
       then "org.qutebrowser.qutebrowser"
@@ -35,7 +32,9 @@
           else "firefox"
         );
 
-    xdg.mime.defaultApplications = {
+    xdg.mime = {
+      enable = true;
+      defaultApplications = {
       "text/html" = "${config.xdg.da.browser}.desktop";
       "x-scheme-handler/http" = "${config.xdg.da.browser}.desktop";
       "x-scheme-handler/https" = "${config.xdg.da.browser}.desktop";
@@ -49,6 +48,7 @@
       "image/png" = "org.gnome.Loupe.desktop";
       "inode/directory" = "org.gnome.Nautilus.desktop";
       "video/mp4" = "mpv.desktop";
+    };
     };
 
     programs.zsh.enable =

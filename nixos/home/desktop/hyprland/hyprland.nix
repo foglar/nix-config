@@ -29,13 +29,15 @@
     };
 
     # XDG Portals configuration
-    xdg.portal.enable = true;
-    xdg.portal.config = {
-      common = {
-        default = ["hyprland"];
+    xdg.portal = {
+      enable = true;
+      config = {
+        common = {
+          default = ["hyprland"];
+        };
       };
+      extraPortals = [pkgs.xdg-desktop-portal-hyprland];
     };
-    xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland];
 
     # Services for the Hyprland module
     services.network-manager-applet.enable = true;
@@ -325,7 +327,7 @@
           "opacity 0.80 0.80,class:^(qt6ct)$"
           "opacity 0.80 0.80,class:^(kvantummanager)$"
           "opacity 0.80 0.70,class:^(org.pulseaudio.pavucontrol)$"
-          "opacity 0.80 0.70,class:^(blueman-manager)$"
+          "opacity 0.80 0.70,class:^(.blueman-manager-wrapped)$"
           "opacity 0.80 0.70,class:^(nm-applet)$"
           "opacity 0.80 0.70,class:^(nm-connection-editor)$"
           "opacity 0.80 0.70,class:^(org.kde.polkit-kde-authentication-agent-1)$"
@@ -371,7 +373,7 @@
           "float,class:^(nwg-look)$"
           "float,class:^(org.kde.ark)$"
           "float,class:^(org.pulseaudio.pavucontrol)$"
-          "float,class:^(blueman-manager)$"
+          "float,class:^(.blueman-manager-wrapped)$"
           "float,class:^(nm-applet)$"
           "float,class:^(nm-connection-editor)$"
           "float,class:^(org.kde.polkit-kde-authentication-agent-1)$"
@@ -403,6 +405,7 @@
           "workspace special,title:^(Spotify)$"
           "float,class:^(post_processing_gui.py)$"
           "float,title:^(Picture-in-Picture)$"
+
           "pin,title:^(Picture-in-Picture)$"
           "move 1280 680,title:^(Picture-in-Picture)$"
           "float,title:^(KDE Connect)$"
