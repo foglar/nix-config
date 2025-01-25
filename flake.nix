@@ -144,10 +144,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
-
     shinya-nvf.url = "git+https://git.foglar.tech/foglar/neovim-config";
 
     # Nix Flake Install Script

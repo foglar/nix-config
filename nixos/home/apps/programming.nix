@@ -23,11 +23,8 @@
         dotnet-sdk_8
         git-ignore
         lazygit
-      ])
-      ++ (
-        with inputs.ghostty.packages.${system}; [
-          default
-        ]
+        ghostty
+      ]
       );
 
     nixpkgs.config.allowUnfreePredicate = pkg:
