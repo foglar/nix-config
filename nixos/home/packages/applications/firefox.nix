@@ -13,7 +13,6 @@
   config = lib.mkIf config.program.firefox.enable {
     programs.firefox = {
       enable = true;
-      package = pkgs.firefox;
 
       profiles.default = {
         search.engines = {
@@ -139,7 +138,7 @@
           }
         ];
 
-        extensions = with inputs.firefox-addons.packages."x86_64-linux";
+        extensions = with inputs.firefox-addons.packages.x86_64-linux;
           [
             ublock-origin
             # Lists all possible extensions $ nix-env -f '<nixpkgs>' -qaP -A nur.repos.rycee.firefox-addons
@@ -147,7 +146,7 @@
           ++ (
             if (userSettings.username == "shinya")
             then
-              with inputs.firefox-addons.packages."x86_64-linux"; [
+              with inputs.firefox-addons.packages.x86_64-linux; [
                 #enhancer-for-youtube
                 simple-translate
                 duckduckgo-privacy-essentials
