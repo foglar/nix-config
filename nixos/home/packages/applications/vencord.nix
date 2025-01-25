@@ -1,25 +1,25 @@
 {
   lib,
   config,
-  pkgs, 
   inputs,
   ...
-}:
-{
+}: {
   options = {
     program.vencord.enable =
       lib.mkEnableOption "Enable Vencord";
   };
 
   imports = [
-      inputs.nixcord.homeManagerModules.nixcord
-    ];
+    inputs.nixcord.homeManagerModules.nixcord
+  ];
 
   config = lib.mkIf config.program.vencord.enable {
-     programs.nixcord = {
-      enable = true;  # enable Nixcord. Also installs discord package
-      vesktop.enable = true;  # enable Vesktop
-      discord.enable = false;  # enable Discord
+    services.arrpc.enable = true;
+
+    programs.nixcord = {
+      enable = true; # enable Nixcord. Also installs discord package
+      vesktop.enable = true; # enable Vesktop
+      discord.enable = false; # enable Discord
       #quickCss = "some CSS";  # quickCSS file
       config = {
         #useQuickCss = true;   # use out quickCSS
@@ -76,3 +76,4 @@
     };
   };
 }
+
