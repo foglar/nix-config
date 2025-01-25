@@ -22,7 +22,6 @@
         curl
         fzf
         tldr
-        ranger
         unzip
         fd
         imagemagick # convert images from formats like jpg, png, etc.
