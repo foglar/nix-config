@@ -12,6 +12,7 @@
     open = "rifle";
     ip = "ip -c";
     s = "kitten ssh";
+    icat = "kitten icat";
     diff = "diff --color";
     respawn = "clear; ${pkgs.pfetch}/bin/pfetch";
     mkdir = "mkdir -p";

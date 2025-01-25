@@ -10,6 +10,8 @@
   };
 
   config = lib.mkIf config.app_list.applications.enable {
+    services.arrpc.enable = true;
+
     home.packages =
       (with pkgs; [
         librewolf-wayland

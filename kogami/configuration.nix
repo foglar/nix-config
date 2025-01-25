@@ -3,6 +3,7 @@
   pkgs,
   pkgs-stable,
   userSettings,
+  system,
   ...
 }: {
   imports = [
@@ -17,7 +18,7 @@
 
   # Home manager
   home-manager = {
-    extraSpecialArgs = {inherit inputs pkgs pkgs-stable userSettings;};
+    extraSpecialArgs = {inherit inputs system pkgs pkgs-stable userSettings;};
     backupFileExtension = "backup";
     users = {
       ${userSettings.username} = import ./home.nix;
@@ -80,8 +81,8 @@
   };
 
   environment.systemPackages = [
-    inputs.install-script.packages.x86_64-linux.default
-    inputs.shinya-nvf.packages.x86_64-linux.nvf
+    inputs.install-script.packages.${system}.default
+    inputs.shinya-nvf.packages.${system}.nvf
   ];
 
   #services.twingate.enable = true;

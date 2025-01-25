@@ -1,5 +1,6 @@
 {
   userSettings,
+  pkgs,
   ...
 }: {
   # Home manager configuration

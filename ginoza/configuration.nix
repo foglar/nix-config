@@ -3,6 +3,7 @@
   pkgs,
   pkgs-stable,
   userSettings,
+  system,
   ...
 }: {
   imports = [
@@ -16,7 +17,7 @@
 
   # Home manager
   home-manager = {
-    extraSpecialArgs = {inherit inputs pkgs pkgs-stable userSettings;};
+    extraSpecialArgs = {inherit inputs system pkgs pkgs-stable userSettings;};
     backupFileExtension = "backup";
     users = {
       ${userSettings.username} = import ./home.nix;

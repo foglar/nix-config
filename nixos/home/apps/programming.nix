@@ -3,6 +3,7 @@
   lib,
   config,
   inputs,
+  system,
   ...
 }: {
   options = {
@@ -24,7 +25,7 @@
         lazygit
       ])
       ++ (
-        with inputs.ghostty.packages.x86_64-linux; [
+        with inputs.ghostty.packages.${system}; [
           default
         ]
       );
