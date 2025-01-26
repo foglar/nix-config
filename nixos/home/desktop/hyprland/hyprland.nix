@@ -130,7 +130,8 @@
           "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store # clipboard store image data"
           "${pkgs.swayosd}/bin/swayosd-server"
           "${pkgs.bitwarden}/bin/bitwarden"
-
+          
+          "battery-notify --verbose"
           "systemctl --user start hyprpolkitagent"
 
           #"swww-daemon --format xrgb"

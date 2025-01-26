@@ -236,7 +236,10 @@ in
                                'mn'     : 'https://mynixos.com/search?q={}',
                                'yt'     : 'https://www.youtube.com/results?search_query={}',
                                'gh'     : 'https://github.com/search?q={}&type=repositories',
-                              }
+                               'ph'     : 'https://www.phind.com/search?q={}&searchMode=always&allowMultiSearch=false',
+                               'g'      : 'https://www.google.com/search?q={}',
+                               'gi'     : 'https://www.google.com/search?tbm=isch&q={}',
+                               }
 
         config.set('completion.open_categories',["searchengines","quickmarks","bookmarks"])
 
