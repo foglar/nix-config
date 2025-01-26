@@ -62,7 +62,8 @@
     git.enable = true;
     neovim.enable = false;
 
-    firefox.enable = true;
+    firefox.enable = false;
+    qutebrowser.enable = true;
     spotify.enable = true;
     vencord.enable = true;
   };

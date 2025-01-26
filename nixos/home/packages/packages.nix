@@ -18,6 +18,8 @@
     ./applications/firefox.nix
     ./applications/spotify.nix
     ./applications/vencord.nix
+    ./applications/qutebrowser.nix
+
 
     ./tools/oh-my-posh.nix
     ./tools/shell.nix
@@ -27,7 +29,6 @@
     ./tools/ranger.nix
 
     ./style.nix
-    ./applications/qutebrowser.nix
   ];
 
   style.enable = true;
@@ -67,6 +68,10 @@
 
     firefox.enable =
       if userSettings.browser == "firefox"
+      then lib.mkDefault true
+      else lib.mkDefault false;
+    qutebrowser.enable =
+      if userSettings.browser == "qutebrowser"
       then lib.mkDefault true
       else lib.mkDefault false;
     spotify.enable = lib.mkDefault true;

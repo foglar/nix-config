@@ -2,8 +2,108 @@
   lib,
   config,
   pkgs,
+  userSettings,
   ...
-}: {
+}:
+let generateHomepage = username:
+  ''<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>home</title>
+	</head>
+	<style>
+
+   /*body*/
+    body {
+        background-color: #''+config.lib.stylix.colors.base00+''
+    }
+    /*paragraphs*/
+    p {
+        text-align:center;
+        color: #''+config.lib.stylix.colors.base08+'';
+        line-height: 1.35;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .open {
+      color: #''+config.lib.stylix.colors.base09+'';
+      font-weight: bold;
+    }
+    .quickmarks {
+      color: #''+config.lib.stylix.colors.base0A+'';
+      font-weight: bold;
+    }
+    .history {
+      color: #''+config.lib.stylix.colors.base0B+'';
+      font-weight: bold;
+    }
+    .newtab {
+    color: #''+config.lib.stylix.colors.base0C+'';
+      font-weight: bold;
+    }
+    .close {
+      color: #''+config.lib.stylix.colors.base0D+'';
+      font-weight: bold;
+    }
+
+    /*div*/
+    div {
+        margin:auto;
+        width:50%;
+        text-align:center;
+    }
+    /*class made for ascii art icon*/
+    .icon {
+        line-height:10%
+    }
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			border: none;
+			background-color: black;
+			margin: 0;
+			padding: 0;
+		}
+		h1 {
+			color: white;
+			font-family: monospace;
+			text-align: center;
+			margin: 0;
+			padding: 0;
+		}
+		iframe {
+			border: none;
+			width: 600px;
+			height: 600px;
+		}
+		.commands {
+			color: white;
+			font-size: 14px;
+			font-family: monospace;
+		}
+	</style>
+	<body>
+		<iframe src="./ascii-image.xhtml"></iframe>
+		<div class="commands">
+			<p>Welcome to Qutebrowser</p>
+			<br />
+			<p><b>''+username+''</b></p>
+			<br />
+			<!--basic keyboard commands-->
+			<p class="open">[o] [Search]</p>
+			<p class="quickmarks">[b] [Quickmarks]</p>
+			<p class="history">[S h] [History]</p>
+			<p class="newtab">[t] [New tab]</p>
+			<p class="close">[x] [Close tab]</p>
+		</div>
+	</body>
+</html>'';
+in
+ {
   options = {
     program.qutebrowser.enable = lib.mkEnableOption "Enable qutebrowser";
   };
@@ -12,6 +112,10 @@
     home.packages = [
       pkgs.qutebrowser
     ];
+
+    home.file.".config/qutebrowser/qute-home.html".text = generateHomepage userSettings.username;
+    home.file.".config/qutebrowser/ascii-image.xhtml".source = ./ascii-image.xhtml;
+    
     #xdg.mimeApps.defaultApplications = {
     #  "text/html" = "org.qutebrowser.qutebrowser.desktop";
     #  "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
@@ -35,7 +139,7 @@
             import qutesecrets
             secretsExists = True
 
-        config.set('scrolling.smooth',True)
+        #config.set('scrolling.smooth',True)
         config.set('qt.args',['ignore-gpu-blacklist','enable-gpu-rasterization','enable-native-gpu-memory-buffers','num-raster-threads=4'])
         config.load_autoconfig(True)
 
@@ -131,11 +235,7 @@
                                'nw'     : 'https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}',
                                'mn'     : 'https://mynixos.com/search?q={}',
                                'yt'     : 'https://www.youtube.com/results?search_query={}',
-                               'gd'     : 'https://drive.google.com/drive/search?q={}',
                                'gh'     : 'https://github.com/search?q={}&type=repositories',
-                               'gl'     : 'https://gitlab.com/search?search={}&nav_source=navbar',
-                               'np'     : 'https://github.com/search?q=repo%3ANixOS%2Fnixpkgs%20{}&type=code',
-                               'dh'     : 'https://hub.docker.com/search?q={}'
                               }
 
         config.set('completion.open_categories',["searchengines","quickmarks","bookmarks"])

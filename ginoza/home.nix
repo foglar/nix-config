@@ -46,6 +46,7 @@
     git.enable = false;
     neovim.enable = false;
     firefox.enable = true;
+    qutebrowser.enable = false;
     spotify.enable = false;
   };
 
@@ -56,7 +57,7 @@
     fzf.enable = false;
   };
 
-  # Packages
+  # User defined packages
   home.packages = with pkgs-stable; [
     libreoffice
     inkscape
