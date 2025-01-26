@@ -20,12 +20,7 @@
       enable = true; # enable Nixcord. Also installs discord package
       vesktop.enable = true; # enable Vesktop
       discord.enable = false; # enable Discord
-      #quickCss = "some CSS";  # quickCSS file
       config = {
-        #useQuickCss = true;   # use out quickCSS
-        #themeLinks = [        # or use an online theme
-        #  "https://raw.githubusercontent.com/link/to/some/theme.css"
-        #];
         frameless = true; # set some Vencord options
         plugins = {
           anonymiseFileNames.enable = true;
@@ -60,18 +55,7 @@
           webRichPresence.enable = true;
           webScreenShareFixes.enable = true;
           youtubeAdblock.enable = true;
-
-          #ignoreActivities = {    # Enable a plugin and set some options
-          #  enable = true;
-          #  ignorePlaying = true;
-          #  ignoreWatching = true;
-          #  ignoredActivities = [ "someActivity" ];
-          #};
         };
-      };
-      extraConfig = {
-        # Some extra JSON config here
-        # ...
       };
     };
   };
