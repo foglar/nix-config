@@ -6,12 +6,12 @@
 }:
 {
   options = {
-    sys.autoupdate.enable = lib.mkEnableOption "Enable automatic updates";
-    sys.autocleanup.enable = lib.mkEnableOption "Enable automatic cleanup";
+    sys.autoUpdate.enable = lib.mkEnableOption "Enable automatic updates";
+    sys.autoCleanup.enable = lib.mkEnableOption "Enable automatic cleanup";
   };
 
   config = lib.mkMerge [
-    (lib.mkIf config.sys.autoupdate.enable {
+    (lib.mkIf config.sys.autoUpdate.enable {
       system.autoUpgrade = {
         enable = true;
         flake = inputs.self.outPath;
@@ -23,7 +23,7 @@
         randomizedDelaySec = "45min";
       };
     })
-    (lib.mkIf config.sys.autocleanup.enable {
+    (lib.mkIf config.sys.autoCleanup.enable {
       nix = {
         gc ={
           automatic = true;

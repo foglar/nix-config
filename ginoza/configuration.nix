@@ -41,8 +41,8 @@
       enable = true;
       blueman.enable = false;
     };
-    autoupdate.enable = false;
-    autocleanup.enable = true;
+    autoUpdate.enable = false;
+    autoCleanup.enable = true;
 
     nvidia = {
       enable = false;

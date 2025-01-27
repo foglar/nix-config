@@ -47,8 +47,8 @@
       blueman.enable = lib.mkDefault true;
     };
 
-    autoupdate.enable = lib.mkDefault true;
-    autocleanup.enable = lib.mkDefault false;
+    autoUpdate.enable = lib.mkDefault true;
+    autoCleanup.enable = lib.mkDefault false;
 
     nvidia = {
       enable = lib.mkDefault false;
