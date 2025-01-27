@@ -16,6 +16,7 @@
     ./settings/style.nix
     ./settings/default-applications.nix
     ./settings/logind.nix
+    ./settings/updates.nix
     #./settings/bootloader.nix
 
     ./settings/user.nix
@@ -45,6 +46,9 @@
       enable = lib.mkDefault true;
       blueman.enable = lib.mkDefault true;
     };
+
+    autoupdate.enable = lib.mkDefault true;
+    autocleanup.enable = lib.mkDefault false;
 
     nvidia = {
       enable = lib.mkDefault false;

@@ -43,6 +43,10 @@
       enable = true;
       blueman.enable = true;
     };
+    
+    autoupdate.enable = true;
+    autocleanup.enable = true;
+
     nvidia = {
       enable = true;
       mode = "offload";
