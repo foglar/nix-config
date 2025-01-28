@@ -66,7 +66,7 @@
           "kb_layout" = "us, cz, ru";
           "follow_mouse" = "1";
 
-          #"kb_options" = "caps:swapecase";
+          "kb_options" = "caps:swapecase";
           #"kb_options" = "ctrl:nocaps";
 
           touchpad = {
@@ -130,7 +130,7 @@
           "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store # clipboard store image data"
           "${pkgs.swayosd}/bin/swayosd-server"
           "${pkgs.bitwarden}/bin/bitwarden"
-          
+
           "battery-notify --verbose"
           "systemctl --user start hyprpolkitagent"
 
@@ -338,6 +338,7 @@
           "opacity 0.70 0.70,class:^([Ss]team)$"
           "opacity 0.70 0.70,class:^(steamwebhelper)$"
           "opacity 0.70 0.70,class:^([Ss]potify)$"
+          "opacity 0.70 0.70,class:^(org.qutebrowser.qutebrowser)$"
           "opacity 0.70 0.70,initialTitle:^(Spotify Free)$"
           "opacity 0.70 0.70,initialTitle:^(Spotify Premium)$"
           "opacity 0.90 0.90,class:^(com.github.rafostar.Clapper)$"

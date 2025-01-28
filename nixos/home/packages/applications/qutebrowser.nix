@@ -139,7 +139,7 @@ in
             import qutesecrets
             secretsExists = True
 
-        #config.set('scrolling.smooth',True)
+        config.set('scrolling.smooth',True)
         config.set('qt.args',['ignore-gpu-blacklist','enable-gpu-rasterization','enable-native-gpu-memory-buffers','num-raster-threads=4'])
         config.load_autoconfig(True)
 

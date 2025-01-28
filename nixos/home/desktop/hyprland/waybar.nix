@@ -112,8 +112,8 @@
             format = "{icon}";
             rotate = 0;
             format-icons = {
-              activated = "󰥔";
-              deactivated = "";
+              activated = "󰅶";
+              deactivated = "󰛊";
             };
           };
 
