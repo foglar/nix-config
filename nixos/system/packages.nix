@@ -9,11 +9,13 @@
     ./packages/sops/sops.nix
     ./packages/ssh-client.nix
     ./packages/syncthing.nix
+    ./packages/ollama.nix
   ];
 
   program = {
     docker.enable = lib.mkDefault false;
     podman.enable = lib.mkDefault true;
+    ollama.enable = lib.mkDefault false;
     steam.enable = lib.mkDefault true;
     proxychains.enable = lib.mkDefault true;
     tor.enable = lib.mkDefault true;

@@ -17,7 +17,6 @@
         flake = inputs.self.outPath;
         flags = [
           "--commit-lock-file"
-          "-L" # print build logs
         ];
         dates = "weekly";
         randomizedDelaySec = "45min";

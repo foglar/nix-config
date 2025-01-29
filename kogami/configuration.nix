@@ -63,6 +63,7 @@
   program = {
     docker.enable = false;
     podman.enable = true;
+    ollama.enable = true;
     steam.enable = true;
     proxychains.enable = true;
     tor.enable = true;
