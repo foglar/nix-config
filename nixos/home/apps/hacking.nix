@@ -22,6 +22,8 @@
       sqlmap
       tor-browser
       android-udev-rules
+      postman
+      gdb
     ];
   };
 }

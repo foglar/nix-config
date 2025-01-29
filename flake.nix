@@ -12,7 +12,7 @@
 
       shell = "zsh"; # bash, zsh
       terminal = "kitty"; # kitty, alacritty, gnome-terminal
-      browser = "librewolf"; # firefox, librewolf, qutebrowser
+      browser = "qutebrowser"; # firefox, librewolf, qutebrowser
       editor = "neovim"; # neovim, vscode
 
       # List all themes: $ nix build nixpkgs#base16-schemes && ls result/share/themes

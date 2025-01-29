@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  userSettings,
   ...
 }: {
   options = {
@@ -143,7 +144,12 @@
         "$term" = "${pkgs.kitty}/bin/kitty";
         "$editor" = "${pkgs.vscode}/bin/code";
         "$file" = "${pkgs.nautilus}/bin/nautilus";
-        "$browser" = "${pkgs.librewolf-wayland}/bin/librewolf";
+        "$browser" =
+          if userSettings.browser == "librewolf"
+          then "${pkgs.librewolf-wayland}/bin/librewolf"
+          else if userSettings.browser == "qutebrowser"
+          then "${pkgs.qutebrowser}/bin/qutebrowser"
+          else "${pkgs.firefox-wayland}/bin/firefox";
 
         animations = {
           "enabled" = "yes";
@@ -407,6 +413,8 @@
           "workspace special,title:^(Spotify)$"
           "float,class:^(post_processing_gui.py)$"
           "float,title:^(Picture-in-Picture)$"
+
+          "size 960 600,class:^(.blueman-manager-wrapped)$"
 
           "pin,title:^(Picture-in-Picture)$"
           "move 1280 680,title:^(Picture-in-Picture)$"

@@ -232,7 +232,7 @@ in
         c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}&ia=web',
                                'd'      : 'https://duckduckgo.com/?q={}&ia=web',
                                'aw'     : 'https://wiki.archlinux.org/index.php?search={}&title=Special%3ASearch&wprov=acrw1',
-                               'nw'     : 'https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}',
+                               'np'     : 'https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}',
                                'mn'     : 'https://mynixos.com/search?q={}',
                                'yt'     : 'https://www.youtube.com/results?search_query={}',
                                'gh'     : 'https://github.com/search?q={}&type=repositories',
