@@ -24,6 +24,7 @@
       android-udev-rules
       postman
       gdb
+      xh
     ];
   };
 }

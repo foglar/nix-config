@@ -31,7 +31,7 @@
           ];
           modules-left = ["custom/padd" "custom/l_end" "cpu" "memory" "custom/r_end" "custom/l_end" "idle_inhibitor" "clock" "custom/r_end" "" "custom/padd"];
           modules-center = ["custom/padd" "" "custom/l_end" "hyprland/workspaces" "hyprland/window" "custom/r_end" "custom/padd"];
-          modules-right = ["custom/padd" "custom/l_end" "backlight" "network" "bluetooth" "pulseaudio" "pulseaudio#microphone" "custom/r_end" "custom/l_end" "tray" "battery" "custom/r_end" "custom/l_end" "custom/cliphist" "custom/power" "custom/r_end" "custom/padd"];
+          modules-right = ["custom/padd" "custom/l_end" "backlight" "network" "bluetooth" "pulseaudio" "pulseaudio#microphone" "custom/r_end" "custom/l_end" "tray" "battery" "custom/r_end" "custom/l_end" "custom/notification" "custom/cliphist" "custom/power" "custom/r_end" "custom/padd"];
 
           "hyprland/workspaces" = {
             disable-scroll = true;
@@ -243,6 +243,27 @@
             tooltip = true;
           };
 
+          "custom/notification" = {
+            tooltip = false;
+            format = "{} {icon}";
+            "format-icons" = {
+              notification = "󱅫";
+              none = "";
+              "dnd-notification" = " ";
+              "dnd-none" = "󰂛";
+              "inhibited-notification" = " ";
+              "inhibited-none" = "";
+              "dnd-inhibited-notification" = " ";
+              "dnd-inhibited-none" = " ";
+            };
+            "return-type" = "json";
+            "exec-if" = "which swaync-client";
+            exec = "swaync-client -swb";
+            "on-click" = "sleep 0.1 && swaync-client -t -sw";
+            "on-click-right" = "sleep 0.1 && swaync-client -d -sw";
+            escape = true;
+          };
+
           "custom/l_end" = {
             format = " ";
             interval = "once";
@@ -404,7 +425,7 @@
         #memory,
         #mpris,
         #network,
-        #custom-notifications,
+        #custom-notification,
         #custom-power,
         #pulseaudio,
         #custom-spotify,

@@ -208,6 +208,7 @@ in
 
         config.set('content.javascript.enabled', True, 'qute://*/*')
 
+        c.editor.command = ['${pkgs.kitty}/bin/kitty', '-e', 'nvim', '{}']
         c.tabs.favicons.scale = 1.0
         c.tabs.last_close = 'close'
         c.tabs.position = 'top'

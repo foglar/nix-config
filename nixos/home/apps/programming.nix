@@ -2,8 +2,6 @@
   pkgs,
   lib,
   config,
-  inputs,
-  system,
   ...
 }: {
   options = {

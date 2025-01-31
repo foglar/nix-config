@@ -19,6 +19,7 @@
       bat.enable = lib.mkDefault true;
       btop.enable = lib.mkDefault true;
       fzf.enable = lib.mkDefault true;
+      swaync.enable = true;
 
       tmux.enable =
         if config.program.tmux.enable
@@ -31,6 +32,7 @@
 
       kde.enable = true;
       gtk.enable = true;
+
 
       waybar = {
         enable = true;

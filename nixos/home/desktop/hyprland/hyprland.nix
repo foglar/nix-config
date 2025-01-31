@@ -42,7 +42,14 @@
 
     # Services for the Hyprland module
     services.network-manager-applet.enable = true;
-    services.dunst.enable = true;
+    #services.dunst.enable = true;
+    services.swaync = {
+      enable = true;
+      settings =  {
+        fit-to-screen = false;
+        control-center-height = 200;
+      };
+    };
 
     # Home session variables
     home.sessionVariables = {
