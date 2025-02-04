@@ -47,7 +47,8 @@
       enable = true;
       settings =  {
         fit-to-screen = false;
-        control-center-height = 200;
+        control-center-height = 500;
+        control-center-width = 250;
       };
     };
 

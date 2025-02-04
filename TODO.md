@@ -35,9 +35,9 @@
 - [ ] add grub bootloader to configuration (and theme)
 - [ ] distinguish between profiles and decide which version of nixpkgs it should use (my notebook unstable, server stable ...)
 - [ ] add notification management for bluetooth etc...
-- [ ] add battery notification
+- [x] add battery notification
 - [ ] add syncthing configuration
-- [ ] qutebrowser configuration
+- [x] qutebrowser configuration
 - [ ] script dir set environment variable
 
 - [ ] update my home page and create new web

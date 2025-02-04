@@ -27,6 +27,7 @@
         mpv
         openrocket
         spotube
+        harmony-music
         inkscape
         gnome-disk-utility
         qbittorrent

@@ -15,7 +15,6 @@
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
-
   # Home manager
   home-manager = {
     extraSpecialArgs = {inherit inputs system pkgs pkgs-stable userSettings;};
@@ -88,6 +87,7 @@
   environment.systemPackages = [
     inputs.install-script.packages.${system}.default
     inputs.shinya-nvf.packages.${system}.nvf
+    pkgs.gcc
   ];
 
   #services.twingate.enable = true;

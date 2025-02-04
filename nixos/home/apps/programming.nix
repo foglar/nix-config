@@ -22,6 +22,7 @@
         git-ignore
         lazygit
         ghostty
+        cargo
       ]
       );
 
