@@ -62,7 +62,7 @@
   program = {
     docker.enable = false;
     podman.enable = true;
-    ollama.enable = true;
+    ollama.enable = false;
     steam.enable = true;
     proxychains.enable = true;
     tor.enable = true;
@@ -85,9 +85,10 @@
   };
 
   environment.systemPackages = [
+    pkgs.gcc
+
     inputs.install-script.packages.${system}.default
     inputs.shinya-nvf.packages.${system}.nvf
-    pkgs.gcc
   ];
 
   #services.twingate.enable = true;

@@ -17,7 +17,7 @@
         ferdium
 
         bitwarden
-        bitwarden-cli
+        #bitwarden-cli
 
         file-roller
         stellarium

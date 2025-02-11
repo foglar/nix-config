@@ -1,7 +1,4 @@
-{
-  userSettings,
-  ...
-}: {
+{userSettings, ...}: {
   # Home manager configuration
   home.username = "${userSettings.username}";
   home.homeDirectory = "/home/${userSettings.username}";
@@ -13,16 +10,18 @@
   ];
 
   # Shell management
-  sh.oh-my-posh.enable = true;
-
-  sh.bash = {
-    enable = true;
+  sh = {
     oh-my-posh.enable = true;
-  };
 
-  sh.zsh = {
-    enable = true;
-    oh-my-posh.enable = true;
+    bash = {
+      enable = true;
+      oh-my-posh.enable = true;
+    };
+
+    zsh = {
+      enable = true;
+      oh-my-posh.enable = true;
+    };
   };
 
   # Application lists
