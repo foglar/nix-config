@@ -253,7 +253,7 @@
           }
           {
             monitor = "";
-            text = "$LAYOUT[en, cz, ru] ";
+            text = "$LAYOUT[en, cz, ru]  ‎"; # This is blank space to show full emoji
 
             color = "$accent";
             font_size = 12;
