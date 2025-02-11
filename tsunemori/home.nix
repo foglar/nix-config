@@ -19,6 +19,7 @@
   sh.oh-my-posh.enable = true;
 
   program = {
+    fastfetch.enable = true;
     tmux.enable = true;
     zoxide.enable = true;
     git.enable = true;

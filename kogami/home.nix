@@ -35,6 +35,7 @@
 
   # Configured programs to enable
   program = {
+    fastfetch.enable = true;
     kitty.enable = true;
     tmux.enable = true;
     zoxide.enable = true;

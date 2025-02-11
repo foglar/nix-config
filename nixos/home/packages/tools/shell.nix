@@ -9,6 +9,7 @@
     ll = "${pkgs.eza}/bin/eza -alh --icons";
     l = "${pkgs.eza}/bin/eza -lh  --icons=auto";
     tree = "${pkgs.eza}/bin/eza --tree --icons";
+    neofetch = "${pkgs.fastfetch}/bin/fastfetch";
     open = "rifle";
     ip = "ip -c";
     s = "kitten ssh";

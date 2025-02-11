@@ -24,6 +24,7 @@
     ./tools/oh-my-posh.nix
     ./tools/shell.nix
     ./tools/kitty.nix
+    ./tools/fastfetch.nix
     ./tools/tmux.nix
     ./tools/zoxide.nix
     ./tools/ranger.nix
@@ -58,6 +59,7 @@
   sh.oh-my-posh.enable = lib.mkDefault true;
 
   program = {
+    fastfetch.enable = lib.mkDefault false;
     kitty.enable =
       if userSettings.terminal == "kitty"
       then lib.mkDefault true
