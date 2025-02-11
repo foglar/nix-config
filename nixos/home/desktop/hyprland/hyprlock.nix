@@ -252,7 +252,19 @@
             zindex = 5;
           }
           {
-            # PLAYER TITTLE
+            monitor = "";
+            text = "$LAYOUT[en, cz, ru] ";
+
+            color = "$accent";
+            font_size = 12;
+
+            position = "-127, 29";
+            halign = "right";
+            valign = "bottom";
+            zindex = 5;
+          }
+          {
+            # PLAYER TITLE
             monitor = "";
             text = "cmd[update:1000] echo $(playerctl-hyprlock --title)";
 
@@ -260,9 +272,9 @@
             font_size = 14;
             font_family = "$font-text";
 
-            position = "0, -400";
-            halign = "center";
-            valign = "center";
+            position = "37, 49";
+            halign = "left";
+            valign = "bottom";
             zindex = 5;
           }
 
@@ -275,24 +287,9 @@
             font_size = 11;
             font_family = "$font-text";
 
-            position = "0, -420";
-            halign = "center";
-            valign = "center";
-            zindex = 5;
-          }
-
-          # PLAYER ALBUM
-          {
-            monitor = "";
-            text = "cmd[update:1000] echo $(playerctl-hyprlock --album)";
-
-            color = "$fg0";
-            font_size = 11;
-            font_family = "$font-text0";
-
-            position = "0, -445";
-            halign = "center";
-            valign = "center";
+            position = "37, 29";
+            halign = "left";
+            valign = "bottom";
             zindex = 5;
           }
 
@@ -311,87 +308,85 @@
             zindex = 5;
           }
 
+          # PLAYER ALBUM
+          #{
+          #  monitor = "";
+          #  text = "cmd[update:1000] echo $(playerctl-hyprlock --album)";
+          #
+          #  color = "$fg0";
+          #  font_size = 11;
+          #  font_family = "$font-text0";
+          #
+          #  position = "0, -445";
+          #  halign = "center";
+          #  valign = "center";
+          #  zindex = 5;
+          #}
+
           # PLAYER STATUS
-          {
-            monitor = "";
-            text = "cmd[update:1000] echo $(playerctl-hyprlock --status)";
-
-            color = "$fg0";
-            font_size = 10;
-            font_family = "$font-text";
-
-            position = "720, -370";
-            halign = "left";
-            valign = "center";
-            zindex = 5;
-          }
+          #{
+          #  monitor = "";
+          #  text = "cmd[update:1000] echo $(playerctl-hyprlock --status)";
+          #
+          #  color = "$fg0";
+          #  font_size = 10;
+          #  font_family = "$font-text";
+          #
+          #  position = "720, -370";
+          #  halign = "left";
+          #  valign = "center";
+          #  zindex = 5;
+          #}
 
           # PLAYER SOURCE SYMBOL
-          {
-            monitor = "";
-            text = "cmd[update:1000] echo $(playerctl-hyprlock --source-symbol)";
-
-            color = "rgba(255, 255, 255, 0.6)";
-            font_size = 16;
-            font_family = "$font-symbol";
-
-            position = "-720, -370";
-            halign = "right";
-            valign = "center";
-            zindex = 5;
-          }
+          #{
+          #  monitor = "";
+          #  text = "cmd[update:1000] echo $(playerctl-hyprlock --source-symbol)";
+          #
+          #  color = "rgba(255, 255, 255, 0.6)";
+          #  font_size = 16;
+          #  font_family = "$font-symbol";
+          #
+          #  position = "-720, -370";
+          #  halign = "right";
+          #  valign = "center";
+          #  zindex = 5;
+          #}
 
           # PLAYER SOURCE
-          {
-            monitor = "";
-            text = "cmd[update:1000] echo $(playerctl-hyprlock --source)";
-
-            color = "rgba(255, 255, 255, 0.6)";
-            font_size = 10;
-            font_family = "$font-text";
-
-            position = "-740, -370";
-            halign = "right";
-            valign = "center";
-            zindex = 5;
-          }
+          #{
+          #  monitor = "";
+          #  text = "cmd[update:1000] echo $(playerctl-hyprlock --source)";
+          #
+          #  color = "rgba(255, 255, 255, 0.6)";
+          #  font_size = 10;
+          #  font_family = "$font-text";
+          #
+          #  position = "-740, -370";
+          #  halign = "right";
+          #  valign = "center";
+          #  zindex = 5;
+          #}
         ];
 
         shape = [
-          {
-            monitor = "";
-            size = "90, 40";
-
-            shadow_passes = "$text-shadow-pass";
-            shadow_boost = "$text-shadow-boost";
-
-            color = "$shape-col0";
-            rounding = "$shape-rd";
-            border_size = "";
-            border_color = "";
-
-            position = "-20, 20";
-            halign = "right";
-            valign = "bottom";
-            zindex = 1;
-          }
-          {
-            monitor = "";
-            size = "550, 120";
-
-            shadow_passes = "$text-shadow-pass";
-            shadow_boost = "$text-shadow-boost";
-
-            color = "$shape-col1";
-            rounding = "$rounding";
-            border_size = "";
-            border_color = "";
-
-            position = "0, 70";
-            halign = "center";
-            valign = "bottom";
-            zindex = 1;
-          }
+          #{
+          #  monitor = "";
+          #  size = "90, 40";
+          #
+          #  shadow_passes = "$text-shadow-pass";
+          #  shadow_boost = "$text-shadow-boost";
+          #
+          #  color = "${config.lib.stylix.color.}";
+          #  rounding = "";
+          #  border_size = "";
+          #  border_color = "";
+          #
+          #  position = "-20, 20";
+          #  halign = "right";
+          #  valign = "bottom";
+          #  zindex = 1;
+          #}
         ];
       };
     };

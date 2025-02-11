@@ -61,9 +61,9 @@
     wayland.windowManager.hyprland = {
       enable = true;
 
-      plugins = [
-        pkgs.hyprlandPlugins.hyprspace
-      ];
+      #plugins = [
+      #  pkgs.hyprlandPlugins.hyprspace
+      #];
 
       settings = {
         monitor = [
@@ -329,9 +329,12 @@
 
         windowrulev2 = [
           "opacity 0.90 0.90,class:^(firefox)$"
+          "opacity 0.90 0.90,class:^(librewolf)$"
           "opacity 0.90 0.90,class:^(Brave-browser)$"
+          "opacity 0.95 0.95,class:^(org.qutebrowser.qutebrowser)$"
           "opacity 0.80 0.80,class:^(code-oss)$"
-          "opacity 0.80 0.80,class:^(Code)$"
+          "opacity 0.90 0.90,class:^(code)$"
+          "opacity 0.90 0.90,initialTitle:^(Open Folder)$"
           "opacity 0.80 0.80,class:^(code-url-handler)$"
           "opacity 0.80 0.80,class:^(code-insiders-url-handler)$"
           "opacity 0.80 0.80,class:^(kitty)$"
@@ -352,9 +355,8 @@
           "opacity 0.70 0.70,class:^([Ss]team)$"
           "opacity 0.70 0.70,class:^(steamwebhelper)$"
           "opacity 0.70 0.70,class:^([Ss]potify)$"
-          "opacity 0.70 0.70,class:^(org.qutebrowser.qutebrowser)$"
-          "opacity 0.70 0.70,initialTitle:^(Spotify Free)$"
-          "opacity 0.70 0.70,initialTitle:^(Spotify Premium)$"
+          "opacity 0.80 0.70,initialTitle:^(Spotify Free)$"
+          "opacity 0.80 0.70,initialTitle:^(Spotify Premium)$"
           "opacity 0.90 0.90,class:^(com.github.rafostar.Clapper)$"
           "opacity 0.80 0.80,class:^(com.github.tchx84.Flatseal)$"
           "opacity 0.80 0.80,class:^(hu.kramo.Cartridges)$"
@@ -416,9 +418,9 @@
           "float,title:^(systemupdate)$"
           "size 800 450,title:^(systemupdate)$"
           "workspace special,title:^(systemupdate)$"
-          "float,class:^(Spotify)$"
-          "size 960 600,class:^(Spotify)$"
-          "workspace special,title:^(Spotify)$"
+          "float,class:^(spotify)$"
+          "size 960 600,class:^(spotify)$"
+          "workspace special,title:^(spotify)$"
           "float,class:^(post_processing_gui.py)$"
           "float,title:^(Picture-in-Picture)$"
 
@@ -435,12 +437,14 @@
           "opacity 0.80 0.70,title:^(JetBrains Toolbox)$"
           "opacity 0.70 0.60,class:^(org.wireshark.Wireshark)$"
           "opacity 0.70 0.60,class:^(install4j-burp-StartBurp)$"
-          "opacity 0.70 0.60,class:^(GitKraken)$"
+          "opacity 0.90 0.80,class:^(GitKraken)$"
           "opacity 0.75 0.65,class:^(Arduino IDE)$"
           "opacity 0.70 0.60,class:^(virt-manager)$"
           "float,class:^(org.raspberrypi.rpi-imager)$"
           "opacity 0.80 0.70,title:^(Cobra Monitor)$"
           "opacity 0.80 0.70,class:^(chat-simplex-desktop-MainKt)$"
+          
+          "float,class:^(Bitwarden)$"
         ];
 
         layerrule = [
