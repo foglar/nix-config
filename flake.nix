@@ -16,7 +16,7 @@
       editor = "neovim"; # neovim, vscode
 
       # List all themes: $ nix build nixpkgs#base16-schemes && ls result/share/themes
-      theme = "red"; # catppuccin-mocha, tokyo-night-dark, one-dark
+      theme = "evangelion-blood"; # catppuccin-mocha, tokyo-night-dark, one-dark
       background = "evangelion.jpg";
 
       resolution = {

@@ -20,7 +20,7 @@
         base01 = "300505"; # additional background
         base02 = "804040"; # selected text, highlights
         base03 = "a06000"; # unselected border
-        base04 = "f03030"; # discord name texts
+        base04 = "d03030"; # discord name texts
         base05 = "f00000"; # text
         base06 = "b00505"; # main names in discord?
         base07 = "f06060";

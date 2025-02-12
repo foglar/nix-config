@@ -64,7 +64,6 @@
           "workbench.activityBar.location" = "hidden"; # bottom
           "workbench.iconTheme" = "material-icon-theme";
           "workbench.productIconTheme" = "material-product-icons";
-          "workbench.startupEditor" = "none";
           "window.menuBarVisibility" = "toggle";
         };
 
