@@ -321,6 +321,8 @@
           @define-color wb-act-fg #313244;
           @define-color wb-hvr-bg #f5c2e7;
           @define-color wb-hvr-fg #313;"
+          else if userSettings.theme == "evangelion-blood"
+          then "@define-color bar-bg rgba(0, 0, 0, 0);"
           else ""
         }
         * {

@@ -15,6 +15,11 @@
           # Get the current battery percentage
           battery_percentage=$(${pkgs.toybox}/bin/cat /sys/class/power_supply/BAT1/capacity)
 
+          if [ "$1" = "-p" ]; then
+            echo "$battery_percentage"
+            exit 0
+          fi
+
           # Get the battery status (Charging or Discharging)
           battery_status=$(${pkgs.toybox}/bin/cat /sys/class/power_supply/BAT1/status)
 
@@ -87,6 +92,27 @@
           	fi
           }
 
+          get_cover() {
+            DOWNLOAD_PATH="$HOME/.cache/cover.png"
+            FALLBACK_PATH="./images/music.png" # Change this to your static image path
+                  
+            # Get the image URL from playerctl
+            URL=$(playerctl metadata mpris:artUrl 2>/dev/null)
+                  
+            # If the URL is empty or playerctl fails, return the fallback path
+            if [[ -z "$URL" ]]; then
+                echo "$FALLBACK_PATH"
+                return
+            fi
+                  
+            # Try downloading the image
+            if curl -s -o "$DOWNLOAD_PATH" "$URL"; then
+                echo "$DOWNLOAD_PATH"
+            else
+                echo "$FALLBACK_PATH"
+            fi
+          }
+
           # Function to truncate text with ellipsis if necessary
           truncate_with_ellipsis() {
           	text=$1
@@ -97,7 +123,6 @@
           		echo "$text"
           	fi
           }
-
           # Parse the argument
           case "$1" in
           --title)
@@ -129,9 +154,9 @@
           --status)
           	status=$(playerctl status 2>/dev/null)
           	if [[ $status == "Playing" ]]; then
-          		echo "Playing Now"
+          		echo ""
           	elif [[ $status == "Paused" ]]; then
-          		echo "Paused"
+          		echo ""
           	else
           		echo ""
           	fi
@@ -154,6 +179,9 @@
           	;;
           --source)
           	get_source_info
+          	;;
+          --cover)
+          	get_cover
           	;;
           *)
           	echo "Invalid option: $1"

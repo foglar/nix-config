@@ -16,6 +16,7 @@
     ./rofi.nix
     ./wlogout.nix
     ./hyprlock.nix
+    ./eww.nix
   ];
 
   config = lib.mkIf config.desktop.hyprland.enable {
@@ -28,6 +29,8 @@
       hyprlock.enable = lib.mkDefault true;
       wlogout.enable = lib.mkDefault true;
     };
+
+    program.eww.enable = lib.mkDefault true;
 
     # XDG Portals configuration
     xdg.portal = {
@@ -45,7 +48,7 @@
     #services.dunst.enable = true;
     services.swaync = {
       enable = true;
-      settings =  {
+      settings = {
         fit-to-screen = false;
         control-center-height = 500;
         control-center-width = 250;
@@ -234,6 +237,7 @@
           #"$mod+Shift,F, exec, windowpin.sh"
           "$mod, Backspace, exec, ${pkgs.wlogout}/bin/wlogout -b 2"
           "$Ctrl+Alt, W, exec, ${pkgs.toybox}/bin/killall waybar || ${pkgs.waybar}/bin/waybar" # toggle waybar
+          "$mod, B, exec, eww-dashboard-toggle"
 
           "$mod, T, exec, $term"
           "$mod, F, exec, $browser"
@@ -443,7 +447,7 @@
           "float,class:^(org.raspberrypi.rpi-imager)$"
           "opacity 0.80 0.70,title:^(Cobra Monitor)$"
           "opacity 0.80 0.70,class:^(chat-simplex-desktop-MainKt)$"
-          
+
           "float,class:^(Bitwarden)$"
         ];
 

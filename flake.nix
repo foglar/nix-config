@@ -17,7 +17,12 @@
 
       # List all themes: $ nix build nixpkgs#base16-schemes && ls result/share/themes
       theme = "evangelion-blood"; # catppuccin-mocha, tokyo-night-dark, one-dark
-      background = "evangelion.jpg";
+      background =
+        if userSettings.theme == "catppuccin-mocha"
+        then "aurora_borealis.png"
+        else if "evangelion-blood" == userSettings.theme
+        then "evangelion.jpg"
+        else "aurora_borealis.png";
 
       resolution = {
         width = 1920;
