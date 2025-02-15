@@ -16,7 +16,7 @@
       editor = "neovim"; # neovim, vscode
 
       # List all themes: $ nix build nixpkgs#base16-schemes && ls result/share/themes
-      theme = "evangelion-blood"; # catppuccin-mocha, tokyo-night-dark, one-dark
+      theme = "catppuccin-mocha"; # catppuccin-mocha, tokyo-night-dark, one-dark
       background =
         if userSettings.theme == "catppuccin-mocha"
         then "aurora_borealis.png"

@@ -6,7 +6,42 @@
   # Keyboard image for keyboard switch layout
   home.file = {
     ".local/share/icons/kogami/keyboard.svg".source = ../../../../config/icons/keyboard.svg;
-    ".config/hypr/hypridle.conf".source = ./hypridle.conf;
+  };
+
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        lock_cmd = "hyprctl switchxkblayout at-translated-set-2-keyboard 0 ; pidof hyprlock || hyprlock"; # avoid starting multiple hyprlock instances.
+        before_sleep_cmd = "loginctl lock-session"; # lock before suspend.
+        after_sleep_cmd = "hyprctl dispatch dpms on"; # to avoid having to press a key twice to turn on the display.
+      };
+
+      listener = [
+        {
+          timeout = 90; # 1.5min.
+          on-timeout = "brightnessctl -s set 10"; # set monitor backlight to minimum, avoid 0 on OLED monitor.
+          on-resume = "brightnessctl -r"; # monitor backlight restore.
+        }
+
+        # turn off keyboard backlight, comment out this section if you dont have a keyboard backlight.
+        {
+          timeout = 120; # 3min
+          on-timeout = "loginctl lock-session"; # lock screen when timeout has passed
+        }
+
+        {
+          timeout = 210; # 3.5min
+          on-timeout = "hyprctl dispatch dpms off"; # screen off when timeout has passed
+          on-resume = "hyprctl dispatch dpms on"; # screen on when activity is detected after timeout has fired.
+        }
+
+        {
+          timeout = 1800; # 30min
+          on-timeout = "systemctl suspend"; # suspend pc
+        }
+      ];
+    };
   };
 
   home.packages =
@@ -88,131 +123,131 @@
       '')
 
       (writeShellScriptBin "battery-notify" ''
-      # Configuration variables (with default values)
-      dock="''${BATTERY_NOTIFY_DOCK:-true}"
-      batterynotify_conf="$HYDE_STATE_HOME/staterc"
-      battery_full_threshold="''${BATTERY_NOTIFY_THRESHOLD_FULL:-100}"
-      battery_critical_threshold="''${BATTERY_NOTIFY_THRESHOLD_CRITICAL:-5}"
-      unplug_charger_threshold="''${BATTERY_NOTIFY_THRESHOLD_UNPLUG:-80}"
-      battery_low_threshold="''${BATTERY_NOTIFY_THRESHOLD_LOW:-20}"
-      timer="''${BATTERY_NOTIFY_TIMER:-120}"
-      notify="''${BATTERY_NOTIFY_NOTIFY:-1140}"
-      interval="''${BATTERY_NOTIFY_INTERVAL:-5}"
-      execute_critical="''${BATTERY_NOTIFY_EXECUTE_CRITICAL:-systemctl suspend}"
-      execute_low="''${BATTERY_NOTIFY_EXECUTE_LOW:-}"
-      execute_unplug="''${BATTERY_NOTIFY_EXECUTE_UNPLUG:-}"
-      execute_charging="''${BATTERY_NOTIFY_EXECUTE_CHARGING:-}"
-      execute_discharging="''${BATTERY_NOTIFY_EXECUTE_DISCHARGING:-}"
-      verbose=false
+        # Configuration variables (with default values)
+        dock="''${BATTERY_NOTIFY_DOCK:-true}"
+        batterynotify_conf="$HYDE_STATE_HOME/staterc"
+        battery_critical_threshold="''${BATTERY_NOTIFY_THRESHOLD_CRITICAL:-5}"
+        battery_low_threshold="''${BATTERY_NOTIFY_THRESHOLD_LOW:-20}"
+        timer="''${BATTERY_NOTIFY_TIMER:-120}"
+        interval="''${BATTERY_NOTIFY_INTERVAL:-5}"
+        execute_critical="''${BATTERY_NOTIFY_EXECUTE_CRITICAL:-systemctl suspend}"
+        execute_low="''${BATTERY_NOTIFY_EXECUTE_LOW:-}"
+        verbose=false
+        state_file="/tmp/battery_notify_state"
 
-      # Display configuration info
-      config_info() {
-          cat <<EOF
-      Modify $batterynotify_conf to set options.
+        # Display configuration info
+        config_info() {
+            cat <<EOF
+        Modify $batterynotify_conf to set options.
 
-      STATUS      THRESHOLD   INTERVAL
-      Full        $battery_full_threshold          $notify Minutes
-      Critical    $battery_critical_threshold      $timer Seconds then '$execute_critical'
-      Low         $battery_low_threshold           $interval Percent then '$execute_low'
-      Unplug      $unplug_charger_threshold        $interval Percent then '$execute_unplug'
+        STATUS      THRESHOLD
+        Critical    $battery_critical_threshold  then '$execute_critical'
+        Low         $battery_low_threshold       then '$execute_low'
 
-      Charging: $execute_charging
-      Discharging: $execute_discharging
-      EOF
-      }
+        Notifications at: 80%, 90%, 100% (charging only).
+        EOF
+        }
 
-      # Check if system is a laptop
-      is_laptop() {
-          if ! grep -q "Battery" /sys/class/power_supply/BAT*/type 2>/dev/null; then
-              echo "No battery detected. Exiting."
-              exit 0
-          fi
-      }
+        # Check if system is a laptop
+        is_laptop() {
+            if ! grep -q "Battery" /sys/class/power_supply/BAT*/type 2>/dev/null; then
+                echo "No battery detected. Exiting."
+                exit 0
+            fi
+        }
 
-      # Display verbose information
-      fn_verbose() {
-          if $verbose; then
-              echo "============================================="
-              echo "Battery Status: $battery_status"
-              echo "Battery Percentage: $battery_percentage"
-              echo "============================================="
-          fi
-      }
+        # Display verbose information
+        fn_verbose() {
+            if $verbose; then
+                echo "============================================="
+                echo "Battery Status: $battery_status"
+                echo "Battery Percentage: $battery_percentage"
+                echo "============================================="
+            fi
+        }
 
-      # Handle battery notifications
-      notify_user() {
-          local urgency=$1
-          local title=$2
-          local message=$3
-          notify-send -a "HyDE Power" -t 5000 -u "$urgency" "$title" "$message"
-      }
+        # Handle battery notifications
+        notify_user() {
+            local urgency=$1
+            local title=$2
+            local message=$3
+            notify-send -a "HyDE Power" -t 5000 -u "$urgency" "$title" "$message"
+        }
 
-      # Get battery status and percentage
-      get_battery_info() {
-          local total_percentage=0 battery_count=0
-          for battery in /sys/class/power_supply/BAT*; do
-              battery_status=$(<"$battery/status")
-              battery_percentage=$(<"$battery/capacity")
-              total_percentage=$((total_percentage + battery_percentage))
-              battery_count=$((battery_count + 1))
-          done
-          battery_percentage=$((total_percentage / battery_count))
-      }
+        # Get battery status and percentage
+        get_battery_info() {
+            local total_percentage=0 battery_count=0
+            for battery in /sys/class/power_supply/BAT*; do
+                battery_status=$(<"$battery/status")
+                battery_percentage=$(<"$battery/capacity")
+                total_percentage=$((total_percentage + battery_percentage))
+                battery_count=$((battery_count + 1))
+            done
+            battery_percentage=$((total_percentage / battery_count))
+        }
 
-      # Check battery thresholds
-      check_thresholds() {
-          if [[ "$battery_percentage" -ge "$unplug_charger_threshold" && "$battery_status" != "Discharging" ]]; then
-              notify_user "NORMAL" "Battery Charged" "Battery is at $battery_percentage%. You can unplug the charger!"
-          elif [[ "$battery_percentage" -le "$battery_critical_threshold" ]]; then
-              notify_user "CRITICAL" "Battery Critically Low" "$battery_percentage% remaining. Executing critical action."
-              $execute_critical
-          elif [[ "$battery_percentage" -le "$battery_low_threshold" && "$battery_status" == "Discharging" ]]; then
-              notify_user "NORMAL" "Battery Low" "$battery_percentage% remaining. Connect the charger."
-              $execute_low
-          fi
-      }
+        # Manage notifications for charging thresholds
+        manage_charging_notifications() {
+            local thresholds=(80 90 100)
+            for threshold in "''${thresholds[@]}"; do
+                if [[ "$battery_percentage" -ge "$threshold" && "$battery_status" == "Charging" ]]; then
+                    if ! grep -q "$threshold" "$state_file" 2>/dev/null; then
+                        notify_user "NORMAL" "Battery Charging" "Battery has reached $threshold%. Consider unplugging the charger."
+                        echo "$threshold" >> "$state_file"
+                    fi
+                fi
+            done
+        }
 
-      # Monitor battery status changes
-      monitor_battery() {
-          while :; do
-              get_battery_info
-              check_thresholds
-              sleep $interval
-          done
-      }
+        # Reset state when discharging
+        reset_state_if_discharging() {
+            if [[ "$battery_status" == "Discharging" ]]; then
+                > "$state_file"
+            fi
+        }
 
-      # Main function
-      main() {
-          is_laptop
-          config_info
-          if $verbose; then
-              echo "Verbose Mode is ON."
-          fi
-          monitor_battery
-      }
+        # Monitor battery status changes
+        monitor_battery() {
+            while :; do
+                get_battery_info
+                reset_state_if_discharging
+                manage_charging_notifications
+                sleep $interval
+            done
+        }
 
-      # Parse script arguments
-      case "$1" in
-          -i|--info)
-              config_info
-              exit 0
-              ;;
-          -v|--verbose)
-              verbose=true
-              ;;
-          -h|--help|*)
-              cat <<HELP
-      Usage: $0 [options]
+        # Main function
+        main() {
+            is_laptop
+            config_info
+            if $verbose; then
+                echo "Verbose Mode is ON."
+            fi
+            monitor_battery
+        }
 
-      [-i|--info]    Display configuration information
-      [-v|--verbose] Enable verbose mode
-      [-h|--help]    Show this help message
-      HELP
-              exit 0
-              ;;
-      esac
+        # Parse script arguments
+        case "$1" in
+            -i|--info)
+                config_info
+                exit 0
+                ;;
+            -v|--verbose)
+                verbose=true
+                ;;
+            -h|--help|*)
+                cat <<HELP
+        Usage: $0 [options]
 
-      main
+        [-i|--info]    Display configuration information
+        [-v|--verbose] Enable verbose mode
+        [-h|--help]    Show this help message
+        HELP
+                exit 0
+                ;;
+        esac
+
+        main
       '')
 
       #(writeShellScriptBin "windowpin")

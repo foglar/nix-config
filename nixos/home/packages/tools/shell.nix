@@ -58,7 +58,8 @@ in {
 
         initExtra = ''
           ${pkgs.pfetch}/bin/pfetch
-          set -o emacs'';
+          set -o emacs
+          bindkey "^[[3~" delete-char'';
       };
     })
   ];
