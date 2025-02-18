@@ -31,6 +31,7 @@
   boot.loader.systemd-boot.enable = true;
   sys = {
     audio.enable = true;
+    bootloader.plymouth.enable = true;
     #bootloader.systemd-boot.enable = true;
     desktop = {
       steamdeck.enable = true;

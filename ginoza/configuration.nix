@@ -27,6 +27,7 @@
   boot.loader.systemd-boot.enable = true;
   sys = {
     audio.enable = true;
+    bootloader.plymouth.enable = false;
     #bootloader.systemd-boot.enable = true;
     desktop = {
       plasma.enable = false;
@@ -59,7 +60,7 @@
   # Configured programs to enable
   program = {
     docker.enable = false;
-    podman.enable = true;
+    podman.enable = false;
     steam.enable = false;
     proxychains.enable = false;
     tor.enable = false;

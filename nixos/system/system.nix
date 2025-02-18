@@ -17,13 +17,14 @@
     ./settings/default-applications.nix
     ./settings/logind.nix
     ./settings/updates.nix
-    #./settings/bootloader.nix
+    ./settings/bootloader.nix
 
     ./settings/user.nix
   ];
 
   sys = {
     audio.enable = lib.mkDefault true;
+    bootloader.plymouth.enable = lib.mkDefault true;
     #bootloader.systemd-boot.enable = lib.mkDefault true;
     desktop = {
       plasma.enable =

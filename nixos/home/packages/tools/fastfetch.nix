@@ -9,7 +9,7 @@
 
   config = lib.mkIf config.program.fastfetch.enable {
     home.file = {
-      ".config/fastfetch/logo.png".source = ../../../../config/logo.png;
+      ".config/fastfetch/logo.png".source = ../../../../config/asuka.png;
     };
 
     programs.fastfetch = {
