@@ -95,21 +95,33 @@
           get_cover() {
             DOWNLOAD_PATH="$HOME/.cache/cover.png"
             FALLBACK_PATH="./images/music.png" # Change this to your static image path
-                  
+                
             # Get the image URL from playerctl
             URL=$(playerctl metadata mpris:artUrl 2>/dev/null)
-                  
+                
             # If the URL is empty or playerctl fails, return the fallback path
             if [[ -z "$URL" ]]; then
                 echo "$FALLBACK_PATH"
                 return
             fi
-                  
+                
             # Try downloading the image
             if curl -s -o "$DOWNLOAD_PATH" "$URL"; then
                 echo "$DOWNLOAD_PATH"
             else
                 echo "$FALLBACK_PATH"
+            fi
+          }
+
+          get_watched_length() {
+            total_length=$(playerctl metadata --format "{{ duration(mpris:length) }}" | awk -F: '{ print ($1 * 60) + $2 }')
+            current_position=$(playerctl metadata --format "{{ duration(position) }}" | awk -F: '{ print ($1 * 60) + $2 }')
+                
+            if [[ "$total_length" -gt 0 ]]; then
+                percentage=$(awk "BEGIN { printf \"%.2f\", ($current_position / $total_length) * 100 }")
+                echo "$percentage"
+            else
+                echo "Error: Unable to retrieve media length."
             fi
           }
 
@@ -158,7 +170,7 @@
           	elif [[ $status == "Paused" ]]; then
           		echo ""
           	else
-          		echo ""
+          		echo ""
           	fi
           	;;
           --album)
@@ -183,6 +195,12 @@
           --cover)
           	get_cover
           	;;
+          --watched)
+            get_watched_length
+            ;;
+          --current)
+            echo "scale=2; $(playerctl metadata --format "{{ position }}") / $(playerctl metadata --format "{{ mpris:length }}") * 100" | ${pkgs.bc}/bin/bc
+            ;;
           *)
           	echo "Invalid option: $1"
           	echo "Usage: $0 --title | --artist | --album | --source | --source-symbol"

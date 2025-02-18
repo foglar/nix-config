@@ -10,8 +10,8 @@
   };
 
   config = lib.mkIf config.app_list.programming.enable {
-    home.packages =
-      (with pkgs; [
+    home.packages = (
+      with pkgs; [
         arduino-ide
         distrobox
         go
@@ -24,7 +24,7 @@
         ghostty
         cargo
       ]
-      );
+    );
 
     nixpkgs.config.allowUnfreePredicate = pkg:
       builtins.elem (lib.getName pkg) [

@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  userSettings,
   ...
 }: let
   EWW_PATH = ".config/eww/dashboard";
@@ -37,7 +38,7 @@ in {
 
         ".config/eww/dashboard/images/bg.jpg" = {
           enable = true;
-          source = ./eww/dashboard/images/bg.jpg;
+          source = ../../../../config/backgrounds/${userSettings.background};
         };
 
         ".config/eww/dashboard/eww.scss" = {
@@ -59,7 +60,7 @@ in {
 
             /** Generic window ***********************************/
             .genwin {
-            	background-color: #${config.lib.stylix.colors.base01};
+            	background-color: #${config.lib.stylix.colors.base00};
             	border-radius: 16px;
             }
 
@@ -73,13 +74,13 @@ in {
             }
 
             .fullname {
-            	color: #${config.lib.stylix.colors.base06};
+            	color: #${config.lib.stylix.colors.base16};
             	font-size: 30px;
             	font-weight: bold;
             }
 
             .username {
-            	color: #${config.lib.stylix.colors.base04};
+            	color: #${config.lib.stylix.colors.base06};
             	font-size: 22px;
             	font-weight: bold;
             	margin: -15px 0px 0px 0px;
@@ -97,13 +98,13 @@ in {
             	color: #${config.lib.stylix.colors.base05};
             }
             .iconmem {
-            	color: #${config.lib.stylix.colors.base07};
+            	color: #${config.lib.stylix.colors.base05};
             }
             .iconbright {
-            	color: #${config.lib.stylix.colors.base02};
+            	color: #${config.lib.stylix.colors.base05};
             }
             .iconbat {
-            	color: #${config.lib.stylix.colors.base10};
+            	color: #${config.lib.stylix.colors.base05};
             }
 
             .cpu_bar,
@@ -112,7 +113,7 @@ in {
             .bat_bar,
             scale trough {
             	all: unset;
-            	background-color: #${config.lib.stylix.colors.base11};
+            	background-color: #${config.lib.stylix.colors.base02};
             	border-radius: 16px;
             	min-height: 28px;
             	min-width: 240px;
@@ -128,16 +129,16 @@ in {
             }
 
             .cpu_bar scale trough highlight {
-            	background-color: #${config.lib.stylix.colors.base05};
+            	background-color: #${config.lib.stylix.colors.base09};
             }
             .mem_bar scale trough highlight {
-            	background-color: #${config.lib.stylix.colors.base07};
+            	background-color: #${config.lib.stylix.colors.base09};
             }
             .bright_bar scale trough highlight {
-            	background-color: #${config.lib.stylix.colors.base02};
+            	background-color: #${config.lib.stylix.colors.base09};
             }
             .bat_bar scale trough highlight {
-            	background-color: #${config.lib.stylix.colors.base10};
+            	background-color: #${config.lib.stylix.colors.base09};
             }
 
             /** Clock ********************************************/
@@ -221,7 +222,7 @@ in {
             	font-weight: normal;
             }
             .btn_play {
-            	color: #${config.lib.stylix.colors.base07};
+            	color: #${config.lib.stylix.colors.base06};
             	font-size: 48px;
             	font-weight: bold;
             }
@@ -233,12 +234,12 @@ in {
 
             .music_bar scale trough highlight {
             	all: unset;
-            	background-color: #${config.lib.stylix.colors.base13};
+            	background-color: #${config.lib.stylix.colors.base02};
             	border-radius: 8px;
             }
             .music_bar scale trough {
             	all: unset;
-            	background-color: #${config.lib.stylix.colors.base11};
+            	background-color: #${config.lib.stylix.colors.base04};
             	border-radius: 8px;
             	min-height: 20px;
             	min-width: 310px;
@@ -470,7 +471,6 @@ in {
 
       home.packages = with pkgs; [
         brightnessctl
-        busybox
 
         (writeShellScriptBin "eww-dashboard-toggle" ''
           FILE="$HOME/${EWW_CACHE}"
@@ -490,13 +490,7 @@ in {
           		system \
           		clock \
           		uptime \
-          		music \
-              apps \
-          		logout \
-          		sleep \
-          		reboot \
-          		poweroff \
-          		folders
+          		music
           }
 
           ## Launch or close widgets accordingly
@@ -517,48 +511,39 @@ in {
 
           ## Get CPU usage
           get_cpu() {
-          	if [[ -f "''${cpuFile}" ]]; then
-          		fileCont=$(cat "''${cpuFile}")
-          		PREV_TOTAL=$(echo "''${fileCont}" | head -n 1)
-          		PREV_IDLE=$(echo "''${fileCont}" | tail -n 1)
-          	fi
+              if [[ -f "''${cpuFile}" ]]; then
+                  fileCont=$(cat "''${cpuFile}")
+                  PREV_TOTAL=$(echo "''${fileCont}" | head -n 1)
+                  PREV_IDLE=$(echo "''${fileCont}" | tail -n 1)
+              fi
 
-          	CPU=(`cat /proc/stat | grep '^cpu '`) # Get the total CPU statistics.
-          	unset CPU[0]                          # Discard the "cpu" prefix.
-          	IDLE=''${CPU [4]}                        # Get the idle CPU time.
+              read -r _ user nice system idle rest < <(grep '^cpu ' /proc/stat)
+              IDLE=''${idle}
+              TOTAL=$((user + nice + system + idle))
 
-          	# Calculate the total CPU time.
-          	TOTAL=0
+              if [[ -n "''${PREV_TOTAL}" && -n "''${PREV_IDLE}" ]]; then
+                  DIFF_IDLE=$((IDLE - PREV_IDLE))
+                  DIFF_TOTAL=$((TOTAL - PREV_TOTAL))
+                  DIFF_USAGE=$(((1000 * (DIFF_TOTAL - DIFF_IDLE) / DIFF_TOTAL + 5) / 10))
+                  echo "''${DIFF_USAGE}"
+              else
+                  echo "?"
+              fi
 
-          	for VALUE in "''${CPU[@]:0:4}"; do
-          		let "TOTAL=$TOTAL+$VALUE"
-          	done
-
-          	if [[ "''${PREV_TOTAL}" != "" ]] && [[ "''${PREV_IDLE}" != "" ]]; then
-          		# Calculate the CPU usage since we last checked.
-          		let "DIFF_IDLE=$IDLE-$PREV_IDLE"
-          		let "DIFF_TOTAL=$TOTAL-$PREV_TOTAL"
-          		let "DIFF_USAGE=(1000*($DIFF_TOTAL-$DIFF_IDLE)/$DIFF_TOTAL+5)/10"
-          		echo "''${DIFF_USAGE}"
-          	else
-          		echo "?"
-          	fi
-
-          	# Remember the total and idle CPU times for the next check.
-          	echo "''${TOTAL}" > "''${cpuFile}"
-          	echo "''${IDLE}" >> "''${cpuFile}"
+              echo "''${TOTAL}" > "''${cpuFile}"
+              echo "''${IDLE}" >> "''${cpuFile}"
           }
 
           ## Get Used memory
           get_mem() {
-          	printf "%.0f\n" $(free -m | grep Mem | awk '{print ($3/$2)*100}')
+              free -m | awk '/^Mem:/ {printf "%.0f\n", ($3/$2)*100}'
           }
 
           ## Execute accordingly
           if [[ "$1" == "--cpu" ]]; then
-          	get_cpu
+              get_cpu
           elif [[ "$1" == "--mem" ]]; then
-          	get_mem
+              get_mem
           fi
         '')
       ];

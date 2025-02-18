@@ -8,11 +8,17 @@
     ".local/share/icons/kogami/keyboard.svg".source = ../../../../config/icons/keyboard.svg;
   };
 
+  services.playerctld.enable = true;
+  #services.mpd = {
+  #  enable = true;
+  #  musicDirectory = /home/shinya/Music;
+  #};
+
   services.hypridle = {
     enable = true;
     settings = {
       general = {
-        lock_cmd = "hyprctl switchxkblayout at-translated-set-2-keyboard 0 ; pidof hyprlock || hyprlock"; # avoid starting multiple hyprlock instances.
+        lock_cmd = "pidof hyprlock || hyprlock"; # avoid starting multiple hyprlock instances.
         before_sleep_cmd = "loginctl lock-session"; # lock before suspend.
         after_sleep_cmd = "hyprctl dispatch dpms on"; # to avoid having to press a key twice to turn on the display.
       };
@@ -55,6 +61,7 @@
 
       wl-clipboard
       cliphist
+      bc
 
       #swww
 
