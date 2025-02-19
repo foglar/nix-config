@@ -27,6 +27,7 @@
         clipboard.enable = lib.mkDefault true;
       };
       hyprlock.enable = lib.mkDefault true;
+      hypridle.enable = lib.mkDefault true;
       wlogout.enable = lib.mkDefault true;
     };
 
@@ -45,6 +46,7 @@
 
     # Services for the Hyprland module
     services.network-manager-applet.enable = true;
+    services.playerctld.enable = true;
     #services.dunst.enable = true;
     services.swaync = {
       enable = true;
