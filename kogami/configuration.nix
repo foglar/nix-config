@@ -86,8 +86,6 @@
   };
 
   environment.systemPackages = [
-    pkgs.gcc
-
     inputs.install-script.packages.${system}.default
     inputs.shinya-nvf.packages.${system}.nvf
   ];
@@ -96,14 +94,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

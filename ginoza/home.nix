@@ -1,4 +1,5 @@
 {
+  pkgs,
   pkgs-stable,
   userSettings,
   ...
@@ -58,14 +59,17 @@
   };
 
   # User defined packages
-  home.packages = with pkgs-stable; [
-    libreoffice
-    inkscape
-    gimp
-    mpv
-    loupe
-    distrobox
-  ];
+  home.packages =
+    (with pkgs-stable; [
+      libreoffice
+      inkscape
+      gimp
+      mpv
+      loupe
+    ])
+    ++ (
+      with pkgs; [harmony-music]
+    );
 
   programs.home-manager.enable = true;
 }

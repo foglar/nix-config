@@ -16,7 +16,7 @@
       editor = "neovim"; # neovim, vscode
 
       # List all themes: $ nix build nixpkgs#base16-schemes && ls result/share/themes
-      theme = "catppuccin-mocha"; # catppuccin-mocha, tokyo-night-dark, one-dark
+      theme = "evangelion-blood"; # catppuccin-mocha, tokyo-night-dark, one-dark
       background =
         if userSettings.theme == "catppuccin-mocha"
         then "aurora_borealis.png"
@@ -29,7 +29,7 @@
         height = 1080;
       };
 
-      configuration_path = "/home/${username}/.dotfiles";
+      configuration_path = "/home/${username}/.dotfiles"; # Does nothing for now
 
       plasma = false;
       gnome = false;

@@ -39,6 +39,12 @@
 - [ ] add syncthing configuration
 - [x] qutebrowser configuration
 - [ ] script dir set environment variable
+- [ ] eww configuration
+- [ ] fix notifications
+- [ ] add multiple themes
+- [ ] customization of bg better
+- [ ] fastfetch customization
+- [ ] sddm theme
 
 - [ ] update my home page and create new web
 - [ ] fix kde theme in stylix

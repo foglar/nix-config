@@ -80,11 +80,11 @@
 
       targets = {
         plymouth = {
-          logo =
-            if userSettings.theme == "evangelion-blood"
-            then ../../../config/nerv.png
-            else "";
-          logoAnimated = if "evangelion-blood" == userSettings.theme then false else true;
+          logo = lib.mkIf (userSettings.theme == "evangelion-blood") ../../../config/nerv.png;
+          logoAnimated =
+            if "evangelion-blood" == userSettings.theme
+            then false
+            else true;
         };
       };
     };

@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  userSettings,
   ...
 }: {
   options = {
@@ -10,17 +11,18 @@
 
   config = lib.mkIf config.desktop.hyprland.rofi.clipboard.enable {
     home.file = {
+      ".config/rofi/clip_bg.png".source = ../../../../config/backgrounds/${userSettings.background};
       ".config/rofi/cliboard.rasi".text = let
         main-bg = config.lib.stylix.colors.base01;
         main-fg = config.lib.stylix.colors.base02;
         main-br = config.lib.stylix.colors.base05;
         main-ex = config.lib.stylix.colors.base09;
-        select-bg = config.lib.stylix.colors.base05; # Selected background color    
+        select-bg = config.lib.stylix.colors.base05; # Selected background color
         select-fg = config.lib.stylix.colors.base11; # Selected text color
         separatorcolor = "transparent";
         border-color = "transparent";
       in ''
-              // Config //
+        // Config //
         configuration {
             modi:                        "drun";
             show-icons:                  false;
@@ -64,7 +66,7 @@
             expand:                      false;
             orientation:                 horizontal;
             background-color:            transparent;
-            background-image:            url("~/Pictures/backgrounds/aurora_borealis.png", width);
+            //background-image:            url("~/.config/rofi/clip_bg.png", width);
             children:                    [ "wallframe" , "inputbar" ];
         }
         wallframe {
@@ -73,7 +75,7 @@
             padding:                     0em;
             expand:                      false;
             background-color:            @main-bg;
-            background-image:            url("~/Pictures/backgrounds/aurora_borealis.png", height);
+            //background-image:            url("~/Pictures/backgrounds/cli_bg.png", height);
         }
 
 
