@@ -33,7 +33,12 @@
           group = "users";
         };
 
-        "yubikey_id" = {
+        "longinus_spear" = {
+          owner = userSettings.username;
+          group = "users";
+        };
+
+        "cassius_spear" = {
           owner = userSettings.username;
           group = "users";
         };
@@ -41,7 +46,8 @@
 
       templates = {
         "syncthing-password".content = ''${config.sops.placeholder."${userSettings.hostname}/syncthing"}'';
-        "yubikey-id".content = ''${config.sops.placeholder.yubikey_id}'';
+        "yubikey-id".content = ''${config.sops.placeholder.longinus_spear}'';
+        "yubikey-id2".content = ''${config.sops.placeholder.cassius_spear}'';
       };
     };
 
@@ -53,11 +59,14 @@
       []
       ++ (
         if config.program.yubikey.enable
-        then [config.sops.templates."yubikey-id".content]
+        then [
+          config.sops.templates."yubikey-id".content
+          config.sops.templates."yubikey-id2".content
+        ]
         else []
       );
 
     # Syncthing password
-    services.syncthing.settings.gui.password = config.sops.templates."syncthing-password".content;
+    #services.syncthing.settings.gui.password = config.sops.templates."syncthing-password".content;
   };
 }

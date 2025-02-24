@@ -18,7 +18,7 @@
   # Home manager
   home-manager = {
     extraSpecialArgs = {inherit inputs system pkgs pkgs-stable userSettings;};
-    backupFileExtension = "backup";
+    backupFileExtension = "bak";
     users = {
       ${userSettings.username} = import ./home.nix;
     };

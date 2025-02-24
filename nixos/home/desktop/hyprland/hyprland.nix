@@ -16,6 +16,7 @@
     ./rofi.nix
     ./wlogout.nix
     ./hyprlock.nix
+    ./hypridle.nix
     ./eww.nix
   ];
 
@@ -38,10 +39,10 @@
       enable = true;
       config = {
         common = {
-          default = ["hyprland"];
+          default = ["gtk"];
         };
       };
-      extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+      extraPortals = [pkgs.xdg-desktop-portal-gtk];
     };
 
     # Services for the Hyprland module

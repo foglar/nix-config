@@ -45,7 +45,7 @@
       programs.vscode = {
         enable = true;
 
-        userSettings = {
+        profiles.default.userSettings = {
           "files.autoSave" = "afterDelay";
           "explorer.confirmDragAndDrop" = false;
           #"editor.fontSize" = 16;
@@ -67,7 +67,7 @@
           "window.menuBarVisibility" = "toggle";
         };
 
-        extensions = with pkgs-stable.vscode-extensions; [
+        profiles.default.extensions = with pkgs-stable.vscode-extensions; [
           ms-azuretools.vscode-docker
 
           foxundermoon.shell-format
@@ -89,14 +89,14 @@
       };
     })
     (lib.mkIf config.program.vscode.ide.python.enable {
-      programs.vscode.userSettings = {
+      programs.vscode.profiles.default.userSettings = {
         "[python]" = {
           "editor.defaultFormatter" = "ms-python.black-formatter";
           "python.defaultInterpreterPath" = "${pkgs.python3}/bin/python";
         };
       };
 
-      programs.vscode.extensions = with pkgs-stable.vscode-extensions; [
+      programs.vscode.profiles.default.extensions = with pkgs-stable.vscode-extensions; [
         ms-python.python
         ms-python.vscode-pylance
         ms-python.black-formatter
@@ -109,7 +109,7 @@
     })
 
     (lib.mkIf config.program.vscode.ide.go.enable {
-      programs.vscode.userSettings = {
+      programs.vscode.profiles.default.userSettings = {
         "go.alternateTools" = {
           "go-langserver" = "${pkgs.gopls}/bin/gopls";
         };
@@ -122,13 +122,13 @@
         GOPATH = "$HOME/.local/share/go";
       };
 
-      programs.vscode.extensions = with pkgs-stable.vscode-extensions; [
+      programs.vscode.profiles.default.extensions = with pkgs-stable.vscode-extensions; [
         golang.go
       ];
     })
 
     (lib.mkIf config.program.vscode.ide.csharp.enable {
-      programs.vscode.extensions = with pkgs-stable.vscode-extensions; [
+      programs.vscode.profiles.default.extensions = with pkgs-stable.vscode-extensions; [
         ms-dotnettools.csharp
         ms-dotnettools.csdevkit
         ms-dotnettools.vscodeintellicode-csharp
@@ -137,7 +137,7 @@
     })
 
     (lib.mkIf config.program.vscode.nix.enable {
-      programs.vscode.userSettings = {
+      programs.vscode.profiles.default.userSettings = {
         "nix.serverPath" = "nixd";
         "nix.enableLanguageServer" = true;
         "nix.serverSettings" = {
@@ -158,7 +158,7 @@
         };
       };
 
-      programs.vscode.extensions = with pkgs-stable.vscode-extensions; [
+      programs.vscode.profiles.default.extensions = with pkgs-stable.vscode-extensions; [
         jnoortheen.nix-ide
       ];
       home.packages = with pkgs-stable; [
@@ -168,7 +168,7 @@
     })
 
     (lib.mkIf config.program.vscode.ide.web.enable {
-      programs.vscode.userSettings = {
+      programs.vscode.profiles.default.userSettings = {
         "[json]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
@@ -177,7 +177,7 @@
         };
       };
 
-      programs.vscode.extensions = with pkgs-stable.vscode-extensions; [
+      programs.vscode.profiles.default.extensions = with pkgs-stable.vscode-extensions; [
         ritwickdey.liveserver
         esbenp.prettier-vscode
         ecmel.vscode-html-css
@@ -187,33 +187,33 @@
     })
 
     (lib.mkIf config.program.vscode.git.enable {
-      programs.vscode.extensions = with pkgs-stable.vscode-extensions; [
+      programs.vscode.profiles.default.extensions = with pkgs-stable.vscode-extensions; [
         donjayamanne.githistory
         eamodio.gitlens
         github.vscode-pull-request-github
         github.vscode-github-actions
       ];
 
-      programs.vscode.userSettings = {
+      programs.vscode.profiles.default.userSettings = {
         "git.autofetch" = true;
       };
     })
 
     (lib.mkIf config.program.vscode.markdown.enable {
-      programs.vscode.userSettings = {
+      programs.vscode.profiles.default.userSettings = {
         "[markdown]" = {
           "editor.defaultFormatter" = "yzhang.markdown-all-in-one";
         };
       };
 
-      programs.vscode.extensions = with pkgs-stable.vscode-extensions; [
+      programs.vscode.profiles.default.extensions = with pkgs-stable.vscode-extensions; [
         yzhang.markdown-all-in-one
         davidanson.vscode-markdownlint
       ];
     })
 
     (lib.mkIf config.program.vscode.themes.enable {
-      programs.vscode.extensions = with pkgs-stable.vscode-extensions; [
+      programs.vscode.profiles.default.extensions = with pkgs-stable.vscode-extensions; [
         catppuccin.catppuccin-vsc
         catppuccin.catppuccin-vsc-icons
         zhuangtongfa.material-theme
@@ -223,18 +223,18 @@
     })
 
     (lib.mkIf config.program.vscode.ai.enable {
-      programs.vscode.userSettings = {
+      programs.vscode.profiles.default.userSettings = {
         "github.copilot.editor.enableAutoCompletions" = true;
       };
 
-      programs.vscode.extensions = with pkgs-stable.vscode-extensions; [
+      programs.vscode.profiles.default.extensions = with pkgs-stable.vscode-extensions; [
         github.copilot
         github.copilot-chat
       ];
     })
 
     (lib.mkIf config.program.vscode.ide.cpp.enable {
-      programs.vscode.extensions = with pkgs-stable.vscode-extensions; [
+      programs.vscode.profiles.default.extensions = with pkgs-stable.vscode-extensions; [
         twxs.cmake
         ms-vscode.cmake-tools
       ];

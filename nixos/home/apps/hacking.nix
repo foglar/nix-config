@@ -23,6 +23,7 @@
       tor-browser
       android-udev-rules
       postman
+      bruno
       gdb
       xh
     ];
